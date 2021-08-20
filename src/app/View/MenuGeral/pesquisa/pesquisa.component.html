@@ -1,0 +1,20 @@
+<mat-form-field appearance="outline" style="width: 90%">
+  <mat-label>Pesquise por produtos aqui!</mat-label>
+  <input type="text"
+         (keyup)="onKeyUp($event)"
+         (keyup.enter)="enterEvent(campoImput.value)"
+         (blur)="salvarValor(campoImput.value)"
+         #campoImput
+
+         matInput [formControl]="message" >
+  <button mat-icon-button matSuffix
+          [matTooltip]="message.value">
+    <mat-icon>searching</mat-icon>
+  </button>
+</mat-form-field>
+
+<!--
+<p>Valor Atual {{ valorAtual }} </p>
+<p>Valor salvo {{ valorSalvo }} </p>
+-->
+

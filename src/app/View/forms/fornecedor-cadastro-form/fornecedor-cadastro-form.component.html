@@ -1,0 +1,59 @@
+
+<div>
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nome Fantasia</mat-label>
+      <input type="text"
+             [(ngModel)]="nomeFantasia"
+             matInput >
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>cnpj</mat-label>
+      <input
+        [(ngModel)]="cnpj"
+        matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Texto apresentação</mat-label>
+      <textarea
+        [(ngModel)]="txt_apresentacao"
+        matInput></textarea>
+    </mat-form-field></td>
+  </tr></table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Frase de impacto</mat-label>
+      <input
+        [(ngModel)]="frase_impacto"
+        matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Contato Fabrica</mat-label>
+      <textarea
+        [(ngModel)]="contatoFabrica"
+        matInput></textarea>
+    </mat-form-field></td>
+  </tr></table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input
+        [(ngModel)]="endereco"
+        matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+  <button (click)="enviar()"  mat-raised-button color="secondary">enviar</button>
+</div>
+
+  <p>nome Produto {{nomeFantasia}}</p>

@@ -1,0 +1,63 @@
+
+.mat-primary{
+  background-color: rgb(57,73,171);
+}
+
+.config-toolbal{
+  font-size: 1.1rem;
+  height: 120px;
+}
+
+.mat-secondary{
+  background-color: rgb(100,149,237);
+}
+
+.config-toolbal-secondary{
+  font-size: 1.0rem;
+  height: 20px;
+}
+
+.example-spacer-secondary {
+  flex: 1 1 auto;
+}
+
+.logo{
+  font-size: 3.0rem;
+  padding-right: 4%;
+}
+
+.logo-cel{
+  font-size: 3.0rem;
+  padding-left: 35%;
+
+}
+
+.spacer {
+  Flex:1 1;
+}
+
+.full-width-searching {
+  max-width: 70%;
+  padding-right: 5%;
+  padding-left: 3%;
+}
+
+.full-width-searching-cel {
+  max-width: 70%;
+  padding-right: 5%;
+  padding-left: 3%;
+}
+
+.button-login{
+
+
+}
+
+
+
+
+
+
+
+
+
