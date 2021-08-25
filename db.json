@@ -1,0 +1,25 @@
+{
+  "fornecedor": [
+    {
+      "id": 1,
+      "nomeFantasia": "Restoke",
+      "cnpj": "00.000.000/0001-00",
+      "txt_apresentacao": "oi",
+      "frase_impacto": "matamos a concorrencia",
+      "contatoFabrica": "aqui",
+      "endereco": "Av. gertrudes"
+    }
+  ],
+
+  "fornecedor": [
+    {
+      "id": 2,
+      "nomeFantasia": "Amazon",
+      "cnpj": "11.111.111/1101-11",
+      "txt_apresentacao": "tchau",
+      "frase_impacto": "matamos a concorrencia com prazer",
+      "contatoFabrica": "aqui",
+      "endereco": "Av. severina"
+    }
+  ]
+}

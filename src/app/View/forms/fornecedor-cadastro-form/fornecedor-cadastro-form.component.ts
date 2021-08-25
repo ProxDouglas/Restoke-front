@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {Fornecedor} from "../../../Model/fornecedor.model";
 import {CadastroFornecedor} from "../../../Service/cadastro-fornecedor.service";
+import {observable, Observable} from "rxjs";
+import {take, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-fornecedor-cadastro-form',
@@ -17,17 +19,27 @@ export class FornecedorCadastroFormComponent implements OnInit {
   frase_impacto: string = '';
   contatoFabrica: string = '';
   endereco: string = '';
+  //email: string = '';
+  //numContato: string = '';
+  //site: string = '';
 
-  fornecedor: Fornecedor = new Fornecedor();
+  //fornecedores: Fornecedor[] = [];
 
-  constructor(private cadastroFor: CadastroFornecedor) { }
+  fornecedores$: Observable<Fornecedor[]> | undefined ;
 
-  ngOnInit(): void {
-    //this.CadastroFornecedorService
+  constructor(private cadastroService: CadastroFornecedor) {
 
   }
 
-  createModel(){
+  ngOnInit(): void {
+    this.fornecedores$ = this.cadastroService.list()
+      .pipe(
+        tap(),
+        take(1)
+      );
+  }
+
+  /*createModel(){
     this.fornecedor.nomeFantasia = this.nomeFantasia;
     this.fornecedor.cnpj = this.cnpj;
     this.fornecedor.txt_apresentacao = this.txt_apresentacao;
@@ -35,11 +47,13 @@ export class FornecedorCadastroFormComponent implements OnInit {
     this.fornecedor.contatoFabrica = this.contatoFabrica;
     this.fornecedor.endereco = this.endereco;
     return this.fornecedor;
-  }
+  }*/
 
   enviar(){
     //updateFornecedor(this.createModel());
-    this.cadastroFor.updateFornecedor(this.createModel());
+    //this.cadastroService.updateFornecedor(this.createModel()).subscribe();
+    this.cadastroService.list();
+
   }
 
 }

@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {catchError, retry} from "rxjs/operators";
+import {tap, catchError, retry, delay} from "rxjs/operators";
 
 import {Fornecedor} from '../Model/fornecedor.model';
+import {environment} from "../../environments/environment";
 
 
 
-/*const FORNECEDORES: Fornecedor[] = [
+
+/*const FORNECEDORES: FornecedorModel[] = [
   {id:1, cnpj:'00.000.000/0001-00', nomeFantasia: 'Amazon', txt_apresentação:'macoratti@yahoo.com',frase_impacto:'oi1', contatoFabrica:  '(00) 9987-9088', endereco:'ed1'},
   {id:2, cnpj:'00.000.000/0001-00', nomeFantasia: 'Americanas', txt_apresentação:'paulolima@yahoo.com',frase_impacto:'oi2', contatoFabrica:  '(00) 9987-9088', endereco:'ed2'},
   {id:3, cnpj:'00.000.000/0001-00', nomeFantasia: 'Saraiva', txt_apresentação:'suzana@net.com',frase_impacto:'oi3', contatoFabrica:  '(00) 9987-9088', endereco:'ed3'},
@@ -15,7 +17,7 @@ import {Fornecedor} from '../Model/fornecedor.model';
   {id:5, cnpj:'00.000.000/0001-00', nomeFantasia: 'Magazine', txt_apresentação:'amelia@bol.com.br',frase_impacto:'oi5', contatoFabrica: '(00) 9987-9088', endereco:'ed5'}
 ];
 
-fornecedores: Fornecedor[] = FORNECEDORES;
+fornecedores: FornecedorModel[] = FORNECEDORES;
  */
 
 
@@ -26,11 +28,11 @@ export class CadastroFornecedor {
 
 
 
-  apiUrl = 'http://localhost:8080/api/internal/v1/fornecedores';
+  //private readonly API = 'http://localhost:8080/api/internal/v1/fornecedores';
 
-  constructor(
-    private httpClient: HttpClient
-  ) {}
+  private readonly API = `${environment.API}fornecedor`;
+
+  constructor(private httpClient: HttpClient) {}
 
   httpOptions ={
     headers: new HttpHeaders({
@@ -39,9 +41,43 @@ export class CadastroFornecedor {
   };
 
 
+  list() {
+    return this.httpClient.get<Fornecedor[]>(this.API)
+      .pipe(
+        delay(2000),
+        tap(console.log)
+      );
+  }
+
+  update(fornecedor: Fornecedor) : Observable<Fornecedor>{
+    return this.httpClient.put<Fornecedor>(this.API, fornecedor, this.httpOptions)
+      .pipe(
+        tap(console.log),
+        retry(3),
+        catchError(this.handleError)
+      )
+  }
+
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
+
+  /*
   // Obtem todos os fornecedores
-  getFornecedores(): Observable<Fornecedor[]> {
-    return this.httpClient.get<Fornecedor[]>(this.apiUrl)
+  getFornecedores(): Observable<FornecedorModel[]> {
+    return this.httpClient.get<FornecedorModel[]>(this.API)
       .pipe(
         retry(2),
         catchError(this.handleError))
@@ -49,36 +85,36 @@ export class CadastroFornecedor {
 
 
   // Obtem um fornecedor pelo id
-  getFornecedorById(id: number): Observable<Fornecedor> {
-    return this.httpClient.get<Fornecedor>(this.apiUrl + '/' + id)
+  getFornecedorById(id: number): Observable<FornecedorModel> {
+    return this.httpClient.get<FornecedorModel>(this.API + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // salva um Fornecedor
-  salvarFornecedor(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return this.httpClient.post<Fornecedor>(this.apiUrl, JSON.stringify(Fornecedor), this.httpOptions)
+  // salva um FornecedorModel
+  salvarFornecedor(fornecedor: FornecedorModel): Observable<FornecedorModel> {
+    return this.httpClient.post<FornecedorModel>(this.API, JSON.stringify(FornecedorModel), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // utualiza um Fornecedor
-  updateFornecedor(fornecedor: Fornecedor): Observable<Fornecedor> {
-    console.log("update");
-    return this.httpClient.put<Fornecedor>(this.apiUrl + '/' , JSON.stringify(Fornecedor), this.httpOptions)
+  // utualiza um FornecedorModel
+  updateFornecedor(fornecedor: FornecedorModel): Observable<FornecedorModel> {
+    //console.log("update");
+    return this.httpClient.put<FornecedorModel>(this.API  , JSON.stringify(FornecedorModel), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  // deleta um Fornecedor
-  deleteFornecedor(fornecedor: Fornecedor) {
-    return this.httpClient.delete<Fornecedor>(this.apiUrl + '/' + fornecedor.id, this.httpOptions)
+  // deleta um FornecedorModel
+  deleteFornecedor(fornecedor: FornecedorModel) {
+    return this.httpClient.delete<FornecedorModel>(this.API + '/' + fornecedor.id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -97,4 +133,6 @@ export class CadastroFornecedor {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+
+   */
 }
