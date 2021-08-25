@@ -1,11 +1,11 @@
-export class Fornecedor {
+export interface Fornecedor {
 
-  id: number = 0;
-  cnpj: string = '';
-  nomeFantasia: string = '';
-  txt_apresentacao: string = '';
-  frase_impacto: string = '';
-  contatoFabrica: string = '';
-  endereco: string = '';
+  id: number ;
+  cnpj: string ;
+  nomeFantasia: string ;
+  txt_apresentacao: string ;
+  frase_impacto: string ;
+  contatoFabrica: string ;
+  endereco: string ;
 
 }

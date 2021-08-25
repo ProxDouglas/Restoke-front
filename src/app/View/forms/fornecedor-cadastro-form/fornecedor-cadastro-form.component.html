@@ -5,12 +5,14 @@
       <mat-label>Nome Fantasia</mat-label>
       <input type="text"
              [(ngModel)]="nomeFantasia"
+             placeholder="Ex: Restoke"
              matInput >
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width" appearance="fill">
       <mat-label>cnpj</mat-label>
       <input
         [(ngModel)]="cnpj"
+        placeholder="Ex: 00.000.000/0001-00"
         matInput>
     </mat-form-field></td>
   </tr></table>
@@ -55,5 +57,3 @@
 
   <button (click)="enviar()"  mat-raised-button color="secondary">enviar</button>
 </div>
-
-  <p>nome Produto {{nomeFantasia}}</p>
