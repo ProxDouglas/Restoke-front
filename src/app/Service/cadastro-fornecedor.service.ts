@@ -3,20 +3,11 @@ import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from "@ang
 import {Observable, throwError} from "rxjs";
 import {tap, catchError, retry, delay} from "rxjs/operators";
 
-import {Fornecedor} from '../Model/fornecedor.model';
+import {Fornecedor} from '../Model/fornecedor.interface';
 import {environment} from "../../environments/environment";
 
 
-
-
-/*const FORNECEDORES: FornecedorModel[] = [
-  {id:1, cnpj:'00.000.000/0001-00', nomeFantasia: 'Amazon', txt_apresentação:'macoratti@yahoo.com',frase_impacto:'oi1', contatoFabrica:  '(00) 9987-9088', endereco:'ed1'},
-  {id:2, cnpj:'00.000.000/0001-00', nomeFantasia: 'Americanas', txt_apresentação:'paulolima@yahoo.com',frase_impacto:'oi2', contatoFabrica:  '(00) 9987-9088', endereco:'ed2'},
-  {id:3, cnpj:'00.000.000/0001-00', nomeFantasia: 'Saraiva', txt_apresentação:'suzana@net.com',frase_impacto:'oi3', contatoFabrica:  '(00) 9987-9088', endereco:'ed3'},
-  {id:4, cnpj:'00.000.000/0001-00', nomeFantasia: 'ebay', txt_apresentação:'paolafernand@hotmail.com',frase_impacto:'oi4', contatoFabrica: '(00) 9987-9088', endereco:'ed4'},
-  {id:5, cnpj:'00.000.000/0001-00', nomeFantasia: 'Magazine', txt_apresentação:'amelia@bol.com.br',frase_impacto:'oi5', contatoFabrica: '(00) 9987-9088', endereco:'ed5'}
-];
-
+/*
 fornecedores: FornecedorModel[] = FORNECEDORES;
  */
 
@@ -25,8 +16,6 @@ fornecedores: FornecedorModel[] = FORNECEDORES;
   providedIn: 'root'
 })
 export class CadastroFornecedor {
-
-
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/fornecedores';
 
@@ -47,6 +36,15 @@ export class CadastroFornecedor {
         delay(2000),
         tap(console.log)
       );
+  }
+
+  insert(fornecedor: Fornecedor) : Observable<Fornecedor>{
+    return this.httpClient.post<Fornecedor>(this.API, fornecedor, this.httpOptions)
+      .pipe(
+        tap(console.log),
+        retry(3),
+        catchError(this.handleError)
+      )
   }
 
   update(fornecedor: Fornecedor) : Observable<Fornecedor>{

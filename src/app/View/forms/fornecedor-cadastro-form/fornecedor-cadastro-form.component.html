@@ -1,59 +1,78 @@
+<div [formGroup]="form">
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="nomeFantasia">Nome Fantasia</mat-label>
+          <input type="text" id="nomeFantasia"
+                 formControlName="nomeFantasia"
+                 placeholder="Ex: Restoke"
+                 matInput
+                 required
+          >
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="cnpj">cnpj</mat-label>
+          <input type="text" id="cnpj"
+            formControlName="cnpj"
+            placeholder="Ex: 00.000.000/0001-00"
+            matInput
+            required
+          >
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
-<div>
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Nome Fantasia</mat-label>
-      <input type="text"
-             [(ngModel)]="nomeFantasia"
-             placeholder="Ex: Restoke"
-             matInput >
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>cnpj</mat-label>
-      <input
-        [(ngModel)]="cnpj"
-        placeholder="Ex: 00.000.000/0001-00"
-        matInput>
-    </mat-form-field></td>
-  </tr></table>
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="txtApresentacao">Texto apresentação</mat-label>
+          <textarea id="txtApresentacao" formControlName="txtApresentacao" matInput ></textarea>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="fraseImpacto" >Frase de impacto</mat-label>
+          <input id="fraseImpacto" formControlName="fraseImpacto"  matInput required>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="contatoFabrica">Contato Fabrica</mat-label>
+          <textarea  id="contatoFabrica" formControlName="contatoFabrica"  matInput required></textarea>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Texto apresentação</mat-label>
-      <textarea
-        [(ngModel)]="txt_apresentacao"
-        matInput></textarea>
-    </mat-form-field></td>
-  </tr></table>
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="endereco">Endereço</mat-label>
+          <input id="endereco" formControlName="endereco" matInput required>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Frase de impacto</mat-label>
-      <input
-        [(ngModel)]="frase_impacto"
-        matInput>
-    </mat-form-field></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Contato Fabrica</mat-label>
-      <textarea
-        [(ngModel)]="contatoFabrica"
-        matInput></textarea>
-    </mat-form-field></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Endereço</mat-label>
-      <input
-        [(ngModel)]="endereco"
-        matInput>
-    </mat-form-field></td>
-  </tr></table>
-
-  <button (click)="enviar()"  mat-raised-button color="secondary">enviar</button>
+  <div>
+    <button type="submit" [disabled]="!form.valid" (click)="salvar()" mat-raised-button color="secondary">Salvar
+    </button>
+    <button (click)="cancelar()" mat-raised-button style="margin-left: 10px">Cancelar</button>
+  </div>
 </div>

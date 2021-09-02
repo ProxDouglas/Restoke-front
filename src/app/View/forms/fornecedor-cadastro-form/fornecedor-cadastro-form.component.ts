@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Fornecedor} from "../../../Model/fornecedor.model";
+//import {Fornecedor} from "../../../Model/fornecedor.interface";
+import {Fornecedor} from "../../../Model/fornecedo";
 import {CadastroFornecedor} from "../../../Service/cadastro-fornecedor.service";
 import {observable, Observable} from "rxjs";
 import {take, tap} from "rxjs/operators";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-fornecedor-cadastro-form',
@@ -12,48 +14,60 @@ import {take, tap} from "rxjs/operators";
 })
 export class FornecedorCadastroFormComponent implements OnInit {
 
-  id: number = 0;
-  cnpj: string = '';
-  nomeFantasia: string = '';
-  txt_apresentacao: string = '';
-  frase_impacto: string = '';
-  contatoFabrica: string = '';
-  endereco: string = '';
-  //email: string = '';
-  //numContato: string = '';
-  //site: string = '';
+  form!: FormGroup ;
 
-  //fornecedores: Fornecedor[] = [];
-
-  fornecedores$: Observable<Fornecedor[]> | undefined ;
-
-  constructor(private cadastroService: CadastroFornecedor) {
+  constructor(private fb: FormBuilder, private cadastroService: CadastroFornecedor) {
 
   }
 
   ngOnInit(): void {
-    this.fornecedores$ = this.cadastroService.list()
+    /*this.fornecedores$ = this.cadastroService.list()
       .pipe(
         tap(),
         take(1)
-      );
+      );*/
+
+    this.createForm(new Fornecedor);
+
   }
 
-  /*createModel(){
-    this.fornecedor.nomeFantasia = this.nomeFantasia;
-    this.fornecedor.cnpj = this.cnpj;
-    this.fornecedor.txt_apresentacao = this.txt_apresentacao;
-    this.fornecedor.frase_impacto = this.frase_impacto;
-    this.fornecedor.contatoFabrica = this.contatoFabrica;
-    this.fornecedor.endereco = this.endereco;
-    return this.fornecedor;
-  }*/
+  createForm(fornecedor: Fornecedor){
+    this.form = this.fb.group({
+      nomeFantasia: new FormControl (fornecedor.nomeFantasia, [Validators.required, Validators.maxLength(255), Validators.minLength(2)]),
+      cnpj: new FormControl(null, [Validators.required, Validators.maxLength(18), Validators.minLength(18)]),
+      txtApresentacao: new FormControl(null, [ Validators.maxLength(255)]),
+      fraseImpacto: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+      contatoFabrica: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.minLength(10)]),
+      endereco: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.minLength(10)])
+    });
+  }
 
-  enviar(){
+  // createModel(){
+  //
+  //   return this.fornecedor;
+  // }
+
+  salvar(){
+    console.warn(this.form.value);
     //updateFornecedor(this.createModel());
     //this.cadastroService.updateFornecedor(this.createModel()).subscribe();
-    this.cadastroService.list();
+    //this.cadastroService.list();
 
+    // this.fornecedor$ = this.cadastroService.update(this.createModel())
+    //   .pipe(
+    //     tap(),
+    //     take(1)
+    //   );
+
+  }
+
+  cancelar(){
+
+  }
+
+  submitted = false;
+  onSubmit() {
+    this.submitted = true;
   }
 
 }

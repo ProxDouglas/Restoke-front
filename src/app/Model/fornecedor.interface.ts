@@ -3,9 +3,12 @@ export interface Fornecedor {
   id: number ;
   cnpj: string ;
   nomeFantasia: string ;
-  txt_apresentacao: string ;
-  frase_impacto: string ;
+  txtApresentacao: string ;
+  fraseImpacto: string ;
   contatoFabrica: string ;
   endereco: string ;
+  // email: string ;
+  // numContato: string ;
+  // site: string ;
 
 }
