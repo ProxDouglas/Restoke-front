@@ -15,10 +15,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class FornecedorCadastroFormComponent implements OnInit {
 
   form!: FormGroup ;
+  fornecedores: Fornecedor[] = [];
 
-  constructor(private fb: FormBuilder, private cadastroService: CadastroFornecedor) {
+  constructor(private fb: FormBuilder, private cadastroService: CadastroFornecedor) {}
 
-  }
 
   ngOnInit(): void {
     /*this.fornecedores$ = this.cadastroService.list()
@@ -26,9 +26,8 @@ export class FornecedorCadastroFormComponent implements OnInit {
         tap(),
         take(1)
       );*/
-
     this.createForm(new Fornecedor);
-
+    this.cadastroService.list().subscribe(dados => this.fornecedores = dados);
   }
 
   createForm(fornecedor: Fornecedor){
@@ -42,28 +41,19 @@ export class FornecedorCadastroFormComponent implements OnInit {
     });
   }
 
-  // createModel(){
-  //
-  //   return this.fornecedor;
-  // }
+  cadastrarFornecedor(){
+    return this.cadastroService.insert(this.form.value as Fornecedor).subscribe();
+  }
 
   salvar(){
     console.warn(this.form.value);
-    //updateFornecedor(this.createModel());
-    //this.cadastroService.updateFornecedor(this.createModel()).subscribe();
-    //this.cadastroService.list();
-
-    // this.fornecedor$ = this.cadastroService.update(this.createModel())
-    //   .pipe(
-    //     tap(),
-    //     take(1)
-    //   );
-
+    this.cadastrarFornecedor();
   }
 
   cancelar(){
 
   }
+
 
   submitted = false;
   onSubmit() {

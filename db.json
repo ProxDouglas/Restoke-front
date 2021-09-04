@@ -9,7 +9,6 @@
       "contatoFabrica": "aqui",
       "endereco": "Av. gertrudes"
     },
-
     {
       "id": 2,
       "nomeFantasia": "Amazon",
@@ -19,24 +18,32 @@
       "contatoFabrica": "aqui",
       "endereco": "Av. severina"
     },
-
     {
-      "id":3,
-      "cnpj":"00.000.000/0001-00",
+      "id": 3,
+      "cnpj": "00.000.000/0001-00",
       "nomeFantasia": "Americanas",
-      "txt_apresentação":"paulolima@yahoo.com",
-      "frase_impacto":"oi2",
-      "contatoFabrica":  "(00) 9987-9088",
-      "endereco":"ed2"
+      "txt_apresentação": "paulolima@yahoo.com",
+      "frase_impacto": "oi2",
+      "contatoFabrica": "(00) 9987-9088",
+      "endereco": "ed2"
     },
     {
-      "id":4,
-      "cnpj":"00.000.000/0001-00",
+      "id": 4,
+      "cnpj": "00.000.000/0001-00",
       "nomeFantasia": "Saraiva",
-      "txt_apresentação":"suzana@net.com",
-      "frase_impacto":"oi3",
-      "contatoFabrica":  "(00) 9987-9088",
-      "endereco":"ed3"
+      "txt_apresentação": "suzana@net.com",
+      "frase_impacto": "oi3",
+      "contatoFabrica": "(00) 9987-9088",
+      "endereco": "ed3"
+    },
+    {
+      "nomeFantasia": "Douglas",
+      "cnpj": "000000000000000000",
+      "txtApresentacao": "não ",
+      "fraseImpacto": "sdasdadsad",
+      "contatoFabrica": "adsdacasdaszcsc",
+      "endereco": "cascascascasca",
+      "id": 5
     }
-    ]
+  ]
 }

@@ -56,6 +56,17 @@ export class CadastroFornecedor {
       )
   }
 
+  delete(id:number) : Observable<Fornecedor>{
+    return this.httpClient.delete<Fornecedor>(this.API + "/" + id, this.httpOptions)
+      .pipe(
+        tap(console.log),
+        retry(3),
+        catchError(this.handleError)
+      )
+  }
+
+
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

@@ -1,4 +1,4 @@
-<div [formGroup]="form">
+<form [formGroup]="form">
   <table class="example-full-width">
     <tr>
       <td>
@@ -75,4 +75,14 @@
     </button>
     <button (click)="cancelar()" mat-raised-button style="margin-left: 10px">Cancelar</button>
   </div>
-</div>
+</form>
+
+
+<p>Falei que funcionava </p>
+
+<tr *ngFor="let fornecedor of fornecedores">
+  <li>{{fornecedor | json}}</li>
+</tr>
+
+
+
