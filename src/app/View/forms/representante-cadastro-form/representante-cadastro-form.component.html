@@ -1,0 +1,96 @@
+<form [formGroup]="form">
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="nome">Nome</mat-label>
+          <input type="text" id="nome"
+                 formControlName="nome"
+                 placeholder="Ex: João Carvalho"
+                 matInput
+                 required
+          >
+          <mat-error *ngIf="form.controls.nome.hasError('required')">
+            O seu nome é <strong>necessário</strong>
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="cpf">CPF</mat-label>
+          <input type="text" id="cpf"
+                 formControlName="cpf"
+                 placeholder="Ex: 000000000-00"
+                 matInput
+                 required
+          >
+          <mat-error *ngIf="form.controls.cpf.hasError('cpf') && !form.controls.cpf.hasError('required')">
+            Por favor entre com um cpf válido
+          </mat-error>
+          <mat-error *ngIf="form.controls.cpf.hasError('required')">
+            O cpf é <strong>necessário</strong>
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="Telefone">Número de contato</mat-label>
+          <input id="telefone" formControlName="telefone" matInput required>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="Email">Email</mat-label>
+          <input id="email" formControlName="email" matInput required>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="Texto Apresentacao">Texto apresentação</mat-label>
+          <textarea id="apresentacao" formControlName="apresentacao" matInput ></textarea>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <div>
+    <button type="submit" [disabled]="!form.valid" (click)="salvar()" mat-raised-button color="secondary">Salvar
+    </button>
+    <button (click)="cancelar()" mat-raised-button style="margin-left: 10px">Cancelar</button>
+  </div>
+</form>
+
+
+<p>Visualizar cadastrados </p>
+
+<tr *ngFor="let representante of representantes">
+  <li>{{representante | json}}</li>
+</tr>
+
+
+
+
+
+

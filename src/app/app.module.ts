@@ -11,7 +11,9 @@ import {FFDModule} from "./View/ffd/ffd.module";
 import {ProdutoCadastroFormModule} from "./View/forms/produto-cadastro-form/produto-cadastro-form.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FornecedorCadastroFormModule} from "./View/forms/fornecedor-cadastro-form/fornecedor-cadastro-form.module";
-import {CadastroFornecedor} from "./Service/cadastro-fornecedor.service";
+import {CadastroServiceModule} from "./Service/cadastro-service.module";
+import {RepresentanteCadastroFormModule} from "./View/forms/representante-cadastro-form/representante-cadastro-form.module";
+
 
 
 @NgModule({
@@ -31,9 +33,11 @@ import {CadastroFornecedor} from "./Service/cadastro-fornecedor.service";
     FFDModule,
     ProdutoCadastroFormModule,
     FornecedorCadastroFormModule,
+    CadastroServiceModule,
+    RepresentanteCadastroFormModule
 
   ],
-  providers: [CadastroFornecedor],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

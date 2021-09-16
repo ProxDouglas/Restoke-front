@@ -10,6 +10,9 @@
                  matInput
                  required
           >
+          <mat-error *ngIf="form.controls.nomeFantasia.hasError('required')">
+            O nome fantasia é <strong>necessário</strong>
+          </mat-error>
         </mat-form-field>
       </td>
       <td>
@@ -21,6 +24,12 @@
             matInput
             required
           >
+          <mat-error *ngIf="form.controls.nomeFantasia.hasError('cnpj') && !form.controls.nomeFantasia.hasError('required')">
+            Por favor entre com um cnpj válido
+          </mat-error>
+          <mat-error *ngIf="form.controls.nomeFantasia.hasError('required')">
+            O cnpj é <strong>necessário</strong>
+          </mat-error>
         </mat-form-field>
       </td>
     </tr>
@@ -71,14 +80,14 @@
   </table>
 
   <div>
-    <button type="submit" [disabled]="!form.valid" (click)="salvar()" mat-raised-button color="secondary">Salvar
+    <button type="submit" [disabled]="!form.valid" (click)="onSubmit()" mat-raised-button color="secondary">Salvar
     </button>
     <button (click)="cancelar()" mat-raised-button style="margin-left: 10px">Cancelar</button>
   </div>
 </form>
 
 
-<p>Falei que funcionava </p>
+<p>Visualizar cadastrados </p>
 
 <tr *ngFor="let fornecedor of fornecedores">
   <li>{{fornecedor | json}}</li>

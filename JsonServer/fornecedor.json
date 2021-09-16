@@ -44,6 +44,41 @@
       "contatoFabrica": "adsdacasdaszcsc",
       "endereco": "cascascascasca",
       "id": 5
+    },
+    {
+      "nomeFantasia": "Vinicius",
+      "cnpj": "00000000000100",
+      "txtApresentacao": "não quero",
+      "fraseImpacto": "passei sem dificuldade",
+      "contatoFabrica": "21730327423",
+      "endereco": "minha rua ",
+      "id": 6
+    }
+  ],
+  "Representante": [
+    {
+      "id": 1,
+      "nome": "Vitor Harry",
+      "cpf": "000000000-00",
+      "telefone": "1199772895",
+      "email": "vharry@gmail.com",
+      "apresentacao": "Sou junior 3 estrelas"
+    },
+    {
+      "nome": null,
+      "cpf": null,
+      "telefone": null,
+      "email": null,
+      "apresentacao": null,
+      "id": 2
+    },
+    {
+      "nome": "Douglas Cavalcanti",
+      "cpf": "834.084.680-95",
+      "telefone": "+5511971372846",
+      "email": "douglas.cteles@hotmail.com",
+      "apresentacao": "É galera está funcionando perfeitamente ",
+      "id": 3
     }
   ]
 }
