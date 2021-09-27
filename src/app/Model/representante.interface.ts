@@ -6,5 +6,6 @@ export interface Representante {
   telefone:string;
   email:string;
   apresentacao:string;
+  //fotoPerfil: ImageBitmap;
 
 }

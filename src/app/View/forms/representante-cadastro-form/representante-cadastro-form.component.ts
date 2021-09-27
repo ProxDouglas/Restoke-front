@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+
 import {CadastroRepresentante} from "../../../Service/cadastro-representante.service";
 import {Fornecedor} from "../../../Model/fornecedor.interface";
 import {Observable} from "rxjs";
 import {Representante} from "../../../Model/representante.interface";
 import {take, tap} from "rxjs/operators";
 import { cpf } from 'cpf-cnpj-validator';
+
+
+
+import { HttpResponse, HttpEventType } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-representante-cadastro-form',
@@ -46,6 +53,10 @@ export class RepresentanteCadastroFormComponent implements OnInit {
 
   cadastrarFornecedor(){
     return this.cadastroService.save(this.form.value as Representante).subscribe();
+  }
+
+  selectFile(event: any){
+
 
   }
 

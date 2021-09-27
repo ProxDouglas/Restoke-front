@@ -16,7 +16,7 @@ export class CadastroRepresentante extends CrudService<Representante>{
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  //private readonly API = `${environment.API}representante`;
+  //private readonly API = `${environment.API}fornecedor`;
 
   constructor(protected http: HttpClient) {
     super(http, `${environment.API}representante`);

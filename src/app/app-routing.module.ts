@@ -1,11 +1,31 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {MenuGeralComponent} from "./View/MenuGeral/menu-geral.component";
+import { Routes, RouterModule } from '@angular/router';
+import {MenuGeralModule} from "./View/MenuGeral/menu-geral.module";
+import {PageNotFoundComponent} from "./shered/page-not-found/page-not-found.component";
+import {RepresentanteCadastroFormComponent} from "./View/forms/representante-cadastro-form/representante-cadastro-form.component";
 
-const routes: Routes = [{
-  path: '',
-  component: MenuGeralComponent
-}];
+const routes: Routes = [
+  {
+    path: '', pathMatch: 'full', redirectTo: 'menu'
+  },
+  {
+    path: 'menu', //component: MenuGeralComponent
+    loadChildren: () => import('./View/MenuGeral/menu-geral.module')
+      .then(m => m.MenuGeralModule)
+  },
+  {
+    path: 'fornecedor', //component: MenuGeralComponent
+    loadChildren: () => import('./View/fornecedor/fornecedor.module')
+      .then(m => m.FornecedorModule)
+  },
+  {
+    path: 'formcadastro', component: RepresentanteCadastroFormComponent
+  },
+  {
+    path: '**', pathMatch: 'full', redirectTo: 'menu'
+    //path: '**', component: PageNotFoundComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -13,30 +13,38 @@ import {HttpClientModule} from "@angular/common/http";
 import {FornecedorCadastroFormModule} from "./View/forms/fornecedor-cadastro-form/fornecedor-cadastro-form.module";
 import {CadastroServiceModule} from "./Service/cadastro-service.module";
 import {RepresentanteCadastroFormModule} from "./View/forms/representante-cadastro-form/representante-cadastro-form.module";
+import { PageNotFoundComponent } from './shered/page-not-found/page-not-found.component';
+import {FornecedorModule} from "./View/fornecedor/fornecedor.module";
+import { UploadImageComponent } from './View/forms/upload-image/upload-image.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
+    UploadImageComponent,
 
 
 
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MenuGeralModule,
-    FFDModule,
-    ProdutoCadastroFormModule,
-    FornecedorCadastroFormModule,
-    CadastroServiceModule,
-    RepresentanteCadastroFormModule
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MenuGeralModule,
+        FornecedorModule,
+        FormsModule,
+        FFDModule,
+        ProdutoCadastroFormModule,
+        FornecedorCadastroFormModule,
+        CadastroServiceModule,
+        RepresentanteCadastroFormModule,
 
-  ],
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

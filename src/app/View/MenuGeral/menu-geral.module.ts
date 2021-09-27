@@ -11,6 +11,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from "@angular/material/icon";
 import {ProdutoCadastroFormModule} from "../forms/produto-cadastro-form/produto-cadastro-form.module";
+import {MenuGeralRoutingModule} from "./menu-geral-routing.module";
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import {ProdutoCadastroFormModule} from "../forms/produto-cadastro-form/produto-
         PesquisaModule,
         NavBarModule,
 
+
+        MenuGeralRoutingModule,
         MatToolbarModule,
         MatButtonModule,
         MatProgressBarModule,
