@@ -1,0 +1,7 @@
+
+
+enum PerfilType {
+  DISTRIBUIDOR,
+  REPRESENTANTE,
+  VAREJISTA
+}

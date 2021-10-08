@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest} from "@angular/common/http";
 import {Representante} from "../Model/representante.interface";
 
 import {Observable, throwError} from "rxjs";
-import {catchError, delay, retry, tap} from "rxjs/operators";
+import {catchError, delay, retry, take, tap} from "rxjs/operators";
 import {CrudService} from "../shered/crud-service";
 
 
@@ -16,10 +16,27 @@ export class CadastroRepresentante extends CrudService<Representante>{
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  //private readonly API = `${environment.API}fornecedor`;
+  private API = `${environment.API}Representante`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API}representante`);
+    super(http, `${environment.API}` + 'Representante');
+  }
+
+  loadByName(representante: Representante): Observable<Representante> {
+    return this.http.get<Representante>(`${this.API}/${representante.nome}`)
+      .pipe(take(1));
+  }
+
+  loadByCPF(representante: Representante): Observable<Representante> {
+    return this.http.get<Representante>(`${this.API}?cpf=${representante.cpf}`)
+      .pipe(take(1));
+  }
+
+  pushImage(foto: File, id: number){
+    const formData = new FormData();
+    formData.append('imagem', foto);
+
+    return this.http.post(`${environment.API}representante/${id}/image`, formData);
   }
 
   httpOptions ={

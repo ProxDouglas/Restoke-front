@@ -8,14 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PrincipalPageModule} from "./View/principal-page/principal-page.module";
 import {MenuGeralModule} from "./View/MenuGeral/menu-geral.module";
 import {FFDModule} from "./View/ffd/ffd.module";
-import {ProdutoCadastroFormModule} from "./View/forms/produto-cadastro-form/produto-cadastro-form.module";
+import {ProdutoCadastroFormModule} from "./View/fornecedor/Forms/produto-cadastro-form/produto-cadastro-form.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FornecedorCadastroFormModule} from "./View/forms/fornecedor-cadastro-form/fornecedor-cadastro-form.module";
-import {CadastroServiceModule} from "./Service/cadastro-service.module";
-import {RepresentanteCadastroFormModule} from "./View/forms/representante-cadastro-form/representante-cadastro-form.module";
+import {RepresentanteCadastroFormModule} from "./View/fornecedor/Forms/representante-cadastro-form/representante-cadastro-form.module";
 import { PageNotFoundComponent } from './shered/page-not-found/page-not-found.component';
 import {FornecedorModule} from "./View/fornecedor/fornecedor.module";
-import { UploadImageComponent } from './View/forms/upload-image/upload-image.component';
+import {FornecedorRoutingModule} from "./View/fornecedor/fornecedor-routing.module";
+import {AuthService} from "./View/login/auth.service";
+
+
 
 
 
@@ -24,28 +26,29 @@ import { UploadImageComponent } from './View/forms/upload-image/upload-image.com
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    UploadImageComponent,
+
 
 
 
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MenuGeralModule,
-        FornecedorModule,
-        FormsModule,
-        FFDModule,
-        ProdutoCadastroFormModule,
-        FornecedorCadastroFormModule,
-        CadastroServiceModule,
-        RepresentanteCadastroFormModule,
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MenuGeralModule,
+    FornecedorModule,
+    FormsModule,
+    FFDModule,
+    ProdutoCadastroFormModule,
+    FornecedorCadastroFormModule,
+    FornecedorRoutingModule,
 
 
-    ],
-  providers: [],
+
+
+  ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

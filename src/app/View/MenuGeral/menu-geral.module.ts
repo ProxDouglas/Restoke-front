@@ -10,7 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from "@angular/material/icon";
-import {ProdutoCadastroFormModule} from "../forms/produto-cadastro-form/produto-cadastro-form.module";
+import {ProdutoCadastroFormModule} from "../fornecedor/Forms/produto-cadastro-form/produto-cadastro-form.module";
 import {MenuGeralRoutingModule} from "./menu-geral-routing.module";
 
 

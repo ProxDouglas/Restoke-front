@@ -1,17 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
-import {CadastroRepresentante} from "../../../Service/cadastro-representante.service";
-import {Fornecedor} from "../../../Model/fornecedor.interface";
+import {CadastroRepresentante} from "../../../../Service/cadastro-representante.service";
 import {Observable} from "rxjs";
-import {Representante} from "../../../Model/representante.interface";
+import {Representante} from "../../../../Model/representante.interface";
 import {take, tap} from "rxjs/operators";
-import { cpf } from 'cpf-cnpj-validator';
-
-
-
-import { HttpResponse, HttpEventType } from '@angular/common/http';
-
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -22,10 +16,17 @@ import { HttpResponse, HttpEventType } from '@angular/common/http';
 export class RepresentanteCadastroFormComponent implements OnInit {
 
   form!: FormGroup ;
+  private idRep!: number;
+  router: Router;
+  representante!: Representante;
+
   representantes: Representante[] = [];
   representantes$!: Observable<Representante>;
 
-  constructor(private fb: FormBuilder, private cadastroService: CadastroRepresentante) { }
+  constructor(private fb: FormBuilder, private cadastroService: CadastroRepresentante, router: Router)
+  {
+    this.router = router;
+  }
 
   ngOnInit(): void {
     this.createForm();
@@ -51,18 +52,39 @@ export class RepresentanteCadastroFormComponent implements OnInit {
     });
   }
 
-  cadastrarFornecedor(){
-    return this.cadastroService.save(this.form.value as Representante).subscribe();
+  getRep()
+  {
+    //this.idRep
+    this.cadastroService.loadByCPF(this.form.value as Representante).subscribe(
+      dados => {
+        this.representante = dados;
+        //this.idRep = dados.id;
+        // console.log(dados);
+      },
+      (error) => {
+        console.log("Agora pega o erro")
+        console.log(error);
+      });
   }
 
-  selectFile(event: any){
-
-
+  cadastrarFornecedor()
+  {
+    return this.cadastroService.save(this.form.value as Representante).
+    subscribe(() => {
+        console.log();
+      },
+      (error) => {
+        console.log("Agora pega o erro")
+        console.log(error);
+      });
   }
 
   salvar(){
     console.warn(this.form.value);
     this.cadastrarFornecedor();
+    this.getRep();
+    console.log("id do cara: " + this.representante.id);
+    //this.router.navigate(['RepresentanteCadastro/' + this.idRep]);
   }
 
   cancelar(){
@@ -70,3 +92,7 @@ export class RepresentanteCadastroFormComponent implements OnInit {
   }
 
 }
+
+
+// selectFile(event: any){
+// }

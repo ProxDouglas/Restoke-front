@@ -80,8 +80,20 @@
 
 
   <div>
-    <button type="submit" [disabled]="!form.valid" (click)="salvar()" mat-raised-button color="secondary">Salvar
+    <button type="submit"
+            [disabled]="!form.valid"
+            (click)="salvar()"
+
+            mat-raised-button color="secondary">Salvar
     </button>
+    <!--a hidden mat-raised-button color="secondary"
+       #acessLink
+       [routerLink]="['RepresentanteCadastro', idRep]"
+    >
+      Salvar
+    </a-->
+
+
     <button (click)="cancelar()" mat-raised-button style="margin-left: 10px">Cancelar</button>
   </div>
 </form>
@@ -89,8 +101,12 @@
 
 <p>Visualizar cadastrados </p>
 
-<tr *ngFor="let representante of representantes">
-  <li>{{representante | json}}</li>
+<tr *ngFor="let representantes of representantes">
+  <li>{{representantes | json}}</li>
+</tr>
+
+<tr>
+  {{representante | json}}
 </tr>
 
 

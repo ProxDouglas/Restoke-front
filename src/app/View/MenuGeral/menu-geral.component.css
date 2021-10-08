@@ -1,6 +1,8 @@
 
 .mat-primary{
   background-color: rgb(57,73,171);
+  font-size: 1.1rem;
+  height: 120px;
 }
 
 .config-toolbal{

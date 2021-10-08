@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MenuGeralModule} from "./View/MenuGeral/menu-geral.module";
 import {PageNotFoundComponent} from "./shered/page-not-found/page-not-found.component";
-import {RepresentanteCadastroFormComponent} from "./View/forms/representante-cadastro-form/representante-cadastro-form.component";
+import {RepresentanteCadastroFormComponent} from "./View/fornecedor/Forms/representante-cadastro-form/representante-cadastro-form.component";
 
 const routes: Routes = [
   {
@@ -18,9 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./View/fornecedor/fornecedor.module')
       .then(m => m.FornecedorModule)
   },
-  {
-    path: 'formcadastro', component: RepresentanteCadastroFormComponent
-  },
+
   {
     path: '**', pathMatch: 'full', redirectTo: 'menu'
     //path: '**', component: PageNotFoundComponent

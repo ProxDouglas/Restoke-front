@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class UploadFileService {
 
-  constructor(private https: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   pushFileToStorage(file: File ): Observable<HttpEvent<{}>> {
     const data: FormData = new FormData();
@@ -16,6 +16,17 @@ export class UploadFileService {
       reportProgress: true,
       responseType: 'text'
     });
-    return this.https.request(newRequest);
+    return this.http.request(newRequest);
   }
+
+  pushImage(foto: File){
+    const formData = new FormData();
+    formData.append('imagem', foto);
+
+    this.http.post('http://localhost:3000/representante/{id}/image', formData)
+      .subscribe(resposta => console.log('Upload ok.'));
+  }
+
+
+
 }
