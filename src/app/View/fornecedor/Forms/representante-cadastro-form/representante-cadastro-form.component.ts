@@ -5,7 +5,7 @@ import {CadastroRepresentante} from "../../../../Service/cadastro-representante.
 import {Observable} from "rxjs";
 import {Representante} from "../../../../Model/representante.interface";
 import {take, tap} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -16,9 +16,9 @@ import {Router} from "@angular/router";
 export class RepresentanteCadastroFormComponent implements OnInit {
 
   form!: FormGroup ;
-  private idRep!: number;
-  router: Router;
+  router!: Router;
   representante!: Representante;
+  idRep!: number;
 
   representantes: Representante[] = [];
   representantes$!: Observable<Representante>;
@@ -30,12 +30,6 @@ export class RepresentanteCadastroFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-
-    this.representantes$ = this.cadastroService.list()
-      .pipe(
-        tap(),
-        take(1)
-      );
 
 
   }
@@ -54,17 +48,16 @@ export class RepresentanteCadastroFormComponent implements OnInit {
 
   getRep()
   {
-    //this.idRep
-    this.cadastroService.loadByCPF(this.form.value as Representante).subscribe(
-      dados => {
-        this.representante = dados;
-        //this.idRep = dados.id;
-        // console.log(dados);
+    this.cadastroService.loadByCPF((this.form.value as Representante).cpf).subscribe(
+      (dados: any) => {
+        let idRep = <number>dados[0].id;
+        this.router.navigate(['fornecedor/representante/' + idRep]);
       },
       (error) => {
-        console.log("Agora pega o erro")
         console.log(error);
       });
+
+    console.log("idRep: " + this.idRep);
   }
 
   cadastrarFornecedor()
@@ -74,17 +67,15 @@ export class RepresentanteCadastroFormComponent implements OnInit {
         console.log();
       },
       (error) => {
-        console.log("Agora pega o erro")
         console.log(error);
       });
   }
 
   salvar(){
-    console.warn(this.form.value);
+    //console.warn(this.form.value);
     this.cadastrarFornecedor();
     this.getRep();
-    console.log("id do cara: " + this.representante.id);
-    //this.router.navigate(['RepresentanteCadastro/' + this.idRep]);
+
   }
 
   cancelar(){

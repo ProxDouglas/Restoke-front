@@ -9,7 +9,7 @@ const routeFornecedor: Routes = [
   { path: '', component: FornecedorComponent },
 
   { path: 'RepresentanteCadastro', component: RepresentanteCadastroFormComponent},
-  { path: 'RepresentanteCadastro/:id', component: UploadImageComponent},
+  { path: 'representante/:id', component: UploadImageComponent},
 
 ];
 
