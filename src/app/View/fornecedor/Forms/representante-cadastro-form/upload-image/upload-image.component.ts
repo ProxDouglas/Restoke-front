@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Subscription} from "rxjs";
 
 
-import {UploadFileService} from "../../../../../Service/upload-file.service";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 import {CadastroRepresentante} from "../../../../../Service/cadastro-representante.service";
 import {Representante} from "../../../../../Model/representante.interface";
@@ -41,19 +40,7 @@ export class UploadImageComponent implements OnInit {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
-
-        this.representante = this.uploadImageRep.loadByID(this.id)
-          .subscribe(() => {
-            console.log();
-          },
-          (error) => {
-            console.log("Agora pega o erro")
-            console.log(error);
-          });
-
-        if (this.representante == null){
-          this.router.navigate(['/Representante/naoEncontrado']);
-        }
+        console.log(this.id);
       }
     );
   }
@@ -72,22 +59,26 @@ export class UploadImageComponent implements OnInit {
 
 
   selectFile(event: any) {
-    console.log(event);
-    if (event.target.files && event.target.files[0]) {
-      this.foto = event.target.files[0];
-      this.uploadImageRep.pushImage(this.foto, 2)
-        .subscribe
-        (
-          (resposta) => {console.log('Upload ok.')},
-          (error) => {alert('Falha ao enviar');console.log(error);}
-        );
-    }
     this.selectedFiles = event.target.files;
     this.preview(event);
   }
 
   upload() {
-
+    if (this.selectedFiles && this.selectedFiles[0]) {
+      this.foto = this.selectedFiles[0];
+      this.uploadImageRep.pushImage(this.foto, this.id)
+        .subscribe
+        (
+          (resposta) =>
+          {
+            this.router.navigate(['menu']);
+            console.log('Upload concluido.')
+          },
+          (error) => {
+            alert('Falha ao enviar');console.log(error);
+          }
+        );
+    }
   }
 
   preview(event: any) { // transforma arquivo em blob

@@ -5,7 +5,7 @@ import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest} from
 import {Representante} from "../Model/representante.interface";
 
 import {Observable, throwError} from "rxjs";
-import {catchError, delay, retry, take, tap} from "rxjs/operators";
+import {catchError, delay, retry, take, tap, map} from "rxjs/operators";
 import {CrudService} from "../shered/crud-service";
 
 
@@ -27,16 +27,16 @@ export class CadastroRepresentante extends CrudService<Representante>{
       .pipe(take(1));
   }
 
-  loadByCPF(representante: Representante): Observable<Representante> {
-    return this.http.get<Representante>(`${this.API}?cpf=${representante.cpf}`)
-      .pipe(take(1));
+  loadByCPF(cpf: string): Observable<Representante> {
+    return this.http.get<Representante>(`${this.API}?cpf=${cpf}`)
+      .pipe(map((data: Representante) => {return data}));
   }
 
   pushImage(foto: File, id: number){
     const formData = new FormData();
     formData.append('imagem', foto);
 
-    return this.http.post(`${environment.API}representante/${id}/image`, formData);
+    return this.http.post(`${environment.API}representante/${id}/imagem`, formData);
   }
 
   httpOptions ={
