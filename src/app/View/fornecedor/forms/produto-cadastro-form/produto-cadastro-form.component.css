@@ -1,0 +1,51 @@
+
+
+.full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.mat-secondary{
+  background-color: rgb(57,73,171);
+}
+
+
+
+
+img {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+
+}
+
+
+
+.card-class {
+  max-width: 100%;
+
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+}
+
+.example-header-image {
+  background-size: cover;
+
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo{
+  font-size: 3.0rem;
+  padding-right: 4%;
+  text-align: center;
+}
+
