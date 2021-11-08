@@ -9,5 +9,6 @@ export interface Representante {
   email:string;
   apresentacao:string;
   fotoPerfil: File;
+  fornecedor: number;
 
 }

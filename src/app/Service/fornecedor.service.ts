@@ -18,7 +18,7 @@ fornecedores: FornecedorModel[] = FORNECEDORES;
 })
 export class FornecedorService extends CrudService<Fornecedor>{
 
-  //private readonly API = 'http://localhost:8080/api/internal/v1/fornecedores';
+  //private readonly API = 'http://localhost:8080/restoke/api/internal/vi/fornecedores';
 
   //private readonly API = `${environment.API}fornecedor`;
 
@@ -26,10 +26,10 @@ export class FornecedorService extends CrudService<Fornecedor>{
     super(http, `${environment.API}fornecedores`);
   }
 
-  httpOptions ={
-    headers: new HttpHeaders({
-      'ContentType': 'application/json'
-    })
-  };
+  // httpOptions ={
+  //   headers: new HttpHeaders({
+  //     'ContentType': 'application/json'
+  //   })
+  // };
 
 }

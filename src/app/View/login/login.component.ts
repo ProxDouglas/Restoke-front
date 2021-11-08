@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FornecedorService} from "../../Service/fornecedor.service";
 import {Fornecedor} from "../../Model/fornecedor.interface";
+import {AuthService} from "./auth.service";
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,12 @@ export class LoginComponent implements OnInit {
 
   fornecedores: Fornecedor[] = [];
   private service: FornecedorService;
+  private authService: AuthService;
   fornecedor!: Fornecedor;
 
-  constructor(service: FornecedorService) {
+  constructor(service: FornecedorService, authService: AuthService) {
     this.service = service;
+    this.authService = authService;
   }
 
   ngOnInit(): void {
@@ -22,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   getPerfil(fornecedor: Fornecedor){
-    console.log(fornecedor);
+    this.authService.fazerLogin(fornecedor);
   }
 
 }

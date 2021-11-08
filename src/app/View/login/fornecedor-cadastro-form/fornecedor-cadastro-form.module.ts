@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 
@@ -19,17 +20,18 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     exports: [
         FornecedorCadastroFormComponent
     ],
-  imports: [
-    CommonModule,
+    imports: [
+        CommonModule,
 
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatToolbarModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatToolbarModule,
+        FlexLayoutModule,
 
-  ]
+    ]
 })
 export class FornecedorCadastroFormModule { }

@@ -7,6 +7,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { cnpj } from 'cpf-cnpj-validator';
 import {observable, Observable} from "rxjs";
 import {take, tap} from "rxjs/operators";
+import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-fornecedor-cadastro-form',
@@ -18,44 +20,56 @@ export class FornecedorCadastroFormComponent implements OnInit {
   form!: FormGroup ;
   fornecedores: Fornecedor[] = [];
   fornecedores$!: Observable<Fornecedor>;
+  private router: Router;
+  private authService;
 
-  constructor(private fb: FormBuilder, private cadastroService: FornecedorService) {}
+  constructor(
+    private fb: FormBuilder,
+    private cadastroService: FornecedorService,
+    router: Router,
+    authService: AuthService) {
+
+    this.authService = authService;
+    this.router = router;
+
+  }
 
 
   ngOnInit(): void {
-    this.fornecedores$ = this.cadastroService.list()
-      .pipe(
-        tap(),
-        take(1)
-      );
+    // this.fornecedores$ = this.cadastroService.list()
+    //   .pipe(
+    //     tap(),
+    //     take(1)
+    //   );
+    // this.cadastroService.list().subscribe(dados => this.fornecedores = dados);
+
     this.createForm();
-    this.cadastroService.list().subscribe(dados => this.fornecedores = dados);
   }
 
   createForm(){
     this.form = this.fb.group({
-      nome: new FormControl (null,
+      nome: new FormControl ("Morgado Ltda",
         [Validators.required, Validators.maxLength(150), Validators.minLength(2)]),
-      nomeFantasia: new FormControl (null,
+      nomeFantasia: new FormControl ("Morgado Orientador",
         [Validators.required, Validators.maxLength(150), Validators.minLength(2)]),
-      cnpj: new FormControl(null,
-        [Validators.required, Validators.maxLength(14), Validators.minLength(14),
-        Validators.pattern( '[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2}')]),
-      txtApresentacao: new FormControl(null,
+      cnpj: new FormControl("00000000000100",
+        [Validators.required, Validators.maxLength(18), Validators.minLength(14),
+        Validators.pattern( '[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4}[0-9]{2}|[0-9]{2}.[0-9]{3}.[0-9]{3}\/[0-9]{4}-[0-9]{2}')]),
+      txtApresentacao: new FormControl("Ajudo aluno em computação",
         [ Validators.maxLength(255)]),
-      fraseImpacto: new FormControl(null,
+      fraseImpacto: new FormControl("Faça o TCC e crie sua própria start-up",
         [Validators.required, Validators.maxLength(255)]),
-      endereco: new FormControl(null,
+      endereco: new FormControl("morgado@pucsp.edu.br",
         [Validators.required, Validators.maxLength(255), Validators.minLength(10)]),
-      email: new FormControl (null,
+      email: new FormControl ("morgado@pucsp.edu.br",
         [Validators.required, Validators.maxLength(100),
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-      contatoFabrica: new FormControl(null,
+      contatoFabrica: new FormControl(1122222222,
         [Validators.required, Validators.maxLength(255), Validators.minLength(10)]),
-      numContato: new FormControl (null,
+      numContato: new FormControl ("1122222224",
         [Validators.required, Validators.maxLength(11), Validators.minLength(10),
           Validators.pattern('([0-9]{2})([0-9]{5}-?[0-9]{4}|[0-9]{4}-?[0-9]{4})')]),
-      site: new FormControl (null,
+      site: new FormControl ("morgado.com",
         [Validators.required, Validators.maxLength(255), Validators.minLength(2)])
     });
   }
@@ -64,48 +78,55 @@ export class FornecedorCadastroFormComponent implements OnInit {
     return this.form.get(field)?.errors;
   }
 
-  cadastrarFornecedor(){
-    return this.cadastroService.save(this.form.value as Fornecedor).subscribe();
+  fornecedorMap(dados: any){
+    let fornecedor: Fornecedor = {
+      id: (dados as any).id ,
+      cnpj: (dados as any).cnpj ,
+      nome: (dados as any).nome,
+      nomeFantasia: (dados as any).nomeFantasia ,
+      txtApresentacao: (dados as any).txtApresentacao ,
+      fraseImpacto: (dados as any).fraseImpacto ,
+      contatoFabrica: (dados as any).contatoFabrica , //?????
+      endereco: (dados as any).endereco ,
+      email: (dados as any).email ,
+      numContato: (dados as any).numContato ,
+      site: (dados as any).site ,
+    }
+    return fornecedor;
   }
 
-  cancelar(){
-
-  }
-
-
-
-  onSubmit() {
-    console.warn(this.form.value);
-    this.cadastrarFornecedor();
+  onSubmit(){
     this.submitted = true;
-    console.log(this.form.value);
-    if (this.form.valid) {
-      console.log('submit');
 
-      let msgSuccess = 'Curso criado com sucesso!';
-      let msgError = 'Erro ao criar curso, tente novamente!';
-      if (this.form.value.id) {
-        msgSuccess = 'Curso atualizado com sucesso!';
-        msgError = 'Erro ao atualizar curso, tente novamente!';
-      }
+    let msgSuccess = 'Curso criado com sucesso!';
+    let msgError = 'Erro ao criar curso, tente novamente!';
 
-      this.cadastroService.save(this.form.value).subscribe(
-        success => {
-          alert("success");
-          //this.modal.showAlertSuccess(msgSuccess);
-          //this.location.back();
+    if(this.form.valid) {
+      this.cadastroService.save(this.form.value as Fornecedor).subscribe(
+        (dados: any) => {
+
+          this.authService.fazerLogin(this.fornecedorMap(dados));
+
+          alert(msgSuccess);
+          // this.modal.showAlertSuccess(msgSuccess);
+          // this.location.back();
         },
         //error => this.modal.showAlertDanger(msgError)
-        error => alert("erro")
+        error => {
+          console.log(error);
+          alert(msgError);
+        }
       );
     }
+
+
   }
 
 
   onCancel() {
     this.submitted = false;
     this.form.reset();
-    // console.log('onCancel');
+    this.router.navigate(['']);
   }
 }
 

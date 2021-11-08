@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { delay, tap, take } from 'rxjs/operators';
 
 interface IdNumber {
@@ -7,6 +7,12 @@ interface IdNumber {
 
 
 export class CrudService<T extends IdNumber> {
+
+  // httpOptions ={
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   })
+  // };
 
   constructor(protected http: HttpClient, private API_URL: string) {}
 

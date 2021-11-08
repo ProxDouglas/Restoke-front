@@ -8,7 +8,7 @@ export interface Produto {
   codigo_barra:string;
   descricao:string;
   categoria:string;
-  imagens: Set<File>;
-  fornecedor: Fornecedor
+  imagens: File;
+  fornecedor: number;
 
 }

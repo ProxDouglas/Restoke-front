@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-cabecario',
+  selector: 'app-top-menu',
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.css']
 })
@@ -26,5 +26,10 @@ export class TopMenuComponent implements OnInit {
     console.log('cadastrou');
     this.router.navigate(['cadastro']);
   }
+
+  acessMenu(){
+    this.router.navigate(['']);
+  }
+
 
 }

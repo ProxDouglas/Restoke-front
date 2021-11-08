@@ -55,48 +55,17 @@
       "id": 6
     },
     {
-      "nomeFantasia": "Morgado",
+      "nome": "Morgado Ltda",
+      "nomeFantasia": "Morgado Orientador",
       "cnpj": "00000000000100",
-      "txtApresentacao": "sadakbcbjcbdsc",
-      "fraseImpacto": "sdvsdvdfgbdfhbdth",
-      "contatoFabrica": "ffffffffffffffffffffffffffffff",
-      "endereco": "ffffffffffffffffffffffff",
+      "txtApresentacao": "Ajudo aluno em computação",
+      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
+      "endereco": "morgado@pucsp.edu.br",
+      "email": "morgado@pucsp.edu.br",
+      "contatoFabrica": 1122222222,
+      "numContato": "1122222224",
+      "site": "morgado.com",
       "id": 7
-    },
-    {
-      "nomeFantasia": "Morgado",
-      "cnpj": "00000000000100",
-      "txtApresentacao": "sadakbcbjcbdsc",
-      "fraseImpacto": "sdvsdvdfgbdfhbdth",
-      "contatoFabrica": "ffffffffffffffffffffffffffffff",
-      "endereco": "ffffffffffffffffffffffff",
-      "id": 8
-    },
-    {
-      "nome": "Morgado Ltda",
-      "nomeFantasia": "Morgado Orientador",
-      "cnpj": "00000000000100",
-      "txtApresentacao": "Oriento alunos de computação para o Tcc",
-      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
-      "endereco": "Morgadolandia",
-      "email": "morgado@pucsp.edu.br",
-      "contatoFabrica": "1122222222",
-      "numContato": "1122222224",
-      "site": "morgado.com",
-      "id": 9
-    },
-    {
-      "nome": "Morgado Ltda",
-      "nomeFantasia": "Morgado Orientador",
-      "cnpj": "00000000000100",
-      "txtApresentacao": "Oriento alunos de computação para o Tcc",
-      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
-      "endereco": "Morgadolandia",
-      "email": "morgado@pucsp.edu.br",
-      "contatoFabrica": "1122222222",
-      "numContato": "1122222224",
-      "site": "morgado.com",
-      "id": 10
     }
   ],
   "Representante": [
@@ -197,6 +166,15 @@
       "descriacao": "ddddddddddddddddddddddddddddd",
       "imagens": {},
       "id": 5
+    },
+    {
+      "nome": "copo 200ml",
+      "codigo_barra": "3333333333333",
+      "fornecedor": 1,
+      "categoria": "copo de plástico",
+      "descricao": "Resistente feito de plastico reciclavel",
+      "imagens": {},
+      "id": 6
     }
   ]
 }

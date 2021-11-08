@@ -13,4 +13,14 @@ td {
   background-color: rgb(57,73,171);
 }
 
+.logo{
+  font-size: 3.0rem;
+  padding-right: 4%;
+  text-align: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
 

@@ -2,11 +2,11 @@
 
 <div style="background: rgb(100,149,237) ">
 
-  <mat-toolbar color="primary" >
-    <span class="logo" >Restoke</span>
+  <mat-toolbar color="primary"  fxLayout="row" fxLayoutAlign="space-around center" >
+    <button mat-raised-button color="accent" (click)="voltar()" >voltar</button>
     <span class="spacer"></span>
     <span style="text-align: center">Cadastro de produto</span>
-    <span class="spacer" style="margin-right: 18%"></span>
+    <span class="spacer"></span>
   </mat-toolbar>
 
   <mat-card class="card-class">
@@ -80,8 +80,35 @@
         <tr>
           <td>
             <mat-form-field class="full-width" appearance="fill">
-              <mat-label for="Texto Apresentacao">Descrição do Produto</mat-label>
-              <textarea id="descriacao" formControlName="descriacao" matInput ></textarea>
+              <mat-label for="categoria">Categoria</mat-label>
+              <input type="text" id="categoria"
+                     formControlName="categoria"
+                     placeholder="Ex: "
+                     matInput
+                     required
+              >
+              <mat-error *ngIf="form.controls.categoria.hasError('required')">
+                A categoria é <strong>necessária</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label for="descricao">Descrição</mat-label>
+              <input type="text" id="descricao"
+                     formControlName="descricao"
+                     placeholder="Ex: "
+                     matInput
+                     required
+              >
+              <mat-error *ngIf="form.controls.categoria.hasError('required')">
+                A descrição é <strong>necessária</strong>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>

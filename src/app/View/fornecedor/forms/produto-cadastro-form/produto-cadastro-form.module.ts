@@ -10,7 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {ReactiveFormsModule} from "@angular/forms";
 
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {FlexModule} from "@angular/flex-layout";
+import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 
@@ -23,17 +23,18 @@ import {MatCardModule} from "@angular/material/card";
     exports: [
         ProdutoCadastroFormComponent
     ],
-  imports: [
-    CommonModule,
+    imports: [
+        CommonModule,
 
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatCardModule
-  ]
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatCardModule,
+        FlexLayoutModule
+    ]
 })
 export class ProdutoCadastroFormModule {
 

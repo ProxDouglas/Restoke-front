@@ -5,7 +5,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router} from "@angular/router";
 import {ProdutoService} from "../../../../Service/produto.service";
 import {Produto} from "../../../../Model/produto.interface";
-import {requiredFileType} from "../../../../shered/requiredFileType";
+import {AuthService} from "../../../login/auth.service";
+import {Fornecedor} from "../../../../Model/fornecedor.interface";
+
 
 
 @Component({
@@ -21,27 +23,38 @@ export class ProdutoCadastroFormComponent implements OnInit {
   selectedFiles!: FileList;
   imgURL: any;
   public message!: string;
-
-
-
   produtos!: Produto[];
+  private fornID: number;
 
-  constructor(private fb: FormBuilder, private cadastroService: ProdutoService, router: Router)
+
+  constructor(private fb: FormBuilder, private cadastroService: ProdutoService,
+              router: Router, authService: AuthService)
   {
     this.router = router;
+    this.fornID = (authService.getPerfil() as Fornecedor).id;
   }
 
   ngOnInit(): void
   {
     this.createForm();
+
   }
+
+  getFornID(){ return this.fornID}
+
 
   createForm(){
     this.form = this.fb.group({
-      nome: new FormControl (null, [Validators.required, Validators.maxLength(60), Validators.minLength(2)]),
-      codigo_barra: new FormControl(null, [Validators.required, Validators.maxLength(13), Validators.minLength(13),
+      nome: new FormControl (null,
+        [Validators.required, Validators.maxLength(60), Validators.minLength(2)]),
+      codigo_barra: new FormControl(null,
+        [Validators.required, Validators.maxLength(13), Validators.minLength(13),
         Validators.pattern('[0-9]{13}')]),
-      descriacao: new FormControl(null, [ Validators.maxLength(255)]),
+      fornecedor: this.getFornID(),
+      categoria: new FormControl(null,
+        [Validators.required, Validators.maxLength(50)]),
+       descricao: new FormControl(null,
+      [ Validators.required, Validators.maxLength(255)]),
       imagens: new FormControl(null, {validators: [Validators.required]}),
     });
   }
@@ -128,4 +141,7 @@ export class ProdutoCadastroFormComponent implements OnInit {
   }
 
 
+  voltar() {
+    this.router.navigate(['fornecedor']);
+  }
 }

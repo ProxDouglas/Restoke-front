@@ -1,11 +1,11 @@
 
 
 
-<div style="height: 100vh;">
+
   <mat-toolbar color="primary" >
 
-    <div fxShow="true" fxHide.gt-sm="true" >
-      <span class="logo-cel" >Restoke</span>
+    <div fxShow="true" fxHide.gt-sm="true" fxLayout="column" fxLayoutAlign="space-between center">
+      <button mat-button color="accent" class="logo-cel" (click)="acessMenu()"  >Restoke</button>
 
       <app-pesquisa class="full-width-searching-cel"></app-pesquisa>
 
@@ -13,10 +13,10 @@
       <button (click)="cadastrar()" mat-button class="button-login" >Cadastrar</button>
 
     </div>
-    <div fxShow="false" fxHide.gt-sm="false">
+    <div fxShow="false" fxHide.gt-sm="false" fxLayout="row" fxLayoutAlign="space-around center">
       <mat-toolbar-row class="config-toolbal" >
 
-        <span class="logo" >Restoke</span>
+        <button mat-button color="accent" class="logo" (click)="acessMenu()"  >Restoke</button>
 
         <app-pesquisa class="full-width-searching" style="Flex: 1 1; padding: 2%"></app-pesquisa>
 
@@ -28,11 +28,11 @@
   </mat-toolbar>
   <mat-progress-bar mode="indeterminate" color="secondary"></mat-progress-bar>
 
-  <mat-toolbar color="secondary">
+  <!--mat-toolbar color="secondary">
     <mat-toolbar-row class="config-toolbal-secondary">
 
     </mat-toolbar-row>
     <app-nav-bar class="example-spacer-secondary"></app-nav-bar>
-  </mat-toolbar>
-</div>
+  </mat-toolbar-->
+
 

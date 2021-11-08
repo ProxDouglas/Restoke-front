@@ -1,5 +1,5 @@
 
-.mat-primary{
+.top-menu{
   background-color: rgb(57,73,171);
   font-size: 1.1rem;
   height: 120px;
@@ -17,6 +17,7 @@
 .config-toolbal-secondary{
   font-size: 1.0rem;
   height: 20px;
+  flex: 1 1 auto;
 }
 
 .example-spacer-secondary {
@@ -26,11 +27,15 @@
 .logo{
   font-size: 3.0rem;
   padding-right: 4%;
+
+}
+
+.mat-accent{
+  color: white;
 }
 
 .logo-cel{
   font-size: 3.0rem;
-  padding-left: 35%;
 
 }
 
@@ -42,6 +47,7 @@
   max-width: 70%;
   padding-right: 5%;
   padding-left: 3%;
+  padding-top: 10px;
 }
 
 .full-width-searching-cel {
