@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProdutoCadastroFormComponent } from './produto-cadastro-form.component';
+import { ProdutoCadastroComponent } from './produto-cadastro/produto-cadastro.component';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -13,15 +13,18 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
+import {ProdutoUpdateComponent} from "./produto-update/produto-update.component";
 
 
 
 @NgModule({
     declarations: [
-        ProdutoCadastroFormComponent
+        ProdutoCadastroComponent,
+        ProdutoUpdateComponent
     ],
     exports: [
-        ProdutoCadastroFormComponent
+        ProdutoCadastroComponent,
+        ProdutoUpdateComponent
     ],
     imports: [
         CommonModule,
@@ -36,6 +39,6 @@ import {MatCardModule} from "@angular/material/card";
         FlexLayoutModule
     ]
 })
-export class ProdutoCadastroFormModule {
+export class ProdutoCrudModule {
 
 }

@@ -3,14 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {LoginComponent} from "./View/login/login.component";
 import {FornecedorCadastroFormComponent} from "./View/login/fornecedor-cadastro-form/fornecedor-cadastro-form.component";
+
 import {AuthGuard} from "./guards/auth.guard";
+
 
 const routes: Routes = [
 
   {
-    path: '', //component: TopMenuComponent
-    loadChildren: () => import('./View/principal-page/top-menu/top-menu.module')
-      .then(m => m.TopMenuModule),
+    path: '', //component: content
+    loadChildren: () => import('./View/principal-page/content/content.module')
+      .then(m => m.ContentModule),
     // useAsDefaout()
   },
   {

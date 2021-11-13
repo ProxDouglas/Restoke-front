@@ -72,7 +72,13 @@ export class RepresentanteCadastroFormComponent implements OnInit {
   }
 
   cancelar(){
-    this.cadastroService.list().subscribe(dados => this.representantes = dados);
+    // this.cadastroService.list().subscribe(dados => this.representantes = dados);
+    this.form.reset();
+    this.router.navigate(['../fornecedor']);
+  }
+
+  voltar(){
+    this.cancelar()
   }
 
 }

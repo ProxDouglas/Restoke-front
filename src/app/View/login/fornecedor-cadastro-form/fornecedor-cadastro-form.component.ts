@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Fornecedor} from "../../../Model/fornecedor.interface";
-//import {Fornecedor} from "../../../Model/fornecedo";
+
 import {FornecedorService} from "../../../Service/fornecedor.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { cnpj } from 'cpf-cnpj-validator';
-import {observable, Observable} from "rxjs";
+import {observable, Observable, Subscription} from "rxjs";
 import {take, tap} from "rxjs/operators";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../../../Service/auth.service";
 
 @Component({
   selector: 'app-fornecedor-cadastro-form',
@@ -17,9 +17,9 @@ import {AuthService} from "../auth.service";
 })
 export class FornecedorCadastroFormComponent implements OnInit {
   submitted = false;
-  form!: FormGroup ;
+  form: FormGroup ;
   fornecedores: Fornecedor[] = [];
-  fornecedores$!: Observable<Fornecedor>;
+  fornecedores$: Observable<Fornecedor>;
   private router: Router;
   private authService;
 
@@ -31,6 +31,8 @@ export class FornecedorCadastroFormComponent implements OnInit {
 
     this.authService = authService;
     this.router = router;
+    this.form = this.createForm();
+    this.fornecedores$ = new Observable<Fornecedor>();
 
   }
 
@@ -43,12 +45,11 @@ export class FornecedorCadastroFormComponent implements OnInit {
     //   );
     // this.cadastroService.list().subscribe(dados => this.fornecedores = dados);
 
-    this.createForm();
   }
 
-  createForm(){
-    this.form = this.fb.group({
-      nome: new FormControl ("Morgado Ltda",
+  createForm(): FormGroup{
+    return this.fb.group({
+      nome: new FormControl ("Morgado ltda",
         [Validators.required, Validators.maxLength(150), Validators.minLength(2)]),
       nomeFantasia: new FormControl ("Morgado Orientador",
         [Validators.required, Validators.maxLength(150), Validators.minLength(2)]),
@@ -98,12 +99,14 @@ export class FornecedorCadastroFormComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
 
-    let msgSuccess = 'Curso criado com sucesso!';
-    let msgError = 'Erro ao criar curso, tente novamente!';
+    let msgSuccess = 'Distribuidor criado com sucesso!';
+    let msgError = 'Erro ao criar distribuidor, tente novamente!';
+
+    this.fornecedores$ = this.cadastroService.save(this.form.value as Fornecedor) as Observable<Fornecedor>;
 
     if(this.form.valid) {
-      this.cadastroService.save(this.form.value as Fornecedor).subscribe(
-        (dados: any) => {
+      const localSubscription = this.fornecedores$.subscribe(
+        (dados: Fornecedor) => {
 
           this.authService.fazerLogin(this.fornecedorMap(dados));
 
@@ -117,6 +120,11 @@ export class FornecedorCadastroFormComponent implements OnInit {
           alert(msgError);
         }
       );
+
+      setTimeout(() => {
+        localSubscription.unsubscribe();
+      }, 10000);
+
     }
 
 
@@ -128,6 +136,7 @@ export class FornecedorCadastroFormComponent implements OnInit {
     this.form.reset();
     this.router.navigate(['']);
   }
+
 }
 
 

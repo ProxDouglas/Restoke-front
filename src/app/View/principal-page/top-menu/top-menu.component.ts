@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../../../Service/auth.service";
 
 @Component({
   selector: 'app-top-menu',
@@ -9,12 +10,17 @@ import {Router} from "@angular/router";
 export class TopMenuComponent implements OnInit {
 
   router!: Router;
+  private authService: AuthService;
 
-  constructor(router: Router) {
+  autenticado: boolean = false;
+
+  constructor(router: Router, authService: AuthService) {
     this.router = router;
+    this.authService = authService;
   }
 
   ngOnInit(): void {
+    this.autenticado = this.authService.usuarioEstaAutenticado();
   }
 
   acessarArea(){
@@ -31,5 +37,13 @@ export class TopMenuComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  sair() {
+    this.authService.sairPerfil();
+    this.autenticado = false;
+  }
 
+
+  get autenticadoT(): boolean {
+    return this.autenticado;
+  }
 }

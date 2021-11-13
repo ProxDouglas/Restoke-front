@@ -21,7 +21,7 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="imgFileInput.click()" style="text-align: center">Arquivar</button>
+        <button mat-raised-button color="accent" (click)="imgFileInput.click()" style="text-align: center">Adicionar imagem</button>
       </mat-card-actions>
       <input hidden
              type="file"
@@ -115,8 +115,9 @@
       </table>
 
       <div>
-        <button type="submit" color="primary"
-                [disabled]="!form.valid && !selectedFiles"
+        <button type="submit" color="accent"
+                [disabled]="!form.valid || !submit"
+
                 (click)="salvar()"
 
                 mat-raised-button >Salvar

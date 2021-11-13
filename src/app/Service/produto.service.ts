@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CrudService} from "../shered/crud-service";
-
+import {Representante} from "../Model/representante.interface";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {take} from "rxjs/operators";
@@ -15,10 +15,10 @@ export class ProdutoService extends CrudService<Produto> {
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  private API = `${environment.API}Produto`;
+  private readonly API = `${environment.API}produtos`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API}` + 'Produto');
+    super(http, `${environment.API}` + 'produtos');
   }
 
   loadByNmae(name: string){
@@ -27,6 +27,22 @@ export class ProdutoService extends CrudService<Produto> {
 
   loadByCB(cb: string){
     return this.http.get<Produto>(`${this.API}/${cb}` ).pipe(take(1));
+  }
+
+  pushImage(foto: File, id: number){
+    const formData = new FormData();
+    formData.append('imagem', foto);
+
+    return this.http.post(`${environment.API}produtos/${id}/imagem`, formData);
+    // return this.http.post(`${environment.API}imagens`, formData);
+  }
+
+  updateImage(foto: File, id: number){
+    const formData = new FormData();
+    formData.append('imagem', foto);
+
+    return this.http.put(`${environment.API}produtos/${id}/imagem`, formData);
+    // return this.http.post(`${environment.API}imagens`, formData);
   }
 
 }

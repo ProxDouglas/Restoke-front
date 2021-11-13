@@ -1,25 +1,27 @@
 
-<body style="background: cornflowerblue; min-height:100% ;height: inherit;">
 
-  <mat-toolbar color="primary" style="background: rgb(57,73,171)" >
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+  <mat-toolbar color="primary" style="background: rgb(57,73,171);" >
+
+    <button mat-icon-button (click)="voltar()" >
+      <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="spacer"></span>
-    <span class="logo" >Restoke</span>
+    <h2>Faça o acesso com um perfil</h2>
     <span class="spacer"></span>
   </mat-toolbar>
 
-  <li *ngFor="let fornecedor of fornecedores; index as i;">
-    <mat-card style="margin: 20px">
-      <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span class="font"> Fornecedor {{i}}: {{ fornecedor.nomeFantasia }}</span>
-        <button (click)="getPerfil(fornecedor)"  style="align-content: center" mat-raised-button color="primary" >
-          acessar
-        </button>
-      </div>
-    </mat-card>
-  </li>
-</body>
+
+    <span *ngFor="let fornecedor of fornecedores; index as i;">
+      <mat-card style="margin: 20px">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="font"> Fornecedor {{i}}: {{ fornecedor.nomeFantasia }}</span>
+          <button (click)="getPerfil(fornecedor)"  style="align-content: center" mat-raised-button color="primary" >
+            acessar
+          </button>
+        </div>
+      </mat-card>
+    </span>
+
+  <br>
 

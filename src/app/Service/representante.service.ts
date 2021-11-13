@@ -16,10 +16,10 @@ export class CadastroRepresentante extends CrudService<Representante>{
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  private API = `${environment.API}Representante`;
+  private API = `${environment.API}representantes`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API}` + 'Representante');
+    super(http, `${environment.API}` + 'representantes');
   }
 
   loadByName(representante: Representante): Observable<Representante> {
@@ -36,7 +36,7 @@ export class CadastroRepresentante extends CrudService<Representante>{
     const formData = new FormData();
     formData.append('imagem', foto);
 
-    return this.http.post(`${environment.API}representante/${id}/imagem`, formData);
+    return this.http.post(`${environment.API}representantes/${id}/imagem`, formData);
   }
 
   httpOptions ={

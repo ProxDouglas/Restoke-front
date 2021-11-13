@@ -53,22 +53,9 @@
       "contatoFabrica": "21730327423",
       "endereco": "minha rua ",
       "id": 6
-    },
-    {
-      "nome": "Morgado Ltda",
-      "nomeFantasia": "Morgado Orientador",
-      "cnpj": "00000000000100",
-      "txtApresentacao": "Ajudo aluno em computação",
-      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
-      "endereco": "morgado@pucsp.edu.br",
-      "email": "morgado@pucsp.edu.br",
-      "contatoFabrica": 1122222222,
-      "numContato": "1122222224",
-      "site": "morgado.com",
-      "id": 7
     }
   ],
-  "Representante": [
+  "representantes": [
     {
       "id": 1,
       "nome": "Vitor Harry",
@@ -76,15 +63,6 @@
       "telefone": "1199772895",
       "email": "vharry@gmail.com",
       "apresentacao": "Sou junior 3 estrelas",
-      "imagem": []
-    },
-    {
-      "nome": "Olá",
-      "cpf": null,
-      "telefone": null,
-      "email": null,
-      "apresentacao": null,
-      "id": 2,
       "imagem": []
     },
     {
@@ -129,7 +107,7 @@
       "id": 7
     }
   ],
-  "Produto": [
+  "produtos": [
     {
       "nome": "copo 200ml",
       "codigo_barra": "3333333333333",
@@ -168,13 +146,25 @@
       "id": 5
     },
     {
-      "nome": "copo 200ml",
-      "codigo_barra": "3333333333333",
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
       "fornecedor": 1,
-      "categoria": "copo de plástico",
-      "descricao": "Resistente feito de plastico reciclavel",
-      "imagens": {},
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
       "id": 6
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 7
+    }
+  ],
+  "imagens": [
+    {
+      "id": 1
     }
   ]
 }

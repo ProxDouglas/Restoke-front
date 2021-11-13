@@ -1,5 +1,5 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { delay, tap, take } from 'rxjs/operators';
+import {delay, tap, take, map} from 'rxjs/operators';
 
 interface IdNumber {
   id: number;
@@ -8,19 +8,14 @@ interface IdNumber {
 
 export class CrudService<T extends IdNumber> {
 
-  // httpOptions ={
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //   })
-  // };
-
   constructor(protected http: HttpClient, private API_URL: string) {}
 
   list() {
     return this.http.get<T[]>(this.API_URL)
       .pipe(
-        delay(2000),
-        tap(console.log)
+        // delay(2000),
+        tap(obj => obj)
+        // tap(console.log)
       );
   }
 
@@ -29,7 +24,9 @@ export class CrudService<T extends IdNumber> {
   }
 
   private create(record: T) {
-    return this.http.post(this.API_URL, record).pipe(take(1));
+    return this.http.post(this.API_URL, record).pipe(take(1)).pipe(
+      // tap(dados => console.log(record as T))
+    );
   }
 
   private update(record: T) {

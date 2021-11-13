@@ -25,6 +25,7 @@
 }
 
 .logo{
+
   font-size: 3.0rem;
   padding-right: 4%;
 
@@ -35,7 +36,9 @@
 }
 
 .logo-cel{
+  padding-top: 20px;
   font-size: 3.0rem;
+  padding-bottom:10px;
 
 }
 
@@ -56,8 +59,11 @@
   padding-left: 3%;
 }
 
-.button-login{
+.columm-config{
+  height: 145px;
+}
 
+.button-login{
 
 }
 

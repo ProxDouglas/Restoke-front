@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 
-import {PerfilTIpo} from "./PerfilTIpo";
-import {Fornecedor} from "../../Model/fornecedor.interface";
-import {Representante} from "../../Model/representante.interface";
+import {PerfilTIpo} from "../View/login/PerfilTIpo";
+import {Fornecedor} from "../Model/fornecedor.interface";
+import {Representante} from "../Model/representante.interface";
 
 
 
@@ -30,8 +30,6 @@ export class AuthService {
     if ((data as any).id != 0 )
     {
       this.usuarioType = PerfilTIpo.DISTRIBUIDOR;
-
-      console.log(this.usuarioType);
 
       this.usuarioAutenticado = true;
 
@@ -73,6 +71,18 @@ export class AuthService {
     {
       return this.dados as any;
     }
+  }
+
+  sairPerfil(){
+    this.usuarioType = PerfilTIpo.DISTRIBUIDOR;
+
+    this.usuarioAutenticado = false;
+
+    this.mostrarMenuEmitter.emit(false);
+
+    this.dados = {};
+
+    this.router.navigate(['']);
   }
 
 }
