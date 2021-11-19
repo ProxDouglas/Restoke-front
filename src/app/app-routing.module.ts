@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {LoginComponent} from "./View/login/login.component";
-import {FornecedorCadastroFormComponent} from "./View/login/fornecedor-cadastro-form/fornecedor-cadastro-form.component";
+import {LoginFornecedorComponent} from "./View/login/forncedor/login-fornecedor.component";
+import {FornecedorCadastroFormComponent} from "./View/sessao/fornecedor/fornecedor-cadastro-form/fornecedor-cadastro-form.component";
 
-import {AuthGuard} from "./guards/auth.guard";
+import {AuthFornecedorGuard} from "./guards/auth/auth-fornecedor.guard";
+import {TipoSessaoComponent} from "./View/login/tipo-sessao/tipo-sessao.component";
+import {LoginRepresentanteComponent} from "./View/login/representante/login-representante.component";
+import {AuthRepresentanteGuard} from "./guards/auth/auth-representante.guard";
+
 
 
 const routes: Routes = [
@@ -17,14 +21,25 @@ const routes: Routes = [
   },
   {
     path: 'fornecedor',
-    loadChildren: () => import('./View/fornecedor/fornecedor.module')
+    loadChildren: () => import('./View/sessao/fornecedor/fornecedor.module')
       .then(m => m.FornecedorModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthFornecedorGuard]
+  },
+
+  {
+    path: 'representante',
+    loadChildren: () => import('./View/sessao/representante/representante.module')
+      .then(m => m.RepresentanteModule),
+    canActivate: [AuthRepresentanteGuard]
   },
 
   { path: 'cadastro', component: FornecedorCadastroFormComponent },
 
-  { path: 'acessar', component: LoginComponent },
+  { path: 'acessarFonecedor', component: LoginFornecedorComponent },
+
+  { path: 'acessarRepresentante', component: LoginRepresentanteComponent },
+
+  {path: 'sessao', component: TipoSessaoComponent},
 
   {
     path: '**', pathMatch: 'full', redirectTo: ''

@@ -23,7 +23,7 @@ export class FornecedorService extends CrudService<Fornecedor>{
   //private readonly API = `${environment.API}fornecedor`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API}fornecedores`);
+    super(http, `${environment.API_cadastro}fornecedores`);
   }
 
   // httpOptions ={

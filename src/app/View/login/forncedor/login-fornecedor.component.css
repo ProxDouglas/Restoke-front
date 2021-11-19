@@ -1,0 +1,13 @@
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.font{
+  font-size: 1.2rem
+}
+
+.mat-spinner {
+  margin-top: 60px;
+}

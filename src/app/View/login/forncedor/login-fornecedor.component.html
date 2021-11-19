@@ -1,0 +1,35 @@
+
+
+
+  <mat-toolbar color="primary" style="background: rgb(57,73,171);" >
+
+    <button mat-icon-button (click)="voltar()" >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <h2>Faça o acesso com um perfil</h2>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+
+  <div *ngIf="(fornecedor$ | async) as fornecedores; else loading">
+    <span *ngFor="let fornecedor of fornecedores; index as i;">
+      <mat-card style="margin: 20px">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="font"> Fornecedor {{i}}: {{ fornecedor.nomeFantasia }}</span>
+          <button (click)="getPerfil(fornecedor)"  style="align-content: center" mat-raised-button color="primary" >
+            acessar
+          </button>
+        </div>
+      </mat-card>
+    </span>
+  </div>
+
+  <ng-template #loading>
+    <div fxLayoutAlign="center center">
+      <mat-spinner [diameter]="200"></mat-spinner>
+    </div>
+  </ng-template>
+
+  <br>
+

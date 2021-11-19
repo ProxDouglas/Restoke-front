@@ -1,0 +1,16 @@
+.card-color{
+  background-color: rgb(77, 40, 140);
+  color: rgb(77, 40, 140);
+}
+
+.mat-raised-button{
+  width: 450px;
+  height: 200px;
+  margin: 20px;
+}
+
+.mat-raised-button-cel{
+  width: 90%;
+  height: 200px;
+  margin: 20px;
+}

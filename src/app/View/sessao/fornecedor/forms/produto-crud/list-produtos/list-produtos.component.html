@@ -1,0 +1,69 @@
+
+
+
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center"
+             style="background: rgb(57,73,171);"  >
+
+  <button mat-icon-button (click)="voltar()"  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <h2 fxFlex="55" fxFlexOffset="flex">Produtos</h2>
+
+</mat-toolbar>
+
+<nav style="margin: 10px">
+  <a mat-raised-button
+     routerLink="cadastro"
+     routerLinkActive="activebutton"
+     color="primary">Cadastrar Produto
+  </a>
+</nav>
+
+<div *ngIf="(produtos$ | async) as produtos; else loading">
+  <span *ngFor="let produto of produtos; index as i;">
+      <mat-card style="margin: 20px" fxLayout="row" fxLayoutAlign="space-between center" >
+        <div fxLayout="column" fxLayoutAlign="space-around start" >
+          <h2 fxLayoutAlign="start start" style="margin: 10px">{{ produto.nome }}</h2>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <img [src]="imagePath" alt="image" class="imagem" >
+            <div fxLayout="column" fxLayoutAlign="space-between start" >
+              <p fxFlex="20">Código de barras: {{produto.codigo_barra}}</p>
+              <p fxFlex="20">Categoria: {{produto.categoria}}</p>
+              <p fxFlex="60">Descrição: {{produto.descricao}}</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div fxLayout="column" fxLayoutAlign="space-around end" style="margin-right: 15px">
+          <button (click)="onEdit(produto.id)" class="button-ED" mat-raised-button color="primary" >
+            Editar
+          </button>
+          <button (click)="onDelete(produto)" class="button-ED" mat-raised-button color="accent" >
+            Deletar
+          </button>
+        </div>
+      </mat-card>
+    </span>
+</div>
+
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+</ng-template>
+
+<!--ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover esse curso?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Nao</button>
+  </div>
+</ng-template-->
+
+
+<br>
+
+

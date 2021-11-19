@@ -1,0 +1,16 @@
+
+.imagem{
+  object-fit: cover;
+  height: 30%;
+  width: 30%;
+  padding: 20px;
+}
+
+.button-ED{
+  margin-bottom: 12px;
+  width: 80px;
+}
+
+.mat-spinner {
+  margin-top: 60px;
+}

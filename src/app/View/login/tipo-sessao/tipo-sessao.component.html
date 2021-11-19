@@ -1,0 +1,65 @@
+<div fxHide.gt-sm="false" fxShow="false">
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+      <button mat-raised-button
+              color="primary"
+              class="mat-raised-button"
+              routerLink="../acessarFonecedor"
+              routerLinkActive="activebutton"
+      >
+        <div fxLayout="column" fxLayoutAlign="start center" >
+          <br>
+          <h1 style="font-size: 45px; font-family: Times New Roman, Times, serif;">Fonecedor</h1>
+          <span>Essa área é dedicada aos fornecedores, Distribuidores e Fabricantes</span>
+        </div>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button mat-raised-button
+              color="primary"
+              routerLink="../acessarRepresentante"
+              routerLinkActive="activebutton"
+      >
+        <div fxLayout="column" fxLayoutAlign="start center" >
+          <br>
+          <h1 style="font-size: 45px; font-family: Times New Roman, Times, serif;">Representante</h1>
+          <p style="max-width: 85%">Área é dedicada aos Representantes</p>
+        </div>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div
+  fxHide.gt-sm="true"
+  fxShow="true"
+  fxLayout="column"
+  fxLayoutAlign="space-evenly center"
+>
+      <button mat-raised-button
+              color="primary"
+              class="mat-raised-button-cel"
+              routerLink="../acessarFonecedor"
+              routerLinkActive="activebutton"
+      >
+        <div fxLayout="column" fxLayoutAlign="start center" >
+          <br>
+          <h1 style="font-size: 45px; font-family: Times New Roman, Times, serif;">Fonecedor</h1>
+          <p style="max-width: 85%">Área é dedicada aos fornecedores,<br> Distribuidores e Fabricantes</p>
+        </div>
+      </button>
+
+      <button mat-raised-button
+              color="primary"
+              class="mat-raised-button-cel"
+              routerLink="../acessarRepresentante"
+              routerLinkActive="activebutton"
+      >
+        <div fxLayout="column" fxLayoutAlign="start center" >
+          <br>
+          <h1 style="font-size: 45px; font-family: Times New Roman, Times, serif;">Representante</h1>
+          <p style="max-width: 85%">Área é dedicada aos Representantes</p>
+        </div>
+      </button>
+</div>
+<br>

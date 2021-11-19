@@ -10,7 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 import {MatIconModule} from "@angular/material/icon";
-import {ProdutoCrudModule} from "../../fornecedor/forms/produto-crud/produto-crud.module";
+import {ProdutoCrudModule} from "../../sessao/fornecedor/forms/produto-crud/produto-crud.module";
 import {TopMenuRoutingModule} from "./top-menu-routing.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 

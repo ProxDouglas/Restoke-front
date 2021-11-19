@@ -1,3 +1,13 @@
+:root {
+  --componentesPrimario: pink;
+  --componentesSecundario: #4682B4;
+  --componentesTerciario: rgb(57,73,171);
+  --corFundo: cornflowerblue;
+
+
+}
+
+
 .example-spacer {
   flex: 1 1 auto;
 }

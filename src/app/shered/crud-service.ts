@@ -13,8 +13,8 @@ export class CrudService<T extends IdNumber> {
   list() {
     return this.http.get<T[]>(this.API_URL)
       .pipe(
-        // delay(2000),
-        tap(obj => obj)
+        delay(500),
+        tap((obj:any) => obj)
         // tap(console.log)
       );
   }

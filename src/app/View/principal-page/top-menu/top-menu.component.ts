@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../../../Service/auth.service";
+import {AuthFornecedorService} from "../../../Service/auth/fornecedor/auth-fornecedor.service";
 
 @Component({
   selector: 'app-top-menu',
@@ -10,11 +10,11 @@ import {AuthService} from "../../../Service/auth.service";
 export class TopMenuComponent implements OnInit {
 
   router!: Router;
-  private authService: AuthService;
+  private authService: AuthFornecedorService;
 
   autenticado: boolean = false;
 
-  constructor(router: Router, authService: AuthService) {
+  constructor(router: Router, authService: AuthFornecedorService) {
     this.router = router;
     this.authService = authService;
   }
@@ -24,12 +24,12 @@ export class TopMenuComponent implements OnInit {
   }
 
   acessarArea(){
-    console.log('acessar');
-    this.router.navigate(['acessar']);
+    // console.log('sessao');
+    this.router.navigate(['sessao']);
   }
 
   cadastrar(){
-    console.log('cadastrou');
+    // console.log('cadastrou');
     this.router.navigate(['cadastro']);
   }
 

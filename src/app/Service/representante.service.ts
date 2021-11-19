@@ -12,14 +12,14 @@ import {CrudService} from "../shered/crud-service";
 @Injectable({
   providedIn: 'root'
 })
-export class CadastroRepresentante extends CrudService<Representante>{
+export class RepresentanteService extends CrudService<Representante>{
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  private API = `${environment.API}representantes`;
+  private API = `${environment.API_cadastro}representantes`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API}` + 'representantes');
+    super(http, `${environment.API_cadastro}` + 'representantes');
   }
 
   loadByName(representante: Representante): Observable<Representante> {
@@ -36,7 +36,7 @@ export class CadastroRepresentante extends CrudService<Representante>{
     const formData = new FormData();
     formData.append('imagem', foto);
 
-    return this.http.post(`${environment.API}representantes/${id}/imagem`, formData);
+    return this.http.post(`${environment.API_cadastro}representantes/${id}/imagem`, formData);
   }
 
   httpOptions ={

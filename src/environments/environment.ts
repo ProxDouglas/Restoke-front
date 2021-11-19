@@ -4,8 +4,15 @@
 
 export const environment = {
   production: false,
-  // API: 'http://localhost:3000/'
-  API: 'http://localhost:8080/restoke/api/internal/v1/'
+  API_cadastro: 'http://localhost:3000/',
+  // API: 'http://localhost:8080/restoke/api/internal/v1/',
+
+  imagePerfil: '../../../../../../../assets/Image_Perfil_Default.png',
+  imageDefault: '../../../../../../../assets/sem_Imagem.jpg',
+
+  primeiracor: 'rgb(77, 40, 140)',
+
+
 };
 
 /*
