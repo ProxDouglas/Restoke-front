@@ -3,9 +3,9 @@ import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from "@ang
 import {Observable, throwError} from "rxjs";
 import {tap, catchError, retry, delay} from "rxjs/operators";
 
-import {Fornecedor} from '../Model/fornecedor.interface';
-import {environment} from "../../environments/environment";
-import {CrudService} from "../shered/crud-service";
+import {Fornecedor} from '../../Model/fornecedor.interface';
+import {environment} from "../../../environments/environment";
+import {CrudService} from "../../shered/crud-service";
 
 
 /*

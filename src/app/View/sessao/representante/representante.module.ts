@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import {MatButtonModule} from "@angular/material/button";
 import {RepresentanteComponent} from "./representante.component";
-import {RepresentanteCadastroFormModule} from "../fornecedor/forms/representante-crud/representante-cadastro-form.module";
 import {RepresentanteRoutingModule} from "./representante-routing.module";
+import {CatalogoEditModule} from "./editar/catalogo-edit.module";
 
 
 @NgModule({
@@ -13,12 +13,13 @@ import {RepresentanteRoutingModule} from "./representante-routing.module";
   ],
   exports: [
     RepresentanteComponent,
+    CatalogoEditModule
   ],
   imports: [
     CommonModule,
-    RepresentanteCadastroFormModule,
     RepresentanteRoutingModule,
     MatButtonModule,
+    CatalogoEditModule
   ]
 })
 export class RepresentanteModule { }

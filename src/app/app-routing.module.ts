@@ -4,21 +4,29 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginFornecedorComponent} from "./View/login/forncedor/login-fornecedor.component";
 import {FornecedorCadastroFormComponent} from "./View/sessao/fornecedor/fornecedor-cadastro-form/fornecedor-cadastro-form.component";
 
-import {AuthFornecedorGuard} from "./guards/auth/auth-fornecedor.guard";
+import {AuthFornecedorGuard} from "./guards/fornecedor/auth/auth-fornecedor.guard";
 import {TipoSessaoComponent} from "./View/login/tipo-sessao/tipo-sessao.component";
 import {LoginRepresentanteComponent} from "./View/login/representante/login-representante.component";
-import {AuthRepresentanteGuard} from "./guards/auth/auth-representante.guard";
+import {AuthRepresentanteGuard} from "./guards/representante/auth/auth-representante.guard";
+import {AuthUserGuard} from "./guards/auth-user.guard";
+import {ContentComponent} from "./View/principal-page/content/content.component";
+import {RepresentanteResolverGuard} from "./guards/representante/resolver/representante-resolver.guard";
 
 
 
 const routes: Routes = [
 
+  {path: '', component: ContentComponent},
+
   {
-    path: '', //component: content
-    loadChildren: () => import('./View/principal-page/content/content.module')
-      .then(m => m.ContentModule),
-    // useAsDefaout()
+    path: 'listCatalogo/:id',
+    loadChildren: () => import('./View/principal-page/content/catalogo/catalogo-content.module')
+      .then(m => m.CatalogoContentModule),
+    resolve:{
+      representante:RepresentanteResolverGuard,
+    }
   },
+
   {
     path: 'fornecedor',
     loadChildren: () => import('./View/sessao/fornecedor/fornecedor.module')
@@ -33,13 +41,17 @@ const routes: Routes = [
     canActivate: [AuthRepresentanteGuard]
   },
 
-  { path: 'cadastro', component: FornecedorCadastroFormComponent },
+  { path: 'cadastro', component: FornecedorCadastroFormComponent,
+    canActivate: [AuthUserGuard]},
 
-  { path: 'acessarFonecedor', component: LoginFornecedorComponent },
+  { path: 'acessarFonecedor', component: LoginFornecedorComponent,
+    canActivate: [AuthUserGuard]},
 
-  { path: 'acessarRepresentante', component: LoginRepresentanteComponent },
+  { path: 'acessarRepresentante', component: LoginRepresentanteComponent,
+    canActivate: [AuthUserGuard]},
 
-  {path: 'sessao', component: TipoSessaoComponent},
+  {path: 'sessao', component: TipoSessaoComponent,
+    canActivate: [AuthUserGuard]},
 
   {
     path: '**', pathMatch: 'full', redirectTo: ''

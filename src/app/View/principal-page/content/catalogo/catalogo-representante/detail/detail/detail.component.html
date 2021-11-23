@@ -1,0 +1,45 @@
+
+
+<mat-toolbar color="primary" style="background: rgb(57,73,171);" >
+
+  <button mat-icon-button (click)="voltar()" >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="(produto$ | async) as produto; else loading">
+  <mat-toolbar-row class="card-produto"
+                   fxShow="false"
+                   fxHide.gt-sm="false"
+  >
+      <img mat-card-image class="image-produto" [src]="imagePath" alt="image">
+
+      <div fxLayout="column" fxLayoutAlign="space-evenly start" class="text-card" >
+        <p>{{produto.nome}}</p>
+        <p>{{produto.categoria}}</p>
+        <p>{{produto.descricao}}</p>
+      </div>
+  </mat-toolbar-row>
+
+
+  <mat-card class="card-produto"
+            fxShow="true"
+            fxHide.gt-sm="true"
+            fxLayout="column" fxLayoutAlign="start center"
+
+  >
+    <br>
+    <img mat-card-image  [src]="imagePath" alt="image">
+    <mat-card-content >
+      <p>{{produto.nome}}</p>
+      <p>{{produto.categoria}}</p>
+      <p>{{produto.descricao}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+</ng-template>

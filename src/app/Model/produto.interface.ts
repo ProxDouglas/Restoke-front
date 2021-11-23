@@ -8,7 +8,7 @@ export interface Produto {
   codigo_barra:string;
   descricao:string;
   categoria:string;
-  imagens: File;
+  imagem: FormData;
   fornecedor: number;
 
 }

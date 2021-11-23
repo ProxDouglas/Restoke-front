@@ -1,0 +1,60 @@
+.card-class {
+  max-width: 400px;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+.mat-spinner {
+  margin-top: 60px;
+}
+
+.mat-card-representante{
+  border: 1px solid #CFD8DC;
+  border-radius: 10px;
+  padding-top: 15px;
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-bottom: 0%;
+  margin: 5px;
+  width: 280px;
+  height: 400px;
+}
+
+.mat-card-representante{
+  border: 1px solid #CFD8DC;
+  border-radius: 10px;
+  padding-top: 0px;
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-bottom: 0%;
+  margin: 0px;
+  width: 280px;
+  height: 400px;
+}
+
+
+.mat-card-title-representante{
+  padding-left:10px;
+  padding-top: 0px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  min-height: 70px;
+}
+
+.image-rep{
+  object-fit: cover;
+  border-radius: 40px;
+  max-width: 400px;
+  max-height: 400px;
+  margin-top: 30px;
+}
+
+.image-produto{
+  margin-top: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+  min-width: 170px;
+}
+

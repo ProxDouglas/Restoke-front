@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {Fornecedor} from "../../../../Model/fornecedor.interface";
 
-import {FornecedorService} from "../../../../Service/fornecedor.service";
+import {FornecedorService} from "../../../../Service/fornecedor/fornecedor.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { cnpj } from 'cpf-cnpj-validator';
 import {observable, Observable, Subscription} from "rxjs";

@@ -16,15 +16,18 @@ import {ProdutoCrudModule} from "./forms/produto-crud/produto-crud.module";
   ],
   exports: [
     FornecedorComponent,
-    RepresentanteCadastroFormComponent,
+    RepresentanteCadastroFormModule,
     UploadImageComponent,
-    ProdutoCrudModule
+    ProdutoCrudModule,
+    FornecedorRoutingModule
 
   ],
   imports: [
     CommonModule,
     RepresentanteCadastroFormModule,
     FornecedorRoutingModule,
+
+
     MatButtonModule,
   ]
 })

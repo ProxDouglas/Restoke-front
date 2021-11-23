@@ -4,7 +4,7 @@ import {Subscription} from "rxjs";
 
 
 import {HttpEventType, HttpResponse} from "@angular/common/http";
-import {RepresentanteService} from "../../../../../../Service/representante.service";
+import {RepresentanteService} from "../../../../../../Service/representante/representante.service";
 
 
 @Component({

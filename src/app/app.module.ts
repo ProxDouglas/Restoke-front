@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './shered/page-not-found/page-not-found.co
 import {FornecedorModule} from "./View/sessao/fornecedor/fornecedor.module";
 import {FornecedorRoutingModule} from "./View/sessao/fornecedor/fornecedor-routing.module";
 import {AuthFornecedorService} from "./Service/auth/fornecedor/auth-fornecedor.service";
-import {AuthFornecedorGuard} from "./guards/auth/auth-fornecedor.guard";
+import {AuthFornecedorGuard} from "./guards/fornecedor/auth/auth-fornecedor.guard";
 import {LoginFornecedorModule} from "./View/login/forncedor/login-fornecedor.module";
 import {ContentModule} from "./View/principal-page/content/content.module";
 import { TipoSessaoComponent } from './View/login/tipo-sessao/tipo-sessao.component';
@@ -24,7 +24,9 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {LoginRepresentanteModule} from "./View/login/representante/login-representante.module";
 import {AuthRepresentanteService} from "./Service/auth/representante/auth-representante.service";
-import {AuthRepresentanteGuard} from "./guards/auth/auth-representante.guard";
+import {AuthRepresentanteGuard} from "./guards/representante/auth/auth-representante.guard";
+import {AuthUserGuard} from "./guards/auth-user.guard";
+import {CatalogoContentModule} from "./View/principal-page/content/catalogo/catalogo-content.module";
 
 
 @NgModule({
@@ -43,10 +45,11 @@ import {AuthRepresentanteGuard} from "./guards/auth/auth-representante.guard";
         FornecedorModule,
         FormsModule,
         FornecedorCadastroFormModule,
-        FornecedorRoutingModule,
+        ContentModule,
         LoginFornecedorModule,
         LoginRepresentanteModule,
-        ContentModule,
+
+
         MatGridListModule,
         MatButtonModule,
         MatCardModule,
@@ -57,7 +60,8 @@ import {AuthRepresentanteGuard} from "./guards/auth/auth-representante.guard";
 
     ],
   providers: [AuthFornecedorService, AuthFornecedorGuard,
-              AuthRepresentanteService, AuthRepresentanteGuard],
+              AuthRepresentanteService, AuthRepresentanteGuard,
+              AuthUserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

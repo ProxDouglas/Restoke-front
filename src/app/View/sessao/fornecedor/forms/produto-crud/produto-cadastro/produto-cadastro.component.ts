@@ -9,8 +9,9 @@ import {AuthFornecedorService} from "../../../../../../Service/auth/fornecedor/a
 import {Fornecedor} from "../../../../../../Model/fornecedor.interface";
 import {Observable} from "rxjs";
 import {Produto} from "../../../../../../Model/produto.interface";
-import {ProdutoService} from "../../../../../../Service/produto.service";
-import {map, switchMap} from "rxjs/operators";
+import {ProdutoService} from "../../../../../../Service/produto/produto.service";
+import {environment} from "../../../../../../../environments/environment";
+
 
 
 
@@ -20,9 +21,10 @@ import {map, switchMap} from "rxjs/operators";
   styleUrls: ['./produto-cadastro.component.css']
 })
 export class ProdutoCadastroComponent implements OnInit {
+  imagePath = `${environment.imageDefault}`;
 
   form: FormGroup ;
-  produtos$: Observable<Produto>;
+  produtos$: Observable<Fornecedor>;
   image$: Observable<File> ;
   selectedFile!: File;
   submit: boolean = false;
@@ -39,7 +41,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
     this._fornID = (authService.getPerfil() as Fornecedor).id;
     this.form = this.createForm();
-    this.produtos$ = new Observable<Produto>();
+    this.produtos$ = new Observable<Fornecedor>();
     this.image$ = new Observable<File>();
 
   }
@@ -116,10 +118,10 @@ export class ProdutoCadastroComponent implements OnInit {
       msgError = 'Erro ao atualizar produto, tente novamente!';
     }
 
-    this.produtos$ = this.service.save(this.form.value as Produto) as Observable<Produto>;
+    this.produtos$ = this.service.save(this.form.value as Produto) as Observable<Fornecedor>;
 
     const localSubscription = this.produtos$.
-    subscribe((dados:Produto) => {
+    subscribe((dados:Fornecedor) => {
         let idProd = dados.id;
         this.upload(idProd);
         alert(msgSuccess);
@@ -148,13 +150,18 @@ export class ProdutoCadastroComponent implements OnInit {
 
   onSelect($event: Event) {
     let files: any = ($event.target as HTMLInputElement).files;
-    this.selectedFile = files[0];
-    // this.form.patchValue({imagens: imagem});
+    let file = files[0];
+    let formData = new FormData();
+    formData.append("imagem", file);
+
+    this.form.patchValue({imagem: formData});
+    // console.log(this.form.value.imagem.toString());
     // this.form.get('imagens')!.updateValueAndValidity();
     this.haveImageOn();
     this.preview($event);
     // this.convertFileBloob(this.form.value.imagens);
   }
+
 
   upload(idProd: number) {
     this.image$ = this.service.pushImage(this.selectedFile, idProd) as Observable<File>;
@@ -171,7 +178,6 @@ export class ProdutoCadastroComponent implements OnInit {
           alert('Falha ao enviar imagem');console.log(error);
         }
       );
-
   }
 
   preview(event: any) { // transforma arquivo em blob

@@ -8,9 +8,10 @@ import {Representante} from "../../../Model/representante.interface";
 export class AuthRepresentanteService {
 
   private usuarioAutenticado: boolean = false;
+
   private representante !: Representante;
 
-  mostrarMenuEmitter = new EventEmitter<boolean>();
+  autenticado = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
 
@@ -23,7 +24,7 @@ export class AuthRepresentanteService {
     {
       this.usuarioAutenticado = true;
 
-      this.mostrarMenuEmitter.emit(true);
+      this.autenticado.emit(true);
 
       this.representante = representante;
 
@@ -43,7 +44,7 @@ export class AuthRepresentanteService {
   sairPerfil(){
     this.usuarioAutenticado = false;
 
-    this.mostrarMenuEmitter.emit(false);
+    this.autenticado.emit(false);
 
     this.representante = {
       id: 0 ,

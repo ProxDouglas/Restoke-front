@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FornecedorService} from "../../../Service/fornecedor.service";
+import {FornecedorService} from "../../../Service/fornecedor/fornecedor.service";
 import {Fornecedor} from "../../../Model/fornecedor.interface";
 import {AuthFornecedorService} from "../../../Service/auth/fornecedor/auth-fornecedor.service";
 import {Observable, of, Subscription} from "rxjs";
@@ -13,16 +13,12 @@ import {Router} from "@angular/router";
 })
 export class LoginFornecedorComponent implements OnInit {
 
-  private service: FornecedorService;
-  private authService: AuthFornecedorService;
   fornecedor$: Observable<Fornecedor[]>;
-  router: Router;
   private mySubscription!: Subscription;
 
-  constructor(service: FornecedorService, authService: AuthFornecedorService, router: Router) {
-    this.service = service;
-    this.authService = authService;
-    this.router = router;
+  constructor(private service: FornecedorService,private authService: AuthFornecedorService,
+              private router: Router) {
+
     this.fornecedor$ = this.service.list().
       pipe(
         catchError(err => {
@@ -33,16 +29,7 @@ export class LoginFornecedorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const localSubscription = this.fornecedor$.subscribe(dados => this.fornecedores = dados);
-    // setTimeout(() => {
-    //   localSubscription.unsubscribe();
-    // }, 10000);
 
-
-    // const localSubscription = this.service.list().subscribe(dados => this.fornecedores = dados);
-    // setTimeout(() => {
-    //   localSubscription.unsubscribe();
-    // }, 10000);
   }
 
   getPerfil(fornecedor: Fornecedor){

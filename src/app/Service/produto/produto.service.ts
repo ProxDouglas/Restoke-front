@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {CrudService} from "../shered/crud-service";
-import {Representante} from "../Model/representante.interface";
-import {environment} from "../../environments/environment";
+import {CrudService} from "../../shered/crud-service";
+import {Representante} from "../../Model/representante.interface";
+import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {take, tap} from "rxjs/operators";
 
-import {Produto} from "../Model/produto.interface";
+import {Produto} from "../../Model/produto.interface";
 
 
 @Injectable({
@@ -53,5 +53,4 @@ export class ProdutoService extends CrudService<Produto> {
     return this.http.put(`${environment.API_cadastro}produtos/${id}/imagem`, formData);
     // return this.http.post(`${environment.API}imagens`, formData);
   }
-
 }

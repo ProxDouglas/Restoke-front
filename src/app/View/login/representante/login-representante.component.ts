@@ -5,7 +5,7 @@ import {catchError} from "rxjs/operators";
 
 import {Representante} from "../../../Model/representante.interface";
 import {AuthRepresentanteService} from "../../../Service/auth/representante/auth-representante.service";
-import {RepresentanteService} from "../../../Service/representante.service";
+import {RepresentanteService} from "../../../Service/representante/representante.service";
 
 @Component({
   selector: 'app-login-represemtante',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Resolve, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {Produto} from "../Model/produto.interface";
-import {ProdutoService} from "../Service/produto.service";
+import {Produto} from "../../Model/produto.interface";
+import {ProdutoService} from "../../Service/produto/produto.service";
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,10 @@ export class ProdutoResolverGuard implements Resolve<Produto> {
       codigo_barra: '',
       descricao: '',
       categoria: '',
-      imagens: new File(["sem_imagem"], "sem_imagem.jpg", {
-        type: "jpg",
-      }),
+      imagem: new FormData(),
+      // imagem: new File(["sem_imagem"], "sem_imagem.jpg", {
+      //   type: "jpg",
+      // }),
       fornecedor: 0,
     });
   }

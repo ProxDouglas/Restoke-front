@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProdutoResolverGuard } from './produto-resolver-guard.service';
+import { ProdutoResolverGuard } from './produto/produto-resolver-guard.service';
 
 describe('GuardsGuard', () => {
   let guard: ProdutoResolverGuard;

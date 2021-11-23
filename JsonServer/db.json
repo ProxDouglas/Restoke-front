@@ -79,6 +79,19 @@
       "numContato": "1122222224",
       "site": "morgado.com",
       "id": 8
+    },
+    {
+      "nome": "Morgado ltda",
+      "nomeFantasia": "Morgado Orientador",
+      "cnpj": "00000000000100",
+      "txtApresentacao": "Ajudo aluno em computação",
+      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
+      "endereco": "morgado@pucsp.edu.br",
+      "email": "morgado@pucsp.edu.br",
+      "contatoFabrica": 1122222222,
+      "numContato": "1122222224",
+      "site": "morgado.com",
+      "id": 9
     }
   ],
   "representantes": [
@@ -92,7 +105,7 @@
       "imagem": []
     },
     {
-      "nome": "Douglas Cavalcanti",
+      "nome": "Douglas Cavalcanti Teles",
       "cpf": "834.084.680-95",
       "telefone": "+5511971372846",
       "email": "douglas.cteles@hotmail.com",
@@ -131,20 +144,69 @@
       "email": "sdpojosj@hdh.com",
       "apresentacao": "dfbfgfggbtfgfbt",
       "id": 6
+    },
+    {
+      "nome": "JJ",
+      "cpf": "000.000.000-25",
+      "telefone": "112323244",
+      "email": "sdpojosj@hdh.com",
+      "apresentacao": "dfbfgfggbtfgfbt",
+      "id": 7
+    },
+    {
+      "nome": "BB",
+      "cpf": "000.000.000-25",
+      "telefone": "112323244",
+      "email": "sdpojosj@hdh.com",
+      "apresentacao": "dfbfgfggbtfgfbt",
+      "id": 8
+    },
+    {
+      "nome": "CC",
+      "cpf": "000.000.000-25",
+      "telefone": "112323244",
+      "email": "sdpojosj@hdh.com",
+      "apresentacao": "dfbfgfggbtfgfbt",
+      "id": 9
     }
   ],
   "produtos": [
     {
-      "nome": "copo 200ml",
-      "codigo_barra": "3333333333333",
-      "descriacao": "dghgbbgggggggggggggggggggggggggggd",
-      "imagens": {},
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 1,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 2
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
       "id": 3
     },
     {
       "nome": "copo 400ml",
       "codigo_barra": "0000000000000",
-      "fornecedor": 1,
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 4
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 5
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
       "categoria": "plasticos",
       "descricao": "copo resistente de plastico",
       "id": 6
@@ -156,11 +218,45 @@
       "categoria": "plasticos",
       "descricao": "copo resistente de plastico",
       "id": 7
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 8
+    },
+    {
+      "nome": "copo 400ml",
+      "codigo_barra": "0000000000000",
+      "fornecedor": 2,
+      "categoria": "plasticos",
+      "descricao": "copo resistente de plastico",
+      "id": 9
     }
   ],
   "imagens": [
     {
       "id": 1
+    }
+  ],
+  "catalogo": [
+    {
+      "nome": "teste1",
+      "id": 1
+    },
+    {
+      "nome": "teste2",
+      "id": 2
+    },
+    {
+      "nome": "teste3",
+      "id": 3
+    },
+    {
+      "nome": "teste4",
+      "id": 4
     }
   ]
 }

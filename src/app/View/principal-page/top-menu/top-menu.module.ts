@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TopMenuComponent } from './top-menu.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {PesquisaModule} from "./pesquisa/pesquisa.module";
+import {PesquisaModule} from "../content/pesquisa/pesquisa.module";
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
@@ -26,8 +26,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   imports: [
     CommonModule,
     PesquisaModule,
-    NavBarModule,
-
 
     TopMenuRoutingModule,
     MatToolbarModule,
@@ -35,7 +33,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatProgressBarModule,
     FlexLayoutModule,
     MatIconModule,
-    ProdutoCrudModule,
     FlexLayoutModule,
 
   ]

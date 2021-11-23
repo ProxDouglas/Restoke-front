@@ -21,7 +21,7 @@
 </nav>
 
 <div *ngIf="(produtos$ | async) as produtos; else loading">
-  <span *ngFor="let produto of produtos; index as i;">
+  <div *ngFor="let produto of produtos; index as i;">
       <mat-card style="margin: 20px" fxLayout="row" fxLayoutAlign="space-between center" >
         <div fxLayout="column" fxLayoutAlign="space-around start" >
           <h2 fxLayoutAlign="start start" style="margin: 10px">{{ produto.nome }}</h2>
@@ -46,7 +46,7 @@
           </button>
         </div>
       </mat-card>
-    </span>
+    </div>
 </div>
 
 <ng-template #loading>

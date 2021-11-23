@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthFornecedorService} from "../../../Service/auth/fornecedor/auth-fornecedor.service";
+import {AuthRepresentanteService} from "../../../Service/auth/representante/auth-representante.service";
 
 @Component({
   selector: 'app-top-menu',
@@ -9,19 +10,33 @@ import {AuthFornecedorService} from "../../../Service/auth/fornecedor/auth-forne
 })
 export class TopMenuComponent implements OnInit {
 
-  router!: Router;
-  private authService: AuthFornecedorService;
+  authFornecedor: boolean = false;
+  authRepresentante: boolean = false;
 
-  autenticado: boolean = false;
+  constructor(private router: Router,
+              private authFornService: AuthFornecedorService,
+              private authRepService: AuthRepresentanteService,
+  ) {
 
-  constructor(router: Router, authService: AuthFornecedorService) {
-    this.router = router;
-    this.authService = authService;
   }
 
   ngOnInit(): void {
-    this.autenticado = this.authService.usuarioEstaAutenticado();
+    this.authForn();
+    this.authRep();
   }
+
+  authForn(){
+    this.authFornService.autenticado.subscribe(
+      auth => this.authFornecedor = auth
+    );
+  }
+
+  authRep(){
+    this.authRepService.autenticado.subscribe(
+      auth => this.authRepresentante = auth
+    );
+  }
+
 
   acessarArea(){
     // console.log('sessao');
@@ -37,13 +52,21 @@ export class TopMenuComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  sair() {
-    this.authService.sairPerfil();
-    this.autenticado = false;
+  acessarForn() {
+    this.router.navigate(['/fornecedor']);
   }
 
+  sairForn() {
+    this.authFornService.sairPerfil();
+    // this.authFornecedor = false;
+  }
 
-  get autenticadoT(): boolean {
-    return this.autenticado;
+  acessarRep() {
+    this.router.navigate(['/representante']);
+  }
+
+  sairRep() {
+    this.authRepService.sairPerfil();
+    // this.authRepresentante = false;
   }
 }

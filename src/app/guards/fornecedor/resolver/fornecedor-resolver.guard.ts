@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import {Fornecedor} from "../Model/fornecedor.interface";
-import {FornecedorService} from "../Service/fornecedor.service";
+import {Fornecedor} from "../../../Model/fornecedor.interface";
+import {FornecedorService} from "../../../Service/fornecedor/fornecedor.service";
 
 
 @Injectable({

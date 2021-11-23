@@ -9,7 +9,7 @@ import {AuthFornecedorService} from "../../../../../../Service/auth/fornecedor/a
 import {Fornecedor} from "../../../../../../Model/fornecedor.interface";
 import {Observable, Subscription} from "rxjs";
 import {Produto} from "../../../../../../Model/produto.interface";
-import {ProdutoService} from "../../../../../../Service/produto.service";
+import {ProdutoService} from "../../../../../../Service/produto/produto.service";
 import {switchMap} from "rxjs/operators";
 
 

@@ -15,7 +15,7 @@ export class AuthFornecedorService {
 
   private fornecedor !: Fornecedor;
 
-  mostrarMenuEmitter = new EventEmitter<boolean>();
+  autenticado = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
 
@@ -29,7 +29,7 @@ export class AuthFornecedorService {
 
       this.usuarioAutenticado = true;
 
-      this.mostrarMenuEmitter.emit(true);
+      this.autenticado.emit(true);
 
       this.fornecedor = fornecedor;
 
@@ -38,7 +38,7 @@ export class AuthFornecedorService {
     }
   }
 
-  usuarioEstaAutenticado(){
+  usuarioEstaAutenticado() {
     return this.usuarioAutenticado;
   }
 
@@ -50,11 +50,10 @@ export class AuthFornecedorService {
 
     this.usuarioAutenticado = false;
 
-    this.mostrarMenuEmitter.emit(false);
-
-    //this.fornecedor = {};
+    this.autenticado.emit(false);
 
     this.router.navigate(['']);
   }
+
 
 }

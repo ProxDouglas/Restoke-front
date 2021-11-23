@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest} from "@angular/common/http";
-import {Representante} from "../Model/representante.interface";
+import {Representante} from "../../Model/representante.interface";
 
 import {Observable, throwError} from "rxjs";
 import {catchError, delay, retry, take, tap, map} from "rxjs/operators";
-import {CrudService} from "../shered/crud-service";
+import {CrudService} from "../../shered/crud-service";
 
 
 @Injectable({

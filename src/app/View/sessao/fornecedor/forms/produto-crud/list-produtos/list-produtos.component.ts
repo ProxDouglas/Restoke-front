@@ -1,13 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Produto} from "../../../../../../Model/produto.interface";
-import {ProdutoService} from "../../../../../../Service/produto.service";
-import {AuthFornecedorService} from "../../../../../../Service/auth/fornecedor/auth-fornecedor.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {catchError, switchMap, take} from "rxjs/operators";
 import {Observable, of, Subject, EMPTY, empty} from "rxjs";
-import {Fornecedor} from "../../../../../../Model/fornecedor.interface";
 import {environment} from "../../../../../../../environments/environment";
-import {relative} from "@angular/compiler-cli/src/ngtsc/file_system";
+
+import {Produto} from "../../../../../../Model/produto.interface";
+import {ProdutoService} from "../../../../../../Service/produto/produto.service";
+import {AuthFornecedorService} from "../../../../../../Service/auth/fornecedor/auth-fornecedor.service";
+
 
 @Component({
   selector: 'app-list-produtos',
@@ -50,8 +50,6 @@ export class ListProdutosComponent implements OnInit {
     // }, 10000);
 
     this.onRefresh();
-
-
   }
 
   onRefresh() {
@@ -63,7 +61,7 @@ export class ListProdutosComponent implements OnInit {
         console.error(error);
         // this.error$.next(true);
         //this.handleError();
-        return empty();
+        return [];
       })
     );
   }

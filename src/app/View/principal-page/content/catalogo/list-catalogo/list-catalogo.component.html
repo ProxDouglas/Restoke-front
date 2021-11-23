@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" style="background: rgb(57,73,171);" fxLayout="row" fxLayoutAlign="space-between center">
+
+  <button mat-icon-button (click)="voltar()" >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h2>Escolha o catalogo para visualizar</h2>
+  <span fxFlex="4"></span>
+</mat-toolbar>
+
+
+
+<div *ngIf="(catalogo$ | async) as catalogos; else loading">
+    <span *ngFor="let catalogo of catalogos; index as i;">
+      <mat-card style="margin: 20px">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="font"> Fornecedor {{i}}: {{ catalogo.nome }}</span>
+          <button (click)="getCatalogo(catalogo.id)" style="align-content: center" mat-raised-button color="primary" >
+            acessar
+          </button>
+        </div>
+      </mat-card>
+    </span>
+</div>
+
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+</ng-template>
+
+<br>

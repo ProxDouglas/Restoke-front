@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {FornecedorComponent} from "./fornecedor.component";
 import {UploadImageComponent} from "./forms/representante-crud/upload-image/upload-image.component";
 import {RepresentanteCadastroFormComponent} from "./forms/representante-crud/representante-cadastro-form.component";
-import {AuthFornecedorGuard} from "../../../guards/auth/auth-fornecedor.guard";
+import {AuthFornecedorGuard} from "../../../guards/fornecedor/auth/auth-fornecedor.guard";
 import {ProdutoCrudModule} from "./forms/produto-crud/produto-crud.module";
 
 

@@ -13,15 +13,25 @@
   class="columm-config"
 >
 
-  <button mat-button color="accent" class="logo-cel" (click)="acessMenu()"  >Restoke</button>
+  <div>
+    <button mat-button color="accent" class="logo-cel" (click)="acessMenu()"  >Restoke</button>
+  </div>
 
   <!--app-pesquisa class="full-width-searching-cel"></app-pesquisa-->
 
-  <div *ngIf="autenticado === false">
+  <div *ngIf="!authFornecedor && !authRepresentante" style="margin-bottom: 10px">
     <button (click)="acessarArea()" mat-button class="button-login" >Acesso de Área</button>
     <button (click)="cadastrar()" mat-button class="button-login" >Cadastrar</button>
   </div>
-  <button mat-button class="button-login" (click)="sair() " *ngIf="autenticado === true">Sair</button>
+  <div *ngIf="authFornecedor && !authRepresentante" style="margin-bottom: 10px">
+    <button mat-button class="button-login" (click)="acessarForn()">Menu</button>
+    <button mat-button class="button-login" (click)="sairForn() ">Sair</button>
+  </div>
+  <div *ngIf="!authFornecedor && authRepresentante"  style="margin-bottom: 10px">
+    <button mat-button class="button-login" (click)="acessarRep()">Menu</button>
+    <button mat-button class="button-login" (click)="sairRep() ">Sair</button>
+  </div>
+
 
 </mat-toolbar>
 
@@ -35,29 +45,29 @@
   <mat-toolbar-row class="config-toolbal" >
 
 
-    <button mat-button color="accent"
-            class="logo"
-            fxFlex="66" fxFlexOffset="33"
-            (click)="acessMenu()"  >Restoke</button>
-    <span class="spacer"></span>
+
+      <button mat-button color="accent"
+              class="logo"
+              fxFlex="66" fxFlexOffset="33"
+              (click)="acessMenu()"  >Restoke</button>
+      <span class="spacer"></span>
+
 
     <!--app-pesquisa class="full-width-searching-cel"></app-pesquisa-->
 
-    <div fxFlex="33" fxLayoutAlign="end center" *ngIf="autenticado === false">
+    <div fxFlex="33" fxLayoutAlign="end center" *ngIf="!authFornecedor && !authRepresentante" >
       <button (click)="acessarArea()" mat-button class="button-login" >Acesso de Área</button>
       <button (click)="cadastrar()" mat-button class="button-login" >Cadastrar</button>
     </div>
-    <button mat-button class="button-login" (click)="sair() " *ngIf="autenticado === true">Sair</button>
+    <div *ngIf="authFornecedor && !authRepresentante" fxFlex="33" fxLayoutAlign="end center">
+      <button mat-button class="button-login" (click)="acessarForn()">Menu</button>
+      <button mat-button class="button-login" (click)="sairForn() ">Sair</button>
+    </div>
+    <div *ngIf="!authFornecedor && authRepresentante" fxFlex="33" fxLayoutAlign="end center">
+      <button mat-button class="button-login" (click)="acessarRep()">Menu</button>
+      <button mat-button class="button-login" (click)="sairRep() ">Sair</button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<!--mat-progress-bar mode="indeterminate" color="secondary"></mat-progress-bar-->
-
-  <!--mat-toolbar color="secondary">
-    <mat-toolbar-row class="config-toolbal-secondary">
-
-    </mat-toolbar-row>
-    <app-nav-bar class="example-spacer-secondary"></app-nav-bar>
-  </mat-toolbar-->
 
 

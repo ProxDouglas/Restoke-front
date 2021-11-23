@@ -1,0 +1,50 @@
+
+
+<mat-toolbar color="primary" style="background: rgb(57,73,171);" >
+
+  <button mat-icon-button (click)="voltar()" >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
+  <div *ngIf="(produtos$ | async) as produtos; else loading " fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
+    <div *ngFor="let produto of produtos" style="margin: 0.5%;">
+
+      <div fxFlex="0 1 calc(33.3% - 11px)"
+           fxFlex.lt-md="0 1 calc(50% - 11px)"
+           fxFlex.lt-sm="100%">
+        <button mat-button class="mat-card-representante" (click)="usarProduto(produto.id)">
+          <mat-card class="mat-card-representante">
+
+            <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
+              <div>
+                <img mat-card-image class="image-produto" width="260" height="200" [src]="imagePathProd" alt="image">
+              </div>
+            </mat-card-content>
+
+            <mat-card-title class="mat-card-title-representante" fxLayoutAlign="center center">
+              <div class="column">
+                <p>
+                  <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{produto.nome}}</span>
+                </p>
+                <p style="font-size:0.9rem;">{{produto.descricao}}</p>
+
+              </div>
+            </mat-card-title>
+            <!-- <mat-card-actions style="margin:1px;padding-bottom:5px; padding-top: 5px;">
+            </mat-card-actions> -->
+          </mat-card>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+  </ng-template>
+
+</div>
+
