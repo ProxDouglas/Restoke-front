@@ -92,9 +92,22 @@
       "numContato": "1122222224",
       "site": "morgado.com",
       "id": 9
+    },
+    {
+      "nome": "Morgado ltda",
+      "nomeFantasia": "Morgado Orientador",
+      "cnpj": "00000000000100",
+      "txtApresentacao": "Ajudo aluno em computação",
+      "fraseImpacto": "Faça o TCC e crie sua própria start-up",
+      "endereco": "morgado@pucsp.edu.br",
+      "email": "morgado@pucsp.edu.br",
+      "contatoFabrica": 1122222222,
+      "numContato": "1122222224",
+      "site": "morgado.com",
+      "id": 10
     }
   ],
-  "representantes": [
+  "represntantes": [
     {
       "id": 1,
       "nome": "Vitor Harry",
@@ -168,24 +181,34 @@
       "email": "sdpojosj@hdh.com",
       "apresentacao": "dfbfgfggbtfgfbt",
       "id": 9
+    },
+    {
+      "nome": "Vinicius Souza",
+      "cpf": "383.239.599-55",
+      "telefone": "11 999999999",
+      "email": "vosouza@pucsp.edu.br",
+      "apresentacao": "olá tudo bem ",
+      "id": 10
     }
   ],
   "produtos": [
     {
+      "id": 2,
       "nome": "copo 400ml",
       "codigo_barra": "0000000000000",
       "fornecedor": 1,
       "categoria": "plasticos",
       "descricao": "copo resistente de plastico",
-      "id": 2
+      "imagem": null
     },
     {
+      "id": 3,
       "nome": "copo 400ml",
       "codigo_barra": "0000000000000",
       "fornecedor": 2,
       "categoria": "plasticos",
       "descricao": "copo resistente de plastico",
-      "id": 3
+      "imagem": ""
     },
     {
       "nome": "copo 400ml",

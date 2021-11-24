@@ -11,9 +11,9 @@
 
   <mat-card class="card-class">
     <div style="text-align: center;">
-      <img mat-card-image [src]="imagePath"
-           alt="Sem Perfil" *ngIf="!imgURL">
-      <img class="center" [src]="imgURL" height="200" *ngIf="imgURL " alt="Avatar">
+      <img mat-card-image [src]="imagemDefault"
+           alt="Sem Perfil" *ngIf="!imagemUrl">
+      <img class="center" [src]="imagemUrl" height="200" *ngIf="imagemUrl " alt="Avatar">
       <span style="color:red;" *ngIf="message">{{message}}</span>
       <mat-card-content>
         <p>
@@ -116,7 +116,7 @@
 
       <div>
         <button type="submit" color="accent"
-                [disabled]="!form.valid || !submit"
+                [disabled]="!form.valid "
 
                 (click)="salvar()"
 

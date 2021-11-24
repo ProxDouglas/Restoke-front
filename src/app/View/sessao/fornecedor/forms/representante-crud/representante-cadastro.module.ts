@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-import { RepresentanteCadastroFormComponent } from './representante-cadastro-form.component';
-import {UploadImageComponent} from "./upload-image/upload-image.component";
+import { RepresentanteCadastroComponent } from './representante-cadastro.component';
+
 
 
 import {MatInputModule} from "@angular/material/input";
@@ -18,12 +18,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
-    RepresentanteCadastroFormComponent,
-    UploadImageComponent
+    RepresentanteCadastroComponent,
+
   ],
   exports:[
-    RepresentanteCadastroFormComponent,
-    UploadImageComponent
+    RepresentanteCadastroComponent,
+
   ],
     imports: [
         CommonModule,
@@ -41,4 +41,4 @@ import {FlexLayoutModule} from "@angular/flex-layout";
         FlexLayoutModule,
     ]
 })
-export class RepresentanteCadastroFormModule { }
+export class RepresentanteCadastroModule { }

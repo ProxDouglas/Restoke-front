@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RepresentanteCadastroFormComponent } from './representante-cadastro-form.component';
+import { RepresentanteCadastroComponent } from './representante-cadastro.component';
 
 describe('RepresentanteCadastroFormComponent', () => {
-  let component: RepresentanteCadastroFormComponent;
-  let fixture: ComponentFixture<RepresentanteCadastroFormComponent>;
+  let component: RepresentanteCadastroComponent;
+  let fixture: ComponentFixture<RepresentanteCadastroComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepresentanteCadastroFormComponent ]
+      declarations: [ RepresentanteCadastroComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RepresentanteCadastroFormComponent);
+    fixture = TestBed.createComponent(RepresentanteCadastroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

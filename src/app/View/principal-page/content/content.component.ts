@@ -39,6 +39,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.onRefresh();
 
   }

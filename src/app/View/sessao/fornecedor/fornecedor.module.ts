@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FornecedorComponent } from './fornecedor.component';
 import {FornecedorRoutingModule} from "./fornecedor-routing.module";
-import {RepresentanteCadastroFormModule} from "./forms/representante-crud/representante-cadastro-form.module";
-import {RepresentanteCadastroFormComponent} from "./forms/representante-crud/representante-cadastro-form.component";
-import {UploadImageComponent} from "./forms/representante-crud/upload-image/upload-image.component";
+import {RepresentanteCadastroModule} from "./forms/representante-crud/representante-cadastro.module";
+
 import {MatButtonModule} from "@angular/material/button";
 import {ProdutoCrudModule} from "./forms/produto-crud/produto-crud.module";
 
@@ -12,19 +11,18 @@ import {ProdutoCrudModule} from "./forms/produto-crud/produto-crud.module";
 
 @NgModule({
   declarations: [
-    FornecedorComponent
+    FornecedorComponent,
   ],
   exports: [
     FornecedorComponent,
-    RepresentanteCadastroFormModule,
-    UploadImageComponent,
+    RepresentanteCadastroModule,
     ProdutoCrudModule,
     FornecedorRoutingModule
 
   ],
   imports: [
     CommonModule,
-    RepresentanteCadastroFormModule,
+    RepresentanteCadastroModule,
     FornecedorRoutingModule,
 
 

@@ -21,7 +21,7 @@ export class ProdutoResolverGuard implements Resolve<Produto> {
       codigo_barra: '',
       descricao: '',
       categoria: '',
-      imagem: new FormData(),
+      imagem: '',
       // imagem: new File(["sem_imagem"], "sem_imagem.jpg", {
       //   type: "jpg",
       // }),

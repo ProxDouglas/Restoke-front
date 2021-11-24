@@ -50,12 +50,13 @@ export class AuthRepresentanteService {
       id: 0 ,
       nome: '',
       cpf:'',
-      telefone:'',
+      numContato:'',
       email:'',
       apresentacao:'',
-      fotoPerfil: new File(["sem_imagem"], "sem_imagem.jpg", {
-        type: "jpg",
-      }),
+      imagem: '',
+      // fotoPerfil: new File(["sem_imagem"], "sem_imagem.jpg", {
+      //   type: "jpg",
+      // }),
       fornecedor: 0,
 
     };

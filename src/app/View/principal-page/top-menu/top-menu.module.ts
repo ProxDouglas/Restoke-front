@@ -13,6 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {ProdutoCrudModule} from "../../sessao/fornecedor/forms/produto-crud/produto-crud.module";
 import {TopMenuRoutingModule} from "./top-menu-routing.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -23,19 +24,20 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     TopMenuComponent,
 
   ],
-  imports: [
-    CommonModule,
-    PesquisaModule,
+    imports: [
+        CommonModule,
+        PesquisaModule,
 
-    TopMenuRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatProgressBarModule,
-    FlexLayoutModule,
-    MatIconModule,
-    FlexLayoutModule,
+        TopMenuRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        FlexLayoutModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatMenuModule,
 
-  ]
+    ]
 })
 export class TopMenuModule {
 

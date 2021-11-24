@@ -1,10 +1,12 @@
+
 <nav style="margin: 10px">
-  <a mat-raised-button
-     routerLink="representanteCadastro"
-     routerLinkActive="activebutton"
-     color="primary">Cadastrar Representante
-  </a>
+  <button mat-raised-button color="primary" (click)="cadRep()">Cadastrar Representante</button>
 </nav>
+
+<nav style="margin: 10px">
+  <button mat-raised-button color="primary" (click)="associarRep()">Associar Representante</button>
+</nav>
+
 <nav style="margin: 10px">
   <a mat-raised-button
      routerLink="produtos"

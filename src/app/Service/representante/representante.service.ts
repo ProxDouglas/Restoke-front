@@ -12,23 +12,57 @@ import {CrudService} from "../../shered/crud-service";
 @Injectable({
   providedIn: 'root'
 })
-export class RepresentanteService extends CrudService<Representante>{
+export class RepresentanteService{
 
   //private readonly API = 'http://localhost:8080/api/internal/v1/representante';
 
-  private API = `${environment.API_cadastro}representantes`;
+  private API_url = `${environment.API_cadastro}represntantes`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.API_cadastro}` + 'representantes');
+
+  }
+
+  list() {
+    return this.http.get<Representante[]>(this.API_url)
+      .pipe(
+        delay(500),
+        tap((obj:any) => obj)
+        // tap(console.log)
+      );
+  }
+
+  loadByID(id: number) {
+    return this.http.get<Representante>(`${this.API_url}/${id}`).pipe(take(1));
+  }
+
+  private create(record: Representante) {
+    return this.http.post(this.API_url, record).pipe(take(1)).pipe(
+      // tap(dados => console.log(record as T))
+    );
+  }
+
+  private update(record: Representante) {
+    return this.http.put(`${this.API_url}/${record.id}`, record).pipe(take(1));
+  }
+
+  save(record: Representante) {
+    if (record.id) {
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  remove(id: number) {
+    return this.http.delete(`${this.API_url}/${id}`).pipe(take(1));
   }
 
   loadByName(representante: Representante): Observable<Representante> {
-    return this.http.get<Representante>(`${this.API}/${representante.nome}`)
+    return this.http.get<Representante>(`${this.API_url}/${representante.nome}`)
       .pipe(take(1));
   }
 
   loadByCPF(cpf: string): Observable<Representante> {
-    return this.http.get<Representante>(`${this.API}?cpf=${cpf}`)
+    return this.http.get<Representante>(`${this.API_url}?cpf=${cpf}`)
       .pipe(map((data: Representante) => {return data}));
   }
 

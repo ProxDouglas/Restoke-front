@@ -21,17 +21,16 @@ import {environment} from "../../../../../../../environments/environment";
   styleUrls: ['./produto-cadastro.component.css']
 })
 export class ProdutoCadastroComponent implements OnInit {
-  imagePath = `${environment.imageDefault}`;
+
 
   form: FormGroup ;
-  produtos$: Observable<Fornecedor>;
-  image$: Observable<File> ;
+  produtos$: Observable<Produto>;
   selectedFile!: File;
   submit: boolean = false;
-  imgURL: any;
+  imagemDefault = `${environment.imageDefault}`;
+  imagemUrl: any;
   message!: string;
   private _fornID: number;
-  private _prodID!: number;
 
 
   constructor(private fb: FormBuilder, private service: ProdutoService,
@@ -41,8 +40,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
     this._fornID = (authService.getPerfil() as Fornecedor).id;
     this.form = this.createForm();
-    this.produtos$ = new Observable<Fornecedor>();
-    this.image$ = new Observable<File>();
+    this.produtos$ = new Observable<Produto>();
 
   }
 
@@ -72,16 +70,6 @@ export class ProdutoCadastroComponent implements OnInit {
     }
   }
 
-  get prodID(): number {return this._prodID;}
-
-  set prodID(value: number) {
-    if(value > 0) {
-      this._prodID = value;
-    }else{
-      this._prodID = value;
-    }
-  }
-
   createForm(): FormGroup{
 
     return this.fb.group({
@@ -96,6 +84,7 @@ export class ProdutoCadastroComponent implements OnInit {
         [Validators.required, Validators.maxLength(50)]),
        descricao: new FormControl(null,
       [ Validators.required, Validators.maxLength(255)]),
+      imagem: new FormControl(null, Validators.required),
     });
   }
 
@@ -106,6 +95,10 @@ export class ProdutoCadastroComponent implements OnInit {
     this.form.patchValue({fornecedor: produto.fornecedor});
     this.form.patchValue({categoria: produto.categoria});
     this.form.patchValue({descricao: produto.descricao});
+    if(produto.imagem != null){
+      console.log(produto.imagem);
+      this.imagemUrl = produto.imagem;
+    }
   }
 
 
@@ -118,13 +111,14 @@ export class ProdutoCadastroComponent implements OnInit {
       msgError = 'Erro ao atualizar produto, tente novamente!';
     }
 
-    this.produtos$ = this.service.save(this.form.value as Produto) as Observable<Fornecedor>;
+    this.produtos$ = this.service.save(this.form.value as Produto) as Observable<Produto>;
 
     const localSubscription = this.produtos$.
-    subscribe((dados:Fornecedor) => {
-        let idProd = dados.id;
-        this.upload(idProd);
+    subscribe((dados:Produto) => {
+        // let idProd = dados.id;
+        // this.upload(idProd);
         alert(msgSuccess);
+        this.router.navigate(['fornecedor']);
 
       },
       (error) => {
@@ -148,37 +142,14 @@ export class ProdutoCadastroComponent implements OnInit {
     this.cancelar();
   }
 
-  onSelect($event: Event) {
-    let files: any = ($event.target as HTMLInputElement).files;
-    let file = files[0];
-    let formData = new FormData();
-    formData.append("imagem", file);
 
-    this.form.patchValue({imagem: formData});
-    // console.log(this.form.value.imagem.toString());
-    // this.form.get('imagens')!.updateValueAndValidity();
+  onSelect($event: Event) {
     this.haveImageOn();
     this.preview($event);
+
     // this.convertFileBloob(this.form.value.imagens);
   }
 
-
-  upload(idProd: number) {
-    this.image$ = this.service.pushImage(this.selectedFile, idProd) as Observable<File>;
-
-    this.image$
-      .subscribe
-      (
-        (resposta) =>
-        {
-          this.router.navigate(['fornecesor']);
-          console.log('Upload concluido.')
-        },
-        (error) => {
-          alert('Falha ao enviar imagem');console.log(error);
-        }
-      );
-  }
 
   preview(event: any) { // transforma arquivo em blob
     if (event.target.files && event.target.files[0]) {
@@ -204,8 +175,19 @@ export class ProdutoCadastroComponent implements OnInit {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (_event) => {
-      this.imgURL = reader.result;
+      this.setFormImg(reader);
+
     }
   }
+
+  setFormImg(reader: FileReader){
+    this.imagemUrl = reader.result;
+
+    if(reader.result != null){
+      this.form.patchValue({imagem: reader.result.toString()});
+      this.form.get('imagens')!.updateValueAndValidity();
+    }
+  }
+
 
 }

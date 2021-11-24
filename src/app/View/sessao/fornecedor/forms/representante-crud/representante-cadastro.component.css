@@ -2,6 +2,8 @@
 
 .full-width {
   width: 100%;
+
+
 }
 
 td {
@@ -12,28 +14,20 @@ td {
   background-color: rgb(57,73,171);
 }
 
-.mat-accent{
-  background-color: white;
-}
-
-
 img {
   object-fit: cover;
   border-radius: 50%;
   height: 200px;
   width: 200px;
-
+  align: middle;
 }
-
-
 
 .card-class {
   max-width: 100%;
+  height: content-box;
 
-  text-align: center;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .header-image {
@@ -44,15 +38,3 @@ img {
 .spacer {
   flex: 1 1 auto;
 }
-
-.logo{
-  font-size: 3.0rem;
-  padding-right: 4%;
-  text-align: center;
-}
-
-.mat-accent{
-
-  background-color: red;
-}
-

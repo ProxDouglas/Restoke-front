@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProdutoCadastroComponent} from "./produto-cadastro/produto-cadastro.component";
 import {ListProdutosComponent} from "./list-produtos/list-produtos.component";
-import {ProdutoUpdateComponent} from "./produto-update/produto-update.component";
 import {ProdutoResolverGuard} from "../../../../../guards/produto/produto-resolver-guard.service";
 
 const routeProdutoCRUD: Routes = [

@@ -13,7 +13,6 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
-import {ProdutoUpdateComponent} from "./produto-update/produto-update.component";
 import { ListProdutosComponent } from './list-produtos/list-produtos.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ProdutoCrudRoutingModule} from "./produto-crud-routing.module";
@@ -23,12 +22,11 @@ import {ProdutoCrudRoutingModule} from "./produto-crud-routing.module";
 @NgModule({
     declarations: [
         ProdutoCadastroComponent,
-        ProdutoUpdateComponent,
+
         ListProdutosComponent,
     ],
     exports: [
         ProdutoCadastroComponent,
-        ProdutoUpdateComponent,
         ListProdutosComponent
     ],
     imports: [
