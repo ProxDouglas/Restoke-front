@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest} from "@angular/common/http";
 import {Representante} from "../../Model/representante.interface";
 
-import {Observable, throwError} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
 import {catchError, delay, retry, take, tap, map} from "rxjs/operators";
 import {CrudService} from "../../shered/crud-service";
 
@@ -22,12 +22,11 @@ export class RepresentanteService{
 
   }
 
-  list() {
+  list(): Observable<Representante[]> {
     return this.http.get<Representante[]>(this.API_url)
       .pipe(
-        delay(500),
-        tap((obj:any) => obj)
-        // tap(console.log)
+        // delay(500),
+        tap(console.log)
       );
   }
 
@@ -61,9 +60,29 @@ export class RepresentanteService{
       .pipe(take(1));
   }
 
-  loadByCPF(cpf: string): Observable<Representante> {
-    return this.http.get<Representante>(`${this.API_url}?cpf=${cpf}`)
-      .pipe(map((data: Representante) => {return data}));
+  // loadByCPF(cpf: string): Observable<Representante> {
+  //   return this.http.get<Representante>(`${this.API_url}?cpf=${cpf}`)
+  //     .pipe(map((data: Representante) => {return data}));
+  // }
+
+  loadByCPF(cpf: string): Observable<Representante[]> {
+    if (!cpf) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    // return this.http.get<Representante[]>(`${this.API_url}/?cpf=${cpf}`).pipe(
+    return this.http.get<Representante[]>(`${this.API_url}`).pipe(
+      tap(x=>  {
+          let i = 0;
+          while(i< x.length) {
+            if (x[i].cpf == cpf) {
+              return of(x[i].cpf);
+            }
+          }
+          return of([]);
+        }
+      )
+    );
   }
 
   pushImage(foto: File, id: number){

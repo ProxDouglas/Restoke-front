@@ -1,0 +1,70 @@
+
+<mat-toolbar div fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-icon-button (click)="voltar()" >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h2>Associe ao Representante</h2>
+  <p></p>
+</mat-toolbar>
+
+<form [formGroup]="form" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="card-form">
+    <table class="full-width">
+      <tr>
+        <td>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label for="cpf">CPF</mat-label>
+            <input type="text" id="cpf"
+                   formControlName="cpf"
+                   placeholder="Ex: 000000000-00"
+                   matInput
+                   required
+            >
+            <mat-error *ngIf="form.controls.cpf.hasError('cpf') && !form.controls.cpf.hasError('required')">
+              Por favor entre com um cpf válido
+            </mat-error>
+            <mat-error *ngIf="form.controls.cpf.hasError('required')">
+              O cpf é <strong>necessário</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" >
+      <button mat-raised-button color="primary" (click)="setRep()" >Procurar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+
+<div *ngIf="(representantes$ | async) as representantes">
+  <div *ngFor="let representante of representantes">
+    <mat-card class="mat-card-representante" *ngIf="representante.cpf === form.value.cpf">
+
+      <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
+        <div *ngIf="!representante.imagem">
+          <img mat-card-image class="image-perfil" width="170" height="170" [src]="imagePath" alt="image">
+        </div>
+        <div *ngIf="representante.imagem">
+          <img mat-card-image class="image-perfil" width="170" height="170" [src]="representante.imagem" alt="image">
+        </div>
+      </mat-card-content>
+
+      <mat-card-title class="mat-card-title-representante" fxLayoutAlign="center center">
+        <div class="column">
+          <p>
+            <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{representante.nome}}</span>
+          </p>
+          <p style="font-size:0.9rem;">{{representante.apresentacao}}</p>
+
+        </div>
+      </mat-card-title>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="center center" >
+        <button mat-raised-button color="primary" (click)="confirmRep(representante.id)">Confirmar</button>
+        <button mat-raised-button color="accent" (click)="onCancel()">Cancelar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<br>

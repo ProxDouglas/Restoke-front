@@ -16,7 +16,7 @@ import {FormControl} from "@angular/forms";
 })
 export class ContentComponent implements OnInit {
 
-  message = new FormControl();
+  // message = new FormControl();
   valorAtual: String = '';
   valorSalvo: String = '';
   valorEntrada: String = '';
@@ -29,7 +29,7 @@ export class ContentComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {
 
-    this.representantes$ = this.service.list().pipe().
+    this.representantes$ = this.service.list().
     pipe(
       catchError(error =>{
         return of([]);

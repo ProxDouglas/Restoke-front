@@ -9,10 +9,11 @@ export const environment = {
   // API_cadastro: 'http://localhost:8087/restoke/api/internal/v1/',
   // API_catalogo: 'http://localhost:8088/catalogo/api/internal/v1/',
 
-  // imagePerfil: '../../../../../../../assets/Image_Perfil_Default.png',
-  imagePerfil:'../../../../../../../assets/vitor.png',
+  imagePerfil: '../../../../../../../assets/Image_Perfil_Default.png',
+  // imagePerfil:'../../../../../../../assets/vitor.png',
   imageDefault: '../../../../../../../assets/sem_Imagem.jpg',
   imagevitor: '../../../../../../../assets/vitor.png',
+  imageFundo: '../../../../../../../assets/imgBackgroung/imgBackgroung-site-azul-scaled.jpg',
 
   primeiracor: 'rgb(77, 40, 140)',
 

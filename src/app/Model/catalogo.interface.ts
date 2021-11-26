@@ -1,4 +1,4 @@
-export interface Catalogo {
+export interface CatalogoInterface {
 
   nome: string,
   id: number, //representante

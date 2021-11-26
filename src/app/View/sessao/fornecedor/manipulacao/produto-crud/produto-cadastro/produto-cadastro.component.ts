@@ -122,7 +122,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
       },
       (error) => {
-      alert("Erro");
+      alert(msgError);
         console.log(error);
       });
     setTimeout(() => {

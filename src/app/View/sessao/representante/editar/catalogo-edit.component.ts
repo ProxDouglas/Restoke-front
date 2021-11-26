@@ -10,7 +10,7 @@ import {environment} from "../../../../../environments/environment";
 import {ProdutoService} from "../../../../Service/produto/produto.service";
 import {Produto} from "../../../../Model/produto.interface";
 import {AuthRepresentanteService} from "../../../../Service/auth/representante/auth-representante.service";
-import {Catalogo} from "../../../../Model/catalogo";
+import {CatalogoInterface} from "../../../../Model/catalogo.interface";
 
 @Component({
   selector: 'app-catalogo-edit',
@@ -25,7 +25,7 @@ export class CatalogoEditComponent implements OnInit {
 
   produtos$: Observable<Produto[]>;
 
-  catalogo$!: Observable<Catalogo>;
+  catalogo$!: Observable<CatalogoInterface>;
 
   constructor(private service: ProdutoService, private router: Router,
               private route: ActivatedRoute, private authSevice: AuthRepresentanteService

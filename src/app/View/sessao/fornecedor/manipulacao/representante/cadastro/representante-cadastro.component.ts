@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {RepresentanteService} from "../../../../../Service/representante/representante.service";
-import {Representante} from "../../../../../Model/representante.interface";
-import {environment} from "../../../../../../environments/environment";
-import {AuthFornecedorService} from "../../../../../Service/auth/fornecedor/auth-fornecedor.service";
+import {RepresentanteService} from "../../../../../../Service/representante/representante.service";
+import {environment} from "../../../../../../../environments/environment";
+import {AuthFornecedorService} from "../../../../../../Service/auth/fornecedor/auth-fornecedor.service";
 
 
 @Component({
@@ -124,7 +123,3 @@ export class RepresentanteCadastroComponent implements OnInit {
   }
 
 }
-
-
-// selectFile(event: any){
-// }

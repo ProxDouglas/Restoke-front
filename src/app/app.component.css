@@ -7,6 +7,12 @@
 
 }
 
+.bory{
+  background: cornflowerblue;
+  min-height:100% ;
+  height: inherit;
+}
+
 
 .example-spacer {
   flex: 1 1 auto;
@@ -16,6 +22,10 @@
   display: flex;
   justify-content: center;
   width: 120px;
+}
+
+#img{
+  background-image: url(../assets/imgBackgroung/fundo.jpg);
 }
 
 

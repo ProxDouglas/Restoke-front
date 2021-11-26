@@ -114,17 +114,15 @@
       "cpf": "000000000-00",
       "telefone": "1199772895",
       "email": "vharry@gmail.com",
-      "apresentacao": "Sou junior 3 estrelas",
-      "imagem": []
+      "apresentacao": "Sou junior 3 estrelas"
     },
     {
       "nome": "Douglas Cavalcanti Teles",
-      "cpf": "834.084.680-95",
+      "cpf": "834.085.680-95",
       "telefone": "+5511971372846",
       "email": "douglas.cteles@hotmail.com",
       "apresentacao": "É galera está funcionando perfeitamente ",
-      "id": 2,
-      "imagem": []
+      "id": 2
     },
     {
       "nome": "Caca",
@@ -144,7 +142,7 @@
     },
     {
       "nome": "Joao Carvalho",
-      "cpf": "000.000.000-25",
+      "cpf": "000.000.000-26",
       "telefone": "112323244",
       "email": "sdpojosj@hdh.com",
       "apresentacao": "kkkkkkkkkkkkkkkkkkkkkkk",
@@ -208,7 +206,7 @@
       "fornecedor": 2,
       "categoria": "plasticos",
       "descricao": "copo resistente de plastico",
-      "imagem": ""
+      "imagem": null
     },
     {
       "nome": "copo 400ml",
@@ -280,6 +278,13 @@
     {
       "nome": "teste4",
       "id": 4
+    }
+  ],
+  "associar": [
+    {
+      "idForornecedor": 3,
+      "idRepepresentante": 1,
+      "id": 1
     }
   ]
 }

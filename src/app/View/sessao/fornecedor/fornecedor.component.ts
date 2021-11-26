@@ -21,11 +21,11 @@ export class FornecedorComponent implements OnInit {
   }
 
   cadRep(){
-    this.router.navigate(['cadastroRep'], {relativeTo: this.route});
+    this.router.navigate(['representante','cadastro'], {relativeTo: this.route});
   }
 
 
   associarRep() {
-
+    this.router.navigate(['representante', 'associar'], {relativeTo: this.route});
   }
 }
