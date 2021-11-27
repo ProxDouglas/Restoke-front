@@ -58,3 +58,31 @@
   min-width: 170px;
 }
 
+
+.green {
+  border-top: 1px;
+  border-bottom: 1px;
+  border-right: 1px;
+  border-left: 1px;
+  border-color: red;
+  background-color: red;
+
+}
+
+.red {
+  border-top: 1px;
+  border-bottom: 1px;
+  border-right: 1px;
+  border-left: 1px;
+  border-color: black;
+  background-color: black;
+}
+
+
+.active {
+  background-color: #940000;
+}
+
+.isActive {
+  background-color: white;
+}

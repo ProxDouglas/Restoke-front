@@ -127,7 +127,7 @@ export class ProdutoCadastroComponent implements OnInit {
       });
     setTimeout(() => {
       localSubscription.unsubscribe();
-    }, 10000);
+    }, 2000);
 
   }
 

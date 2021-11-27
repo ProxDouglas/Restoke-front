@@ -1,40 +1,69 @@
 
 
-<mat-toolbar color="primary" style="background: rgb(57,73,171);" >
-
+<mat-toolbar color="primary"  >
   <button mat-icon-button (click)="voltar()" >
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
 
-<div style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
-  <div *ngIf="(produtos$ | async) as produtos; else loading " fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
-    <div *ngFor="let produto of produtos" style="margin: 0.5%;">
 
+<form [formGroup]="form" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="card-form">
+    <table class="full-width">
+      <tr>
+        <td>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label for="nome">Nome</mat-label>
+            <input type="text" id="nome"
+                   formControlName="nome"
+                   placeholder="Ex: 000000000-00"
+                   matInput
+                   required
+            >
+            <mat-error *ngIf="form.controls.nome.hasError('required')">
+              O nome do catalogo é <strong>necessário</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+</form>
+<div style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
+  <div *ngIf="(produtos$ | async) as produtos ; else loading; "
+       fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
+    <div *ngFor="let produto of produtos; index as i; trackBy: trackProduto" style="margin: 0.5%;">
       <div fxFlex="0 1 calc(33.3% - 11px)"
            fxFlex.lt-md="0 1 calc(50% - 11px)"
-           fxFlex.lt-sm="100%">
-        <button mat-button class="mat-card-representante" (click)="usarProduto(produto.id)">
-          <mat-card class="mat-card-representante">
+           fxFlex.lt-sm="100%"
 
-            <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
-              <div>
-                <img mat-card-image class="image-produto" width="260" height="200" [src]="imagePathProd" alt="image">
-              </div>
-            </mat-card-content>
+      >
+        <button mat-button
+                class="mat-card-representante"
+                (click)="getIdProduto(produto.id)"
+        >
+          <div>
+            <mat-card class="mat-card-representante"
+                      [ngClass]="{'active': verificarIdProduto(produto.id)}">
+              <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
+                <div>
+                  <img mat-card-image class="image-produto" width="260" height="200" [src]="imagePathProd" alt="image">
+                </div>
+              </mat-card-content>
 
-            <mat-card-title class="mat-card-title-representante" fxLayoutAlign="center center">
-              <div class="column">
-                <p>
-                  <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{produto.nome}}</span>
-                </p>
-                <p style="font-size:0.9rem;">{{produto.descricao}}</p>
+              <mat-card-title class="mat-card-title-representante" fxLayoutAlign="center center" >
+                <div class="column">
+                  <p>
+                    <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{produto.nome}} {{produto.id}}</span>
+                  </p>
+                  <p style="font-size:0.9rem;">{{produto.descricao}}</p>
 
-              </div>
-            </mat-card-title>
-            <!-- <mat-card-actions style="margin:1px;padding-bottom:5px; padding-top: 5px;">
-            </mat-card-actions> -->
-          </mat-card>
+                </div>
+              </mat-card-title>
+              <!-- <mat-card-actions style="margin:1px;padding-bottom:5px; padding-top: 5px;">
+              </mat-card-actions> -->
+            </mat-card>
+          </div>
         </button>
       </div>
     </div>
@@ -47,4 +76,10 @@
   </ng-template>
 
 </div>
+<div>
+  <button mat-raised-button color="primary" (click)="criarCatalogo()"><strong>Criar</strong></button>
+  <button mat-raised-button color="primary">Cancelar</button>
+</div>
+<br>
+
 

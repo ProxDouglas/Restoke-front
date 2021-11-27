@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {CatalogoInterface} from "../../../../../Model/catalogo.interface";
+import {Catalogo} from "../../../../../Model/catalogo";
 import {CatalogoService} from "../../../../../Service/catalogo/catalogo.service";
 
 @Component({
@@ -11,12 +11,12 @@ import {CatalogoService} from "../../../../../Service/catalogo/catalogo.service"
   styleUrls: ['./list-catalogo.component.css']
 })
 export class ListCatalogoComponent implements OnInit {
-  catalogo$: Observable<CatalogoInterface[]>;
+  catalogo$: Observable<Catalogo[]>;
 
   constructor(private service: CatalogoService, private router: Router,
               private route: ActivatedRoute) {
 
-    this.catalogo$ = new Observable<CatalogoInterface[]>();
+    this.catalogo$ = new Observable<Catalogo[]>();
   }
 
   ngOnInit(): void {

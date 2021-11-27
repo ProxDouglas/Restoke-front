@@ -10,7 +10,10 @@ import {environment} from "../../../../../environments/environment";
 import {ProdutoService} from "../../../../Service/produto/produto.service";
 import {Produto} from "../../../../Model/produto.interface";
 import {AuthRepresentanteService} from "../../../../Service/auth/representante/auth-representante.service";
-import {CatalogoInterface} from "../../../../Model/catalogo.interface";
+import {Catalogo} from "../../../../Model/catalogo";
+import {CardSelecionado} from "./CardSelecionado";
+import {CatalogoService} from "../../../../Service/catalogo/catalogo.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-catalogo-edit',
@@ -19,41 +22,35 @@ import {CatalogoInterface} from "../../../../Model/catalogo.interface";
 })
 export class CatalogoEditComponent implements OnInit {
 
-  private listID: number[] = [];
+  public imagePathProd = `${environment.imageDefault}`;
 
-  imagePathProd = `${environment.imageDefault}`;
+  public listID: number[] = [];
+  public listDisplay: CardSelecionado[] = [];
+  public form: FormGroup;
 
-  produtos$: Observable<Produto[]>;
 
-  catalogo$!: Observable<CatalogoInterface>;
+  public produtos$: Observable<Produto[]>;
+  public catalogo$!: Observable<Catalogo>;
 
   constructor(private service: ProdutoService, private router: Router,
-              private route: ActivatedRoute, private authSevice: AuthRepresentanteService
+              private route: ActivatedRoute, private authSevice: AuthRepresentanteService,
+              private catService: CatalogoService, private fb: FormBuilder
               ) {
 
-    // this.produtos$ = this.service.list(this.authSevice.getPerfil().id;).pipe().
-    // pipe(
-    //   catchError(error =>{
-    //     return of([]);
-    //   })
-    // );
+    this.produtos$ = this.onRefresh();
+    this.form = this.createForm();
 
-    this.produtos$ = this.service.list().pipe().
-    pipe(
-      catchError(error =>{
-        return of([]);
-      })
-    );
   }
 
   ngOnInit(): void {
 
-    this.onRefresh();
+    this.produtos$ = this.onRefresh();
+    this.createDisplayRule();
 
   }
 
   onRefresh(){
-    this.produtos$ = this.service.list().pipe(
+    return this.service.list().pipe(
       catchError(error =>{
         console.error(error);
         return [];
@@ -61,15 +58,118 @@ export class CatalogoEditComponent implements OnInit {
     );
   }
 
-  usarProduto(idProduto: number) {
-    this.listID.push(idProduto);
+  createForm(): FormGroup{
+    return this.fb.group({
+      nome: new FormControl(null, [Validators.required,
+        Validators.maxLength(45), Validators.minLength(2),
+      ])
+    });
   }
 
-  novoCatalogo(){
-    // this.catalogo$ =
+  getIdProduto(idProduto: number) : void{
+    let i = 0;
+    while (i < this.listID.length) {
+      if(idProduto == this.listID[i]){
+        this.listID.splice(i, 1);
+        return;
+      }
+      i++;
+    }
+    this.listID.push(idProduto);
+    return;
+  }
+
+  verificarIdProduto(idProduto: number) : boolean{
+    let i = 0;
+    while (i < this.listID.length) {
+      if(idProduto == this.listID[i]){
+        return true
+      }
+      i++;
+    }
+    return false;
+  }
+
+  criarCatalogo(){
+
+    let msgSuccess = 'Catalogo cadastrado com sucesso!';
+    let msgError = 'Erro ao cadastrar catalogo, tente novamente!';
+
+    if(this.listID.length > 0) {
+      let cat = {
+        nome: this.form.value.nome,
+        idRep: this.authSevice.getPerfil().id,
+        produtos: this.listID,
+      }
+
+      this.catalogo$ = this.catService.create(cat as Catalogo);
+
+      const localSubscription = this.catalogo$.subscribe((dados: Catalogo) => {
+          // let idProd = dados.id;
+          // this.upload(idProd);
+          alert(msgSuccess);
+          this.router.navigate(['representante']);
+
+        },
+        (error) => {
+          alert(msgError);
+          console.log(error);
+        });
+      setTimeout(() => {
+        localSubscription.unsubscribe();
+      }, 2000);
+    }else{
+      alert('Por favor, ecolha os produtos para o novo catalogo!');
+    }
+
   }
 
   voltar(){
     this.router.navigate(['representante']);
   }
+
+  listToggle: boolean[] = [true,true,true,true,true,true,true,true];
+  listStatus = [];
+
+  toggle = false;
+
+
+  // createRule(){
+  //   toggle = true
+  //   this.listToggle.push(toggle);
+  //   status = 'yesClick';
+  //   this.enableDisableRule();
+  // }
+
+  enableDisableRule() {
+    this.toggle = !this.toggle;
+  }
+
+  createDisplayRule(): void{
+
+    for(let i = 0; i<9; i++){
+      console.log("foi");
+      let ruler: CardSelecionado = new CardSelecionado();
+      this.listDisplay.push(ruler);
+    }
+  }
+
+  trackProduto(index: number, prod: Produto){
+    // console.log('oi' + prod + ' : '+ index);
+    // if(index + 1 > this.listToggle.length){
+    //   this.listToggle.push(true);
+    // }
+    // let ruler: CardSelecionado = new CardSelecionado();
+    // this.listDisplay.push(ruler);
+  }
+
+  ruleDisableEnable(index: number){
+    let rule: CardSelecionado = this.listDisplay[index];
+    rule.enableDisableRule();
+  }
+
+  get teste(): boolean{
+    return true;
+  }
+
 }

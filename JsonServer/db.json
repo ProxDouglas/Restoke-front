@@ -278,6 +278,17 @@
     {
       "nome": "teste4",
       "id": 4
+    },
+    {
+      "nome": "Copos",
+      "idRep": 2,
+      "produtos": [
+        2,
+        5,
+        6,
+        9
+      ],
+      "id": 5
     }
   ],
   "associar": [
