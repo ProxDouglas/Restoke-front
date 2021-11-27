@@ -12,7 +12,8 @@
                    fxShow="false"
                    fxHide.gt-sm="false"
   >
-      <img mat-card-image class="image-produto" [src]="imagePath" alt="image">
+      <img mat-card-image class="image-produto" [src]="imagePath" alt="image" *ngIf="haveIMG(produto.imagem) == false">
+      <img mat-card-image class="image-produto" [src]="produto.imagem" alt="image" *ngIf="haveIMG(produto.imagem) == true">
 
       <div fxLayout="column" fxLayoutAlign="space-evenly start" class="text-card" >
         <p>{{produto.nome}}</p>
@@ -29,7 +30,8 @@
 
   >
     <br>
-    <img mat-card-image  [src]="imagePath" alt="image">
+    <img mat-card-image  [src]="imagePath" alt="image" *ngIf="haveIMG(produto.imagem) == false">
+    <img mat-card-image  [src]="produto.imagem" alt="image" *ngIf="haveIMG(produto.imagem) == true">
     <mat-card-content >
       <p>{{produto.nome}}</p>
       <p>{{produto.categoria}}</p>

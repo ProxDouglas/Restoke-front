@@ -29,23 +29,17 @@ export class ContentComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {
 
-    this.representantes$ = this.service.list().
-    pipe(
-      catchError(error =>{
-        return of([]);
-      })
-    );
+    this.representantes$ = this.onRefresh();
   }
 
   ngOnInit(): void {
 
-
-    this.onRefresh();
+    this.representantes$ = this.onRefresh();
 
   }
 
   onRefresh(){
-    this.representantes$ = this.service.list().pipe(
+    return this.service.list().pipe(
       catchError(error =>{
         console.error(error);
         return [];
@@ -70,5 +64,9 @@ export class ContentComponent implements OnInit {
   onRepresentante(id: number) {
     console.log('listar');
     this.router.navigate(['listCatalogo', id], {relativeTo: this.route});
+  }
+
+  haveImagem(imagem: string) {
+    return imagem != null && imagem != '';
   }
 }

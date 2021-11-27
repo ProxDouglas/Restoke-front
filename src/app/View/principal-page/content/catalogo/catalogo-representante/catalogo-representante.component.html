@@ -7,9 +7,12 @@
   </button>
 </mat-toolbar>
 
-<div fxLayout="row" fxLayoutAlign="center center">
-  <div class="image-tam">
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="(representante$ |async) as representante">
+  <div class="image-tam" *ngIf="  haveIMGRep(representante.imagem) == false">
     <img class="image-rep" height="300" width="300" [src]="imagePathRep" alt="image">
+  </div>
+  <div class="image-tam" *ngIf="haveIMGRep(representante.imagem) == true">
+    <img class="image-rep" height="300" width="300" [src]="(representante$ | async)?.imagem" alt="image">
   </div>
 </div>
 
@@ -24,8 +27,11 @@
           <mat-card class="mat-card-representante">
 
             <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
-              <div>
+              <div *ngIf=" haveIMGProd(produto.imagem) == false" style="margin-top: 20px ; width: 250px">
                 <img mat-card-image class="image-produto" width="260" height="200" [src]="imagePathProd" alt="image">
+              </div>
+              <div *ngIf="haveIMGProd(produto.imagem) == true" style="margin-top: 20px; width: 250px">
+                <img mat-card-image class="image-produto" width="240" height="200" [src]="produto.imagem" alt="image">
               </div>
             </mat-card-content>
 

@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  API_cadastro: 'http://localhost:3000/',
-  API_catalogo: 'http://localhost:3000/',
-  // API_cadastro: 'http://localhost:8087/restoke/api/internal/v1/',
-  // API_catalogo: 'http://localhost:8088/catalogo/api/internal/v1/',
+  // API_cadastro: 'http://localhost:3000/',
+  // API_catalogo: 'http://localhost:3000/',
+  API_cadastro: 'http://localhost:8087/restoke/api/internal/v1/',
+  API_catalogo: 'http://localhost:8088/catalogo/api/internal/v1/',
 
   imagePerfil: '../../../../../../../assets/Image_Perfil_Default.png',
   // imagePerfil:'../../../../../../../assets/vitor.png',

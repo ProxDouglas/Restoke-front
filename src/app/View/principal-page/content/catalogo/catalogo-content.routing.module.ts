@@ -6,17 +6,18 @@ import {DetailComponent} from "./catalogo-representante/detail/detail/detail.com
 
 import {RepresentanteResolverGuard} from "../../../../guards/representante/resolver/representante-resolver.guard";
 import {ProdutoResolverGuard} from "../../../../guards/produto/produto-resolver-guard.service";
+import {CatalogoResolverGuardService} from "../../../../guards/catalogo/catalogo-resolver-guard.service";
 
 
 const routeCatalogo: Routes = [
   { path: '', component: ListCatalogoComponent },
 
-  { path: 'catalogo/:id', component:  CatalogoRepresentanteComponent,
+  { path: 'catalogo/:idCat', component:  CatalogoRepresentanteComponent,
   resolve:{
-    representante:RepresentanteResolverGuard
+    catalogo: CatalogoResolverGuardService, representante: RepresentanteResolverGuard
   }},
 
-  { path: 'catalogo/:id/produto/:id', component: DetailComponent,
+  { path: 'catalogo/:idCat/produto/:idProd', component: DetailComponent,
   resolve:{
     produto: ProdutoResolverGuard
   }},

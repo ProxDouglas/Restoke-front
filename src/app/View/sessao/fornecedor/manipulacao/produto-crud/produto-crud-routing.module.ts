@@ -11,7 +11,7 @@ const routeProdutoCRUD: Routes = [
   resolve:{
     produto:ProdutoResolverGuard
   }},
-  { path: 'editar/:id', component: ProdutoCadastroComponent,
+  { path: 'editar/:idProd', component: ProdutoCadastroComponent,
     resolve:{
       produto:ProdutoResolverGuard
     }},

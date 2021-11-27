@@ -18,6 +18,8 @@ export class RepresentanteResolverGuard implements Resolve<Representante> {
       return this.service.loadByID(route.params['id']);
     }
 
+    console.log("não carregou");
+
     return of({
       id: 0 ,
       nome: '',

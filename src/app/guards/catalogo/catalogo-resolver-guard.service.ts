@@ -12,13 +12,14 @@ export class CatalogoResolverGuardService implements Resolve<Catalogo> {
   constructor(private service: CatalogoService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Catalogo> {
-    if (route.params && route.params['id']) {
-      return this.service.loadByID(route.params['id']);
+    if (route.params && route.params['idCat']) {
+      return this.service.loadByID(route.params['idCat']);
     }
 
     return  of({
-      nome: '',
       id: 0,
+      nome: '',
+      idRep: 0,
       produtos: [],
     });
   }

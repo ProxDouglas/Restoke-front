@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {delay, take, tap} from "rxjs/operators";
+import {take} from "rxjs/operators";
 import {Catalogo} from "../../Model/catalogo";
-
 import {ProdutoService} from "../produto/produto.service";
+import {Observable} from "rxjs";
+import {Produto} from "../../Model/produto.interface";
+
+
 
 
 @Injectable({
@@ -30,13 +33,13 @@ export class CatalogoService {
     return this.http.get<Catalogo[]>(`${this.API_url}catalogo/representante/${repId}`).pipe(take(1)).pipe(take(1));
   }
 
-  loadCatalogo(catId: number) {
-    return this.http.get<Catalogo[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
+  loadCatalogo(catId: number): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
   }
 
 
   // loadByID(id: number) {
-  //   return this.http.get<Catalogo>(`${this.API_url}/${id}`).pipe(take(1));
+  //   return this.http.get<Catalogo>(`${this.API_url}catalogo/${id}`).pipe(take(1));
   // }
   //
   // create(catalogo: Catalogo) {
@@ -47,7 +50,7 @@ export class CatalogoService {
   //   return this.http.get<Catalogo[]>(`${this.API_url}catalogo`).pipe(take(1)).pipe(take(1));
   // }
   //
-  // loadCatalogo(catId: number) {
+  // loadCatalogo(catId: number): Observable<Produto[]> {
   //   return this.prodService.list();
   //   // return this.http.get<CatalogoInterface[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
   // }

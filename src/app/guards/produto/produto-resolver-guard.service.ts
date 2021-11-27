@@ -11,8 +11,9 @@ export class ProdutoResolverGuard implements Resolve<Produto> {
   constructor(private service: ProdutoService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Produto> {
-    if (route.params && route.params['id']) {
-      return this.service.loadByID(route.params['id']);
+    if (route.params && route.params['idProd']) {
+      console.log('carregando produto');
+      return this.service.loadByID(route.params['idProd']);
     }
 
     return  of({

@@ -23,11 +23,10 @@ export class ListCatalogoComponent implements OnInit {
     const representante = this.route.snapshot.data['representante'];
 
     this.catalogo$ = this.service.listCatalogos(representante.id);
-
   }
 
-  getCatalogo(id: number) {
-    this.router.navigate(['catalogo', id], {relativeTo: this.route});
+  getCatalogo(idCat: number) {
+    this.router.navigate(['catalogo', idCat], {relativeTo: this.route});
   }
 
   voltar() {

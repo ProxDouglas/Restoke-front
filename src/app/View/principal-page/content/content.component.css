@@ -43,9 +43,10 @@
   min-height: 70px;
 }
 
-.image-produto{
+.image-perfil{
   object-fit: cover;
   border-radius: 50%;
   min-width: 170px;
 }
+
 

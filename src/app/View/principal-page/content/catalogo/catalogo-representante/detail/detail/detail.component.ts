@@ -18,21 +18,31 @@ export class DetailComponent implements OnInit {
   imagePath = `${environment.imageDefault}`
   produto$: Observable<Produto>;
 
+
   constructor( private service: ProdutoService, private router: Router,
                private route: ActivatedRoute) {
 
-    this.produto$ = new Observable<Produto>();
+    const produto = this.route.snapshot.data['produto'];
+    console.log(produto);
+    this.produto$ = this.onRefresh(produto.id);
+
 
   }
 
   ngOnInit(): void {
-    const produto = this.route.snapshot.data['produto'];
-    this.produto$ = this.service.loadByID(produto.id)
-      .pipe(catchError(err => {
-        return new Observable<Produto>();
-      })
-    );
+    // this.produto$ =
+  }
 
+  onRefresh(idProd: number): Observable<Produto>{
+    return this.service.loadByID(idProd)
+      .pipe(catchError(err => {
+          return new Observable<Produto>();
+        })
+      );
+  }
+
+  haveIMG(imagem: string){
+    return imagem != null && imagem != '' && imagem != this.imagePath;
   }
 
   voltar() {

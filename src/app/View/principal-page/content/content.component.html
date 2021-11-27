@@ -42,8 +42,11 @@
             <mat-card class="mat-card-representante">
 
               <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
-                <div>
+                <div *ngIf="haveImagem(representante.imagem) == false">
                   <img mat-card-image class="image-perfil" width="170" height="170" [src]="imagePath" alt="image">
+                </div>
+                <div *ngIf="haveImagem(representante.imagem) == true" style="margin-top: 20px; width: 170px">
+                  <img mat-card-image class="image-perfil" width="150" height="150" [src]="representante.imagem" alt="image">
                 </div>
               </mat-card-content>
 
