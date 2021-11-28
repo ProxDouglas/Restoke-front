@@ -27,12 +27,12 @@ export class FornecedorService extends CrudService<Fornecedor>{
 
   associar(idFor: number, idRep: number){
 
-    const associar = {
-      idForornecedor: idFor,
-      idRepepresentante: idRep
+    const associar: Associar = {
+      idFornecedor: idFor,
+      idRepresentante: idRep
     }
 
-    return this.http.post<Associar>(`${environment.API_cadastro}associar`, associar)
+    return this.http.post<Associar>(`${environment.API_cadastro}associacoes`, associar)
       .pipe(take(1), tap(console.log));
   }
 

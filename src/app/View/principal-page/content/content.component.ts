@@ -67,6 +67,6 @@ export class ContentComponent implements OnInit {
   }
 
   haveImagem(imagem: string) {
-    return imagem != null && imagem != '';
+    return imagem != null && imagem != '' && imagem != this.imagePath;
   }
 }

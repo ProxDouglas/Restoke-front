@@ -6,6 +6,7 @@ import {Catalogo} from "../../Model/catalogo";
 import {ProdutoService} from "../produto/produto.service";
 import {Observable} from "rxjs";
 import {Produto} from "../../Model/produto.interface";
+import {ProdutosCatalogo} from "../../Model/produtos-catalogo";
 
 
 
@@ -22,19 +23,22 @@ export class CatalogoService {
 
 
   loadByID(id: number) {
-    return this.http.get<Catalogo>(`${this.API_url}/${id}`).pipe(take(1));
+    return this.http.get<Catalogo>(`${this.API_url}catalogo/${id}`).pipe(take(1));
   }
 
-  create(catalogo: Catalogo) {
-    return this.http.post<Catalogo>(`${this.API_url}catalogo`, catalogo).pipe(take(1)).pipe(take(1));
+  create(catalogo: Catalogo){
+    console.log(catalogo);
+    return this.http.post(`${this.API_url}catalogo`, catalogo).pipe(take(1));
   }
 
   listCatalogos(repId: number) {
     return this.http.get<Catalogo[]>(`${this.API_url}catalogo/representante/${repId}`).pipe(take(1)).pipe(take(1));
   }
 
-  loadCatalogo(catId: number): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
+  loadCatalogo(catId: number): Observable<ProdutosCatalogo[]> {
+    // console.log("Service");
+    // console.log(catId);
+    return this.http.get<ProdutosCatalogo[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
   }
 
 

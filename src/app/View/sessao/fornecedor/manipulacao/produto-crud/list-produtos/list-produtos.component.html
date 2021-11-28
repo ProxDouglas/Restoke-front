@@ -27,9 +27,9 @@
           <h2 fxLayoutAlign="start start" style="margin: 10px">{{ produto.nome }}</h2>
 
           <div fxLayout="row" fxLayoutAlign="start center">
-            <img [src]="imagePath" alt="image" class="imagem" >
+            <img [src]="imagePath" alt="image" class="imagem" *ngIf="haveImagem(produto.imagem) == false">
+            <img [src]="produto.imagem" alt="image" class="imagem" *ngIf="haveImagem(produto.imagem) == true">
             <div fxLayout="column" fxLayoutAlign="space-between start" >
-              <p fxFlex="20">Código de barras: {{produto.codigo_barra}}</p>
               <p fxFlex="20">Categoria: {{produto.categoria}}</p>
               <p fxFlex="60">Descrição: {{produto.descricao}}</p>
             </div>

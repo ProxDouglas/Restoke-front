@@ -46,15 +46,18 @@
             <mat-card class="mat-card-representante"
                       [ngClass]="{'active': verificarIdProduto(produto.id)}">
               <mat-card-content fxLayoutAlign="center center" style="margin-top: 20px">
-                <div>
-                  <img mat-card-image class="image-produto" width="260" height="200" [src]="imagePathProd" alt="image">
+                <div *ngIf="haveImagem(produto.imagem) == false">
+                  <img mat-card-image class="image-produto" width="245" height="200" [src]="imagePathProd" alt="image">
+                </div>
+                <div *ngIf="haveImagem(produto.imagem) == true" style="width: 245px; height: 200px">
+                  <img mat-card-image class="image-produto" width="240" height="200" [src]="produto.imagem" alt="image">
                 </div>
               </mat-card-content>
 
               <mat-card-title class="mat-card-title-representante" fxLayoutAlign="center center" >
                 <div class="column">
                   <p>
-                    <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{produto.nome}} {{produto.id}}</span>
+                    <span style="font-size:1.5rem;"  fxLayoutAlign="center none">{{produto.nome}}</span>
                   </p>
                   <p style="font-size:0.9rem;">{{produto.descricao}}</p>
 

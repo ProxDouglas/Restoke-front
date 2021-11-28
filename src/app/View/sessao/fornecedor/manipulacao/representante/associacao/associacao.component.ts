@@ -81,7 +81,7 @@ export class AssociacaoComponent implements OnInit {
     let msgError = 'Erro ao associar representante, tente novamente!';
 
     const idForn = this.authService.getPerfil().id;
-    this.catalogo = this.fornService.associar(idRep, idForn).pipe();
+    this.catalogo = this.fornService.associar(idForn, idRep).pipe();
 
     const localSubscription = this.catalogo.subscribe(
       dados=>{

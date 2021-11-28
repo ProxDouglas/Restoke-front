@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {catchError} from "rxjs/operators";
@@ -58,6 +58,10 @@ export class CatalogoEditComponent implements OnInit {
     );
   }
 
+  haveImagem(imagem: string) {
+    return imagem != null && imagem != '' && imagem != this.imagePathProd;
+  }
+
   createForm(): FormGroup{
     return this.fb.group({
       nome: new FormControl(null, [Validators.required,
@@ -98,13 +102,13 @@ export class CatalogoEditComponent implements OnInit {
     if(this.listID.length > 0) {
       let cat = {
         nome: this.form.value.nome,
-        idRep: this.authSevice.getPerfil().id,
+        representante: this.authSevice.getPerfil().id,
         produtos: this.listID,
       }
 
-      this.catalogo$ = this.catService.create(cat as Catalogo);
+      // this.catalogo$ = this.catService.create(cat as Catalogo);
 
-      const localSubscription = this.catalogo$.subscribe((dados: Catalogo) => {
+      const localSubscription = this.catService.create(cat as Catalogo).subscribe(dados => {
           // let idProd = dados.id;
           // this.upload(idProd);
           alert(msgSuccess);

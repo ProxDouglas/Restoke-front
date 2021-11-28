@@ -19,7 +19,7 @@ export class CatalogoResolverGuardService implements Resolve<Catalogo> {
     return  of({
       id: 0,
       nome: '',
-      idRep: 0,
+      representante: 0,
       produtos: [],
     });
   }

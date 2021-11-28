@@ -44,8 +44,15 @@ export class RepresentanteCadastroComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
       apresentacao: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.minLength(10)]),
       imagem: new FormControl(null, Validators.required),
-      fornecedor: this.authService.getPerfil().id,
+      fornecedor: this.getFornID(),
     });
+  }
+
+  getFornID(): number{
+    if(this.authService.usuarioEstaAutenticado()){
+      return this.authService.getPerfil().id;
+    }
+    return 0;
   }
 
 

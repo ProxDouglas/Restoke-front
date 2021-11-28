@@ -1,4 +1,4 @@
 export interface Associar {
-  idFor: number;
-  idRep: number
+  idFornecedor: number;
+  idRepresentante: number
 }

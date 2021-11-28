@@ -27,6 +27,7 @@ import {AuthRepresentanteService} from "./Service/auth/representante/auth-repres
 import {AuthRepresentanteGuard} from "./guards/representante/auth/auth-representante.guard";
 import {AuthUserGuard} from "./guards/auth-user.guard";
 import {CatalogoContentModule} from "./View/principal-page/content/catalogo/catalogo-content.module";
+import {TipoCadastroComponent} from "./View/cadastro/tipo-cadastro/tipo-cadastro.component";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {CatalogoContentModule} from "./View/principal-page/content/catalogo/cata
     AppComponent,
     PageNotFoundComponent,
     TipoSessaoComponent,
+    TipoCadastroComponent
 
   ],
     imports: [

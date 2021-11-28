@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 import {Catalogo} from "../../../../../Model/catalogo";
 import {CatalogoService} from "../../../../../Service/catalogo/catalogo.service";
+import {CatalogoIdNome} from "../catalogoIdNome";
 
 @Component({
   selector: 'app-list-catalogo',
@@ -14,7 +15,7 @@ export class ListCatalogoComponent implements OnInit {
   catalogo$: Observable<Catalogo[]>;
 
   constructor(private service: CatalogoService, private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private getCatalogoService: CatalogoIdNome) {
 
     this.catalogo$ = new Observable<Catalogo[]>();
   }
@@ -25,8 +26,11 @@ export class ListCatalogoComponent implements OnInit {
     this.catalogo$ = this.service.listCatalogos(representante.id);
   }
 
-  getCatalogo(idCat: number) {
-    this.router.navigate(['catalogo', idCat], {relativeTo: this.route});
+  getCatalogo(catalogo: Catalogo) {
+    // console.log('list');
+    // console.log(catalogo);
+    this.getCatalogoService.setCatalogo(catalogo);
+    this.router.navigate(['catalogo'], {relativeTo: this.route});
   }
 
   voltar() {

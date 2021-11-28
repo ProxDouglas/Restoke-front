@@ -43,6 +43,10 @@ export class ListProdutosComponent implements OnInit {
 
   }
 
+  haveImagem(imagem: string) {
+    return imagem != null && imagem != '' && imagem != this.imagePath;
+  }
+
   ngOnInit(): void {
     // const localSubscription = this.produtos$.subscribe(dados => this.produtos = dados);
     // setTimeout(() => {

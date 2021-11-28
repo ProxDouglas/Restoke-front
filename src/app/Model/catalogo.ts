@@ -2,6 +2,6 @@ export interface Catalogo {
 
   id: number;
   nome: string,
-  idRep: number, //representante
+  representante: number, //representante
   produtos: number[], //lista id produtos
 }

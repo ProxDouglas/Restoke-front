@@ -11,6 +11,8 @@ import {AuthRepresentanteGuard} from "./guards/representante/auth/auth-represent
 import {AuthUserGuard} from "./guards/auth-user.guard";
 import {ContentComponent} from "./View/principal-page/content/content.component";
 import {RepresentanteResolverGuard} from "./guards/representante/resolver/representante-resolver.guard";
+import {RepresentanteCadastroComponent} from "./View/sessao/fornecedor/manipulacao/representante/cadastro/representante-cadastro.component";
+import {TipoCadastroComponent} from "./View/cadastro/tipo-cadastro/tipo-cadastro.component";
 
 
 
@@ -41,7 +43,10 @@ const routes: Routes = [
     canActivate: [AuthRepresentanteGuard]
   },
 
-  { path: 'cadastro', component: FornecedorCadastroFormComponent,
+  { path: 'cadastroForn', component: FornecedorCadastroFormComponent,
+    canActivate: [AuthUserGuard]},
+
+  { path: 'cadastroRep', component: RepresentanteCadastroComponent,
     canActivate: [AuthUserGuard]},
 
   { path: 'acessarFonecedor', component: LoginFornecedorComponent,
@@ -51,6 +56,9 @@ const routes: Routes = [
     canActivate: [AuthUserGuard]},
 
   {path: 'sessao', component: TipoSessaoComponent,
+    canActivate: [AuthUserGuard]},
+
+  {path: 'cadastro', component: TipoCadastroComponent,
     canActivate: [AuthUserGuard]},
 
   {

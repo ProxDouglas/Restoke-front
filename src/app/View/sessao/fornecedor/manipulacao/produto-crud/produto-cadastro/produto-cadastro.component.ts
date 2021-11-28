@@ -76,9 +76,9 @@ export class ProdutoCadastroComponent implements OnInit {
       id: 0,
       nome: new FormControl (null,
         [Validators.required, Validators.maxLength(60), Validators.minLength(2)]),
-      codigo_barra: new FormControl(null,
-        [Validators.required, Validators.maxLength(13), Validators.minLength(13),
-        Validators.pattern('[0-9]{13}')]),
+      // codigo_barra: new FormControl(null,
+      //   [Validators.required, Validators.maxLength(13), Validators.minLength(13),
+      //   Validators.pattern('[0-9]{13}')]),
       fornecedor: this.fornID,
       categoria: new FormControl(null,
         [Validators.required, Validators.maxLength(50)]),
@@ -91,7 +91,7 @@ export class ProdutoCadastroComponent implements OnInit {
   formUpdate(produto: Produto){
     this.form.patchValue({id: produto.id});
     this.form.patchValue({nome: produto.nome});
-    this.form.patchValue({codigo_barra: produto.codigo_barra});
+    // this.form.patchValue({codigo_barra: produto.codigo_barra});
     this.form.patchValue({fornecedor: produto.fornecedor});
     this.form.patchValue({categoria: produto.categoria});
     this.form.patchValue({descricao: produto.descricao});
