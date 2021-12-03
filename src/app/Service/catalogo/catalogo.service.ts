@@ -6,7 +6,7 @@ import {Catalogo} from "../../Model/catalogo";
 import {ProdutoService} from "../produto/produto.service";
 import {Observable} from "rxjs";
 import {Produto} from "../../Model/produto.interface";
-import {ProdutosCatalogo} from "../../Model/produtos-catalogo";
+import {ProdutosCatalogo} from "../../Model/produtos.catalogo";
 
 
 
@@ -38,7 +38,8 @@ export class CatalogoService {
   loadCatalogo(catId: number): Observable<ProdutosCatalogo[]> {
     // console.log("Service");
     // console.log(catId);
-    return this.http.get<ProdutosCatalogo[]>(`${this.API_url}produto/catalogo/${catId}`).pipe(take(1)).pipe(take(1));
+    return this.http.get<ProdutosCatalogo[]>(`${this.API_url}produto/catalogo/${catId}`)
+      .pipe(take(1));
   }
 
 

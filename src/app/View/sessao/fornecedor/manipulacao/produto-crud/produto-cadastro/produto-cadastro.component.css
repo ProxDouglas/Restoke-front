@@ -56,3 +56,6 @@ img {
   background-color: red;
 }
 
+.mat-warn {
+  background: var(--componentesPrimario);
+}

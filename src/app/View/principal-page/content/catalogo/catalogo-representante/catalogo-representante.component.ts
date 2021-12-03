@@ -14,7 +14,7 @@ import {CatalogoService} from "../../../../../Service/catalogo/catalogo.service"
 import {Representante} from "../../../../../Model/representante.interface";
 import {RepresentanteService} from "../../../../../Service/representante/representante.service";
 // import {GetCatalogoService} from "./get-catalogo.service";
-import {ProdutosCatalogo} from "../../../../../Model/produtos-catalogo";
+import {ProdutosCatalogo} from "../../../../../Model/produtos.catalogo";
 import {CatalogoIdNome} from "../catalogoIdNome";
 
 @Component({
@@ -30,54 +30,27 @@ export class CatalogoRepresentanteComponent implements OnInit {
 
   representante$: Observable<Representante>;
   produtos$: Observable<Produto>[] = [];
-  // prodIDs$!: Observable<ProdutosCatalogo[]>;
-  // prodIDs!: ProdutosCatalogo[];
-  catalogo: Catalogo;
+  catalogoData: Catalogo;
+  private catalogoProd: ProdutosCatalogo[];
 
   constructor(private prodService: ProdutoService, private router: Router,
               private route: ActivatedRoute, private catService: CatalogoService,
               private repService: RepresentanteService, private catalogoIdNome: CatalogoIdNome) {
 
 
-    // this.catalogo = this.route.snapshot.data['catalogo'];
-    this.catalogo = this.catalogoIdNome.getCatalogo();
-
-    // console.log('cat Rep');
-    // console.log(catalogo);
-
-    // this.prodIDs$.subscribe(value => this.prodIDs = value)
+    this.catalogoProd = this.route.snapshot.data['catalogo'];
+    this.catalogoData = this.catalogoIdNome.getCatalogo();
 
 
     this.representante$ = this.getRep(Number(this.getIDRep()));
 
-
-    // this.produtos$ = new Observable<Produto[]>();
     this.produtos$ = [];
   }
 
   ngOnInit(): void {
 
-    // this.produtos$ = this.onRefresh(this.catalogo.id);
-    // this.produtos$ = this.onRefresh(this.catalogo);
+    this.produtos$ = this.onRefresh(this.catalogoProd);
 
-    this.getIDsProd(this.catalogo.id);
-
-  }
-
-  // onRefresh(catId: number): Observable<Produto[]>{
-  //   return this.catService.loadCatalogo(catId).pipe(
-  //     catchError(error =>{
-  //       console.error(error);
-  //       return [];
-  //     })
-  //   );
-  // }
-
-  getIDsProd(catId: number){
-    this.catService.loadCatalogo(catId).pipe()
-      .subscribe(dados => {
-        // this.onRefresh();
-      });
   }
 
   getObject(prodCats: ProdutosCatalogo[]){
@@ -86,12 +59,12 @@ export class CatalogoRepresentanteComponent implements OnInit {
   }
 
   onRefresh(catalogo: ProdutosCatalogo[]){
-    // this.produto$ = [];
-    // for(let i = 0; i < catalogo.length; i++){
-    //   console.log('log '+ i);
-    //   produto$.push(this.getProduto(catalogo[i].identificador));
-    // }
-    // return produto$;
+    let produtos: Observable<Produto>[] = [];
+    for(let i = 0; i < this.catalogoProd.length; i++){
+      console.log('log '+ i);
+      produtos.push(this.getProduto(catalogo[i].identificador));
+    }
+    return produtos;
   }
 
   getProduto(idProd: number): Observable<Produto>{

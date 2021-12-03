@@ -30,7 +30,7 @@ export class ListCatalogoComponent implements OnInit {
     // console.log('list');
     // console.log(catalogo);
     this.getCatalogoService.setCatalogo(catalogo);
-    this.router.navigate(['catalogo'], {relativeTo: this.route});
+    this.router.navigate(['catalogo', catalogo.id], {relativeTo: this.route});
   }
 
   voltar() {

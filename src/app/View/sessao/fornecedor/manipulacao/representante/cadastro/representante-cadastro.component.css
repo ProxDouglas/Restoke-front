@@ -1,4 +1,6 @@
-
+.mat-warn {
+  background: var(--componentesPrimario);
+}
 
 .full-width {
   width: 100%;

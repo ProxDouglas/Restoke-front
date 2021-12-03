@@ -1,29 +1,41 @@
 
 
-<mat-toolbar color="primary" style="background: rgb(57,73,171);" >
+<mat-toolbar color="warn" >
 
   <button mat-icon-button (click)="voltar()" >
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
 
-<div fxLayout="row" fxLayoutAlign="center center" *ngIf="(representante$ |async) as representante">
-  <div class="image-tam" *ngIf="  haveIMGRep(representante.imagem) == false">
-    <img class="image-rep" height="300" width="300" [src]="imagePathRep" alt="image">
+<div *ngIf="(representante$ |async) as representante; else loading">
+  <div fxLayout="row" fxLayoutAlign="center center" >
+    <div class="image-tam" *ngIf="  haveIMGRep(representante.imagem) == false">
+      <img class="image-rep" height="300" width="300" [src]="imagePathRep" alt="image">
+    </div>
+    <div class="image-tam" *ngIf="haveIMGRep(representante.imagem) == true">
+      <img class="image-rep" height="300" width="300" [src]="(representante$ | async)?.imagem" alt="image">
+    </div>
   </div>
-  <div class="image-tam" *ngIf="haveIMGRep(representante.imagem) == true">
-    <img class="image-rep" height="300" width="300" [src]="(representante$ | async)?.imagem" alt="image">
-  </div>
+
+  <mat-card class="dados-representante"  fxLayout="column" fxLayoutAlign="space-evenly start" >
+    <p><strong>nome: {{representante.nome}}</strong></p>
+    <p><strong>email: {{representante.email}}</strong></p>
+    <p><strong>numero: {{representante.numContato}}</strong></p>
+    <p><strong>Apresentação: {{representante.apresentacao}}</strong></p>
+  </mat-card>
 </div>
 
 
-<!--div style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
-  <div *ngFor="let prodIDs of (prodIDs$ | async)" fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
-    <div *ngIf="(getProduto(prodIDs.identificador) | async) as produto; else loading " style="margin: 0.5%;">
+<div style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
+  <div *ngFor="let produto$ of produtos$"
+       fxFlex="0 1 calc(33.3% - 11px)"
+       fxFlex.lt-md="0 1 calc(50% - 11px)"
+       fxFlex.lt-sm="100%" style="padding: 2%">
 
-      <div fxFlex="0 1 calc(33.3% - 11px)"
-           fxFlex.lt-md="0 1 calc(50% - 11px)"
-           fxFlex.lt-sm="100%">
+
+      <div
+           *ngIf="(produto$ | async) as produto; else loading " style="margin: 0.5%;"
+      >
         <button mat-button class="mat-card-representante" (click)="detalhe(produto)">
           <mat-card class="mat-card-representante">
 
@@ -49,7 +61,7 @@
           </mat-card>
         </button>
       </div>
-    </div>
+
   </div>
 
   <ng-template #loading>
@@ -58,7 +70,7 @@
   </div>
   </ng-template>
 
-</div -->
+</div>
 
 <!-- <mat-card-actions style="margin:1px;padding-bottom:5px; padding-top: 5px;">
             </mat-card-actions> -->

@@ -4,24 +4,22 @@ import {Observable, of} from 'rxjs';
 
 import {Catalogo} from "../../Model/catalogo";
 import {CatalogoService} from "../../Service/catalogo/catalogo.service";
+import {ProdutosCatalogo} from "../../Model/produtos.catalogo";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CatalogoResolverGuardService implements Resolve<Catalogo> {
+export class CatalogoResolverGuardService implements Resolve<ProdutosCatalogo[]> {
   constructor(private service: CatalogoService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Catalogo> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProdutosCatalogo[]> {
     if (route.params && route.params['idCat']) {
-      return this.service.loadByID(route.params['idCat']);
+      return this.service.loadCatalogo(route.params['idCat']);
     }
 
-    return  of({
-      id: 0,
-      nome: '',
-      representante: 0,
-      produtos: [],
-    });
+    return  of(
+      []
+    );
   }
 
 }

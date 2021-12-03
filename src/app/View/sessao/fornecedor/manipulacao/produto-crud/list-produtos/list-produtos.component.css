@@ -14,3 +14,7 @@
 .mat-spinner {
   margin-top: 60px;
 }
+
+.mat-warn {
+  background: var(--componentesPrimario);
+}

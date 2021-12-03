@@ -96,7 +96,7 @@ export class ProdutoCadastroComponent implements OnInit {
     this.form.patchValue({categoria: produto.categoria});
     this.form.patchValue({descricao: produto.descricao});
     if(produto.imagem != null){
-      console.log(produto.imagem);
+      // console.log(produto.imagem);
       this.imagemUrl = produto.imagem;
     }
   }
@@ -118,7 +118,7 @@ export class ProdutoCadastroComponent implements OnInit {
         // let idProd = dados.id;
         // this.upload(idProd);
         alert(msgSuccess);
-        this.router.navigate(['fornecedor']);
+        this.router.navigate(['/fornecedor/produtos']);
 
       },
       (error) => {
@@ -185,7 +185,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
     if(reader.result != null){
       this.form.patchValue({imagem: reader.result.toString()});
-      this.form.get('imagens')!.updateValueAndValidity();
+      this.form.get('imagem')!.updateValueAndValidity();
     }
   }
 

@@ -1,7 +1,7 @@
 
 
 
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center"
+<mat-toolbar color="warn" fxLayout="row" fxLayoutAlign="space-between center"
              style="background: rgb(57,73,171);"  >
 
   <button mat-icon-button (click)="voltar()"  >
@@ -22,8 +22,9 @@
 
 <div *ngIf="(produtos$ | async) as produtos; else loading">
   <div *ngFor="let produto of produtos; index as i;">
+    <div >
       <mat-card style="margin: 20px" fxLayout="row" fxLayoutAlign="space-between center" >
-        <div fxLayout="column" fxLayoutAlign="space-around start" >
+        <div fxLayout="column" fxLayoutAlign="space-around start">
           <h2 fxLayoutAlign="start start" style="margin: 10px">{{ produto.nome }}</h2>
 
           <div fxLayout="row" fxLayoutAlign="start center">
@@ -38,15 +39,16 @@
 
 
         <div fxLayout="column" fxLayoutAlign="space-around end" style="margin-right: 15px">
-          <button (click)="onEdit(produto.id)" class="button-ED" mat-raised-button color="primary" >
+          <!--button (click)="onEdit(produto.id)" class="button-ED" mat-raised-button color="primary" >
             Editar
-          </button>
+          </button-->
           <button (click)="onDelete(produto)" class="button-ED" mat-raised-button color="accent" >
             Deletar
           </button>
         </div>
       </mat-card>
     </div>
+  </div>
 </div>
 
 <ng-template #loading>

@@ -1,4 +1,6 @@
-
+.mat-warn {
+  background: var(--componentesPrimario);
+}
 
 .card-produto{
   width: 98%;

@@ -18,25 +18,22 @@ export class RepresentanteCadastroComponent implements OnInit {
   imagemUrl: any = null;
   public message!: string;
 
-  form!: FormGroup ;
-  // selectedFiles!: FileList;
+  form: FormGroup ;
 
   constructor(private fb: FormBuilder, private cadastroService: RepresentanteService,
               private router: Router, private route: ActivatedRoute,
               private authService: AuthFornecedorService)
   {
-
+    this.form = this.createForm();
   }
 
   ngOnInit(): void {
-
-    this.createForm();
 
   }
 
 
   createForm(){
-    this.form = this.fb.group({
+    return this.form = this.fb.group({
       nome: new FormControl (null, [Validators.required, Validators.maxLength(255), Validators.minLength(2)]),
       cpf: new FormControl(null, [Validators.required, Validators.maxLength(14), Validators.minLength(14),
         Validators.pattern( '([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})')]),
@@ -125,7 +122,7 @@ export class RepresentanteCadastroComponent implements OnInit {
       this.imagemUrl = reader.result;
       console.log(this.imagemUrl.toString());
       this.form.patchValue({imagem: reader.result.toString()});
-      // this.form.get('imagens')!.updateValueAndValidity();
+      this.form.get('imagem')!.updateValueAndValidity();
     }
   }
 
